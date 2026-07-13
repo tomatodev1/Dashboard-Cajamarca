@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sistema de Alerta Temprana · PROTECTA Perú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef4fa;--panel:#ffffff;--panel2:#f6fafd;--text:#132430;--sub:#59697a;--muted:#93a0ac;--border:#e3eaf2;--grid:#eaf0f6;--accent:#2b7cc0;--accent-soft:#e7f1fb;--hi:#dc2626;--med:#d97706;--lo:#16a34a;--hi-soft:#fdecec;--med-soft:#fdf3e6;--lo-soft:#e9f7ef;--shadow:0 1px 2px rgba(20,45,75,.05),0 6px 22px rgba(20,45,75,.055);}
+[data-theme="dark"]{--bg:#0d141b;--panel:#151f29;--panel2:#111a23;--text:#e8eef4;--sub:#9fb0bf;--muted:#647380;--border:#243342;--grid:#1d2833;--accent:#4aa3e0;--accent-soft:#132738;--hi:#f0554d;--med:#e2942f;--lo:#38b06e;--hi-soft:#2a1615;--med-soft:#241a10;--lo-soft:#122318;--shadow:0 1px 2px rgba(0,0,0,.35),0 10px 26px rgba(0,0,0,.35);}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-family:Manrope,system-ui,sans-serif}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+button,select{font-family:inherit}
+button{outline:none}
+::selection{background:var(--accent-soft)}
+@keyframes pulseRing{0%{transform:scale(1);opacity:.55}70%{transform:scale(2.6);opacity:0}100%{opacity:0}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- static data ---------- */
+  var DAY = 86400000;
+  var START = Date.UTC(2024,6,1);
+  var TODAY = Date.UTC(2026,6,12);
+  var END = Date.UTC(2027,0,15);
+  var N_HIST = Math.round((TODAY-START)/DAY);
+  var N_ALL = Math.round((END-START)/DAY);
+
+  var ZONES = [
+    {id:'este',name:'UGT Este – Celendín',prov:'Prov. Celendín',color:'#d64545',prob:78,level:'Alto',eventos:52,idx:86,last:'2026-07-05',left:66,top:42,
+     h0:52,h1:78,f:83,amp:7,ph:0.2,trend:'↑ +9 pts',
+     desc:'Zona de mayor sensibilidad histórica por el proyecto minero en las lagunas altoandinas; alta capacidad de movilización de rondas campesinas y frentes de defensa.',
+     accion:'Activar mesa de diálogo y monitoreo diario; coordinar con la PCM y la Defensoría del Pueblo.'},
+    {id:'norte',name:'UGT Norte – Hualgayoc',prov:'Prov. Hualgayoc / Chota',color:'#e08a2b',prob:69,level:'Alto',eventos:47,idx:82,last:'2026-07-08',left:47,top:22,
+     h0:44,h1:69,f:73,amp:6,ph:1.0,trend:'↑ +6 pts',
+     desc:'Corredor Hualgayoc–Bambamarca con pasivos ambientales y demandas por remediación de cabeceras de cuenca; conflictividad sostenida.',
+     accion:'Coordinar remediación ambiental y reforzar relacionamiento; monitoreo diario de medios locales.'},
+    {id:'centro',name:'UGT Centro – Cajamarca',prov:'Prov. Cajamarca / San Marcos',color:'#2b7cc0',prob:51,level:'Medio',eventos:31,idx:52,last:'2026-07-01',left:40,top:53,
+     h0:38,h1:51,f:54,amp:5,ph:2.0,trend:'→ estable',
+     desc:'Capital regional y foco de articulación política y paros preventivos; riesgo moderado con alta visibilidad mediática nacional.',
+     accion:'Reforzar relacionamiento comunitario y seguimiento político-mediático con frecuencia semanal.'},
+    {id:'sur',name:'UGT Sur – Cajabamba',prov:'Prov. Cajabamba',color:'#3a9d6b',prob:27,level:'Bajo',eventos:13,idx:33,last:'2026-05-30',left:44,top:80,
+     h0:20,h1:27,f:30,amp:4,ph:0.6,trend:'↓ -3 pts',
+     desc:'Actividad dispersa en Cajabamba; conflictividad baja pero sensible a decisiones sobre concesiones y a campañas de organizaciones regionales.',
+     accion:'Mantener vigilancia estándar y actualización mensual de indicadores de contexto.'}
+  ];
+
+  var DISTRICTS = [
+    {ugt:'Este',ugtId:'este',prov:'Celendín',distrito:'Sorochuco',eventos:18,ultima:'2026-07-05',idx:86,level:'Alto',accion:'Mesa de diálogo + monitoreo diario'},
+    {ugt:'Norte',ugtId:'norte',prov:'Hualgayoc',distrito:'Bambamarca',eventos:22,ultima:'2026-07-08',idx:82,level:'Alto',accion:'Coordinar remediación; monitoreo diario'},
+    {ugt:'Este',ugtId:'este',prov:'Celendín',distrito:'Huasmín',eventos:12,ultima:'2026-06-28',idx:76,level:'Alto',accion:'Reforzar presencia y diálogo directo'},
+    {ugt:'Este',ugtId:'este',prov:'Celendín',distrito:'Celendín',eventos:16,ultima:'2026-07-02',idx:71,level:'Alto',accion:'Monitoreo diario de medios locales'},
+    {ugt:'Norte',ugtId:'norte',prov:'Hualgayoc',distrito:'Hualgayoc',eventos:14,ultima:'2026-06-30',idx:68,level:'Alto',accion:'Vigilancia reforzada de cuenca'},
+    {ugt:'Norte',ugtId:'norte',prov:'Chota',distrito:'Chugur',eventos:8,ultima:'2026-06-20',idx:61,level:'Medio',accion:'Relacionamiento comunitario activo'},
+    {ugt:'Centro',ugtId:'centro',prov:'Cajamarca',distrito:'La Encañada',eventos:11,ultima:'2026-06-25',idx:57,level:'Medio',accion:'Monitoreo semanal de contexto'},
+    {ugt:'Centro',ugtId:'centro',prov:'Cajamarca',distrito:'Cajamarca',eventos:13,ultima:'2026-07-01',idx:52,level:'Medio',accion:'Seguimiento político-mediático'},
+    {ugt:'Centro',ugtId:'centro',prov:'Cajamarca',distrito:'Los Baños del Inca',eventos:7,ultima:'2026-06-15',idx:44,level:'Medio',accion:'Vigilancia estándar'},
+    {ugt:'Sur',ugtId:'sur',prov:'Cajabamba',distrito:'Cajabamba',eventos:9,ultima:'2026-05-30',idx:33,level:'Bajo',accion:'Actualización mensual'},
+    {ugt:'Sur',ugtId:'sur',prov:'Cajabamba',distrito:'Condebamba',eventos:4,ultima:'2026-05-18',idx:25,level:'Bajo',accion:'Vigilancia estándar'}
+  ];
+
+  var SOURCES = [
+    {name:'Defensoría del Pueblo',desc:'Reporte mensual de conflictos sociales'},
+    {name:'ACLED',desc:'Armed Conflict Location & Event Data'},
+    {name:'GDELT',desc:'Global Database of Events, Language & Tone'},
+    {name:'INEI',desc:'Indicadores socioeconómicos y de pobreza'},
+    {name:'SENAMHI',desc:'Condiciones climáticas y estacionalidad'},
+    {name:'PCM',desc:'Willaqniki · gestión de conflictos'},
+    {name:'Monitoreo de medios',desc:'Prensa regional y redes sociales'}
+  ];
+
+  var MATRIX_PTS = [
+    {x:18,y:81,z:'este',l:'Sorochuco'},{x:12,y:72,z:'este',l:'Huasmín'},{x:16,y:68,z:'este',l:'Celendín'},
+    {x:22,y:74,z:'norte',l:'Bambamarca'},{x:14,y:66,z:'norte',l:'Hualgayoc'},{x:8,y:58,z:'norte',l:'Chugur'},
+    {x:11,y:55,z:'centro',l:'La Encañada'},{x:13,y:49,z:'centro',l:'Cajamarca'},{x:7,y:42,z:'centro',l:'B. del Inca'},
+    {x:9,y:31,z:'sur',l:'Cajabamba'},{x:4,y:24,z:'sur',l:'Condebamba'}
+  ];
+  var ACTIVITY = [
+    {z:'este',protesta:40,violencia:12},{z:'norte',protesta:38,violencia:9},
+    {z:'centro',protesta:27,violencia:4},{z:'sur',protesta:11,violencia:2}
+  ];
+
+  var KPIS = [
+    {label:'Riesgo máximo',value:'78%',sub:'UGT Este – Celendín',color:'var(--hi)'},
+    {label:'Zonas en alto riesgo',value:'2 / 4',sub:'Este y Norte',color:'var(--hi)'},
+    {label:'Probabilidad promedio',value:'56%',sub:'4 zonas activas',color:'var(--med)'},
+    {label:'Eventos históricos',value:'143',sub:'últimos 24 meses',color:'var(--accent)'},
+    {label:'Frecuencia histórica',value:'6.0/mes',sub:'promedio 24 meses',color:'var(--accent)'}
+  ];
+
+  /* ---------- helpers ---------- */
+  function rng(seed){var a=seed>>>0;return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function pad2(n){return n<10?'0'+n:''+n;}
+  function ym(y,m){var mo=m+1;var v=y+'-'+pad2(mo);var names=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];return {v:v,label:names[m]+' '+y};}
+  function fmtDate(ms){var d=new Date(ms);return d.getUTCFullYear()+'-'+pad2(d.getUTCMonth()+1)+'-'+pad2(d.getUTCDate());}
+  function keyOf(ms){var d=new Date(ms);return d.getUTCFullYear()+'-'+pad2(d.getUTCMonth()+1);}
+  function levelColor(l){return l==='Alto'?'var(--hi)':l==='Medio'?'var(--med)':'var(--lo)';}
+  function levelSoft(l){return l==='Alto'?'var(--hi-soft)':l==='Medio'?'var(--med-soft)':'var(--lo-soft)';}
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+
+  var MONTH_OPTS = (function(){
+    var opts=[],y=2024,m=6;
+    while(y<2027||(y===2027&&m<=0)){opts.push(ym(y,m));if(m===11){m=0;y++;}else{m++;}}
+    return opts;
+  })();
+
+  var dailyMs = [];
+  for(var i=0;i<=N_ALL;i++) dailyMs.push(START+i*DAY);
+
+  var daily = (function(){
+    var out={};
+    var clampV=function(v){return Math.max(5,Math.min(92,v));};
+    ZONES.forEach(function(z){
+      var rnd=rng(z.id.length*9973+z.prob*131+7);
+      var raw=[],walk=0;
+      for(var i=0;i<=N_ALL;i++){
+        var d=new Date(dailyMs[i]),mon=d.getUTCMonth(),base;
+        if(i<=N_HIST){var fr=i/N_HIST;base=z.h0+(z.h1-z.h0)*fr;}
+        else{var ff=(i-N_HIST)/(N_ALL-N_HIST);base=z.h1+(z.f-z.h1)*ff;}
+        var seasonal=z.amp*Math.sin(2*Math.PI*(mon/12)+z.ph);
+        walk=walk*0.86+(rnd()-0.5)*3.4;
+        raw.push(clampV(base+seasonal+walk));
+      }
+      var sm=[],W=6;
+      for(var i2=0;i2<raw.length;i2++){var s=0,c=0;for(var k=-W;k<=W;k++){var j=i2+k;if(j>=0&&j<raw.length){s+=raw[j];c++;}}sm.push(s/c);}
+      out[z.id]=sm;
+    });
+    return out;
+  })();
+
+  var aggCache = {};
+  function agg(gran){
+    if(aggCache[gran]) return aggCache[gran];
+    var pts=[],ids=ZONES.map(function(z){return z.id;});
+    function push(idx,members){
+      var vals={};
+      ids.forEach(function(id){var s=0;members.forEach(function(j){s+=daily[id][j];});vals[id]=Math.round(s/members.length);});
+      pts.push({ms:dailyMs[idx],key:keyOf(dailyMs[idx]),label:fmtDate(dailyMs[idx]),vals:vals,fc:idx>N_HIST});
+    }
+    if(gran==='day'){
+      for(var i=0;i<=N_ALL;i++){var vals={};ids.forEach(function(id){vals[id]=Math.round(daily[id][i]);});pts.push({ms:dailyMs[i],key:keyOf(dailyMs[i]),label:fmtDate(dailyMs[i]),vals:vals,fc:i>N_HIST});}
+    } else if(gran==='week'){
+      for(var i2=0;i2<=N_ALL;i2+=7){var mem=[];for(var k=0;k<7&&i2+k<=N_ALL;k++)mem.push(i2+k);push(i2,mem);}
+    } else {
+      var cur=null,mem2=[],startIdx=0;
+      for(var i3=0;i3<=N_ALL;i3++){var k2=keyOf(dailyMs[i3]);if(k2!==cur){if(mem2.length)push(startIdx,mem2);cur=k2;mem2=[];startIdx=i3;}mem2.push(i3);}
+      if(mem2.length)push(startIdx,mem2);
+    }
+    aggCache[gran]=pts;
+    return pts;
+  }
+
+  function filtered(){
+    var all=agg(state.gran);
+    var pts=all.filter(function(p){return p.key>=state.fromVal&&p.key<=state.toVal;});
+    var boundary=-1;
+    for(var i=0;i<pts.length;i++) if(!pts[i].fc) boundary=i;
+    return {pts:pts,boundary:boundary};
+  }
+
+  /* ---------- state ---------- */
+  var state = {
+    dark:false, gran:'week',
+    fromVal:'2025-01', toVal:'2027-01',
+    hidden:{}, hover:null, hoverPin:null, selected:null
+  };
+
+  /* ---------- chart geometry constants ---------- */
+  var MAIN = {cw:960,ch:380,padL:42,padR:18,padT:18,padB:40};
+  var MATRIX = {cw:300,ch:232,padL:34,padR:12,padT:12,padB:30,maxX:24};
+  var ACT = {cw:300,ch:232,padL:30,padR:12,padT:14,padB:30,maxV:55};
+  var REL = {cw:300,ch:150,padL:12,padR:12,padT:10};
+
+  /* ---------- chart builders (return svg markup strings) ---------- */
+  function buildMainChart(){
+    var g=MAIN, padL=g.padL,padR=g.padR,padT=g.padT,padB=g.padB,cw=g.cw,ch=g.ch;
+    var W=cw-padL-padR,H=ch-padT-padB;
+    var f=filtered(),pts=f.pts,boundary=f.boundary,n=pts.length;
+    function X(i){return padL+(n<=1?0:i/(n-1)*W);}
+    function Y(v){return padT+(1-v/100)*H;}
+    var svg='';
+    [0,25,50,75,100].forEach(function(gv){
+      var y=Y(gv);
+      svg+='<line x1="'+padL+'" x2="'+(cw-padR)+'" y1="'+y+'" y2="'+y+'" style="stroke:var(--grid)" stroke-width="1"></line>';
+      svg+='<text x="'+(padL-8)+'" y="'+(y+3.5)+'" text-anchor="end" style="fill:var(--muted);font-size:10.5px;font-weight:600">'+gv+'%</text>';
+    });
+    if(boundary>=0&&boundary<n-1){
+      var bx=X(boundary);
+      svg+='<rect x="'+bx+'" y="'+padT+'" width="'+((cw-padR)-bx)+'" height="'+H+'" style="fill:var(--accent);opacity:.05"></rect>';
+      svg+='<line x1="'+bx+'" x2="'+bx+'" y1="'+padT+'" y2="'+(padT+H)+'" style="stroke:var(--accent)" stroke-width="1.4" stroke-dasharray="4 3"></line>';
+      svg+='<rect x="'+(bx-19)+'" y="'+(padT-3)+'" width="38" height="16" rx="8" style="fill:var(--accent)"></rect>';
+      svg+='<text x="'+bx+'" y="'+(padT+8.5)+'" text-anchor="middle" style="fill:#fff;font-size:10px;font-weight:800">Hoy</text>';
+      var fx=bx+((cw-padR)-bx)/2;
+      svg+='<text x="'+fx+'" y="'+(padT+13)+'" text-anchor="middle" style="fill:var(--accent);font-size:10px;font-weight:700;opacity:.85">Pronóstico</text>';
+    }
+    ZONES.forEach(function(z){
+      if(state.hidden[z.id]) return;
+      var hist=[],fore=[];
+      pts.forEach(function(p,i){
+        var pt=[X(i),Y(p.vals[z.id])];
+        if(boundary<0||i<=boundary) hist.push(pt);
+        if(boundary>=0&&i>=boundary) fore.push(pt);
+      });
+      if(hist.length>1) svg+='<polyline points="'+hist.map(function(p){return p.join(',');}).join(' ')+'" fill="none" style="stroke:'+z.color+'" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></polyline>';
+      if(fore.length>1) svg+='<polyline points="'+fore.map(function(p){return p.join(',');}).join(' ')+'" fill="none" style="stroke:'+z.color+'" stroke-width="2.4" stroke-dasharray="2 4" stroke-linecap="round" opacity=".85"></polyline>';
+    });
+    var ticks=Math.min(7,n);
+    for(var k=0;k<ticks;k++){
+      var idx=Math.round(k/(ticks-1||1)*(n-1));
+      var x=X(idx);
+      svg+='<text x="'+x+'" y="'+(ch-padB+22)+'" text-anchor="middle" style="fill:var(--muted);font-size:9.5px;font-weight:600">'+(pts[idx]?pts[idx].label:'')+'</text>';
+    }
+    var tooltip='';
+    var hi=state.hover;
+    if(hi!=null&&hi>=0&&hi<n){
+      var x2=X(hi);
+      svg+='<line x1="'+x2+'" x2="'+x2+'" y1="'+padT+'" y2="'+(padT+H)+'" style="stroke:var(--sub)" stroke-width="1" stroke-dasharray="3 3" opacity=".6"></line>';
+      var rows='';
+      ZONES.forEach(function(z){
+        if(state.hidden[z.id]) return;
+        var y3=Y(pts[hi].vals[z.id]);
+        svg+='<circle cx="'+x2+'" cy="'+y3+'" r="4" fill="'+z.color+'" stroke="var(--panel)" stroke-width="2"></circle>';
+        rows+='<div style="display:flex;align-items:center;gap:6px;justify-content:space-between">'+
+          '<span style="display:flex;align-items:center;gap:6px;color:var(--sub);font-weight:600">'+
+          '<span style="width:8px;height:8px;border-radius:2px;background:'+z.color+';display:inline-block"></span>'+z.id.charAt(0).toUpperCase()+z.id.slice(1)+'</span>'+
+          '<strong style="color:var(--text);font-variant-numeric:tabular-nums">'+pts[hi].vals[z.id]+'%</strong></div>';
+      });
+      var leftPct=clamp((x2/cw)*100,2,80);
+      tooltip='<div class="chart-tooltip" style="position:absolute;left:'+leftPct+'%;top:'+(padT+6)+'px;width:150px;background:var(--panel);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.22);padding:8px 11px;pointer-events:none;font-size:11.5px;z-index:5">'+
+        '<div style="font-weight:800;font-size:11px;margin-bottom:6px;color:var(--text)">'+pts[hi].label+(pts[hi].fc?' · pronóstico':'')+'</div>'+rows+'</div>';
+    }
+    return '<div style="position:relative;width:100%;margin-top:8px">'+
+      '<svg data-chart="main" width="'+cw+'" height="'+ch+'" viewBox="0 0 '+cw+' '+ch+'" style="display:block;width:100%;height:auto;cursor:crosshair">'+svg+'</svg>'+tooltip+'</div>';
+  }
+
+  function buildMatrix(){
+    var g=MATRIX, padL=g.padL,padR=g.padR,padT=g.padT,padB=g.padB,cw=g.cw,ch=g.ch,maxX=g.maxX;
+    var W=cw-padL-padR,H=ch-padT-padB;
+    function X(v){return padL+v/maxX*W;}
+    function Y(v){return padT+(1-v/100)*H;}
+    var svg='';
+    [0,50,100].forEach(function(gv){
+      svg+='<line x1="'+padL+'" x2="'+(cw-padR)+'" y1="'+Y(gv)+'" y2="'+Y(gv)+'" style="stroke:var(--grid)"></line>';
+      svg+='<text x="'+(padL-6)+'" y="'+(Y(gv)+3)+'" text-anchor="end" style="fill:var(--muted);font-size:9px">'+gv+'</text>';
+    });
+    svg+='<line x1="'+X(12)+'" x2="'+X(12)+'" y1="'+padT+'" y2="'+(padT+H)+'" style="stroke:var(--border)" stroke-dasharray="3 3"></line>';
+    svg+='<line x1="'+padL+'" x2="'+(cw-padR)+'" y1="'+Y(60)+'" y2="'+Y(60)+'" style="stroke:var(--border)" stroke-dasharray="3 3"></line>';
+    svg+='<text x="'+(cw-padR-2)+'" y="'+Y(97)+'" text-anchor="end" style="fill:var(--hi);font-size:8.5px;font-weight:700;opacity:.7">PRIORIDAD ALTA</text>';
+    MATRIX_PTS.forEach(function(p){
+      var z=ZONES.filter(function(x){return x.id===p.z;})[0];
+      var sel=state.selected&&state.selected!==p.z;
+      svg+='<circle cx="'+X(p.x)+'" cy="'+Y(p.y)+'" r="5.5" fill="'+z.color+'" opacity="'+(sel?0.18:0.9)+'" stroke="var(--panel)" stroke-width="1.4"></circle>';
+    });
+    svg+='<text x="'+(padL+W/2)+'" y="'+(ch-4)+'" text-anchor="middle" style="fill:var(--muted);font-size:9.5px;font-weight:600">Actividad histórica (eventos) →</text>';
+    svg+='<text x="11" y="'+(padT+H/2)+'" text-anchor="middle" transform="rotate(-90 11 '+(padT+H/2)+')" style="fill:var(--muted);font-size:9.5px;font-weight:600">Probabilidad (%) ↑</text>';
+    return '<svg width="'+cw+'" height="'+ch+'" viewBox="0 0 '+cw+' '+ch+'" style="display:block;width:100%;height:auto">'+svg+'</svg>';
+  }
+
+  function buildActivity(){
+    var g=ACT, padL=g.padL,pR=g.padR,pT=g.padT,pB=g.padB,cw=g.cw,ch=g.ch,maxV=g.maxV;
+    var W=cw-padL-pR,H=ch-pT-pB;
+    function Y(v){return pT+(1-v/maxV)*H;}
+    var bw=W/ACTIVITY.length*0.5;
+    var svg='';
+    [0,25,50].forEach(function(gv){
+      svg+='<line x1="'+padL+'" x2="'+(cw-pR)+'" y1="'+Y(gv)+'" y2="'+Y(gv)+'" style="stroke:var(--grid)"></line>';
+      svg+='<text x="'+(padL-6)+'" y="'+(Y(gv)+3)+'" text-anchor="end" style="fill:var(--muted);font-size:9px">'+gv+'</text>';
+    });
+    ACTIVITY.forEach(function(a,i){
+      var z=ZONES.filter(function(x){return x.id===a.z;})[0];
+      var cx=padL+(i+0.5)/ACTIVITY.length*W;
+      var x=cx-bw/2;
+      var total=a.protesta+a.violencia;
+      var sel=state.selected&&state.selected!==a.z;
+      var op=sel?0.25:1;
+      var yP=Y(total),hP=Y(a.violencia)-Y(total);
+      var yV=Y(a.violencia),hV=(pT+H)-Y(a.violencia);
+      svg+='<rect x="'+x+'" y="'+yP+'" width="'+bw+'" height="'+Math.max(0,hP)+'" rx="2" style="fill:var(--accent)" opacity="'+op+'"></rect>';
+      svg+='<rect x="'+x+'" y="'+yV+'" width="'+bw+'" height="'+Math.max(0,hV)+'" style="fill:var(--hi)" opacity="'+op+'"></rect>';
+      svg+='<text x="'+cx+'" y="'+(yP-5)+'" text-anchor="middle" style="fill:var(--text);font-size:10px;font-weight:800" opacity="'+op+'">'+total+'</text>';
+      svg+='<text x="'+cx+'" y="'+(ch-4)+'" text-anchor="middle" style="fill:var(--muted);font-size:9.5px;font-weight:700" opacity="'+op+'">'+z.id.charAt(0).toUpperCase()+z.id.slice(1)+'</text>';
+    });
+    return '<svg width="'+cw+'" height="'+ch+'" viewBox="0 0 '+cw+' '+ch+'" style="display:block;width:100%;height:auto">'+svg+'</svg>';
+  }
+
+  function buildReliability(){
+    var g=REL, padL=g.padL,padR=g.padR,padT=g.padT,cw=g.cw,ch=g.ch;
+    var W=cw-padL-padR;
+    var bars=[{l:'Modelo predictivo',v:0.84,c:'var(--accent)'},{l:'Frecuencia base histórica',v:0.58,c:'var(--muted)'}];
+    var svg='',bh=26,gap=30;
+    bars.forEach(function(b,i){
+      var y=padT+8+i*(bh+gap);
+      svg+='<text x="'+padL+'" y="'+(y-6)+'" style="fill:var(--sub);font-size:11px;font-weight:700">'+b.l+'</text>';
+      svg+='<rect x="'+padL+'" y="'+y+'" width="'+W+'" height="'+bh+'" rx="6" style="fill:var(--grid)"></rect>';
+      svg+='<rect x="'+padL+'" y="'+y+'" width="'+(W*b.v)+'" height="'+bh+'" rx="6" style="fill:'+b.c+'"></rect>';
+      svg+='<text x="'+(padL+W*b.v-8)+'" y="'+(y+bh/2+4)+'" text-anchor="end" style="fill:#fff;font-size:12px;font-weight:800">'+b.v.toFixed(2)+'</text>';
+    });
+    return '<svg width="'+cw+'" height="'+ch+'" viewBox="0 0 '+cw+' '+ch+'" style="display:block;width:100%;height:auto">'+svg+'</svg>';
+  }
+
+  /* ---------- markup sections ---------- */
+  function logoSvg(){
+    return '<svg width="128" height="30" viewBox="0 0 128 30" xmlns="http://www.w3.org/2000/svg">'+
+      '<rect x="0" y="3" width="24" height="24" rx="6" fill="var(--accent)"></rect>'+
+      '<path d="M7 15 L11 19 L18 10" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>'+
+      '<text x="31" y="14" font-family="Manrope,system-ui,sans-serif" font-size="12.5" font-weight="800" fill="var(--text)">PROTECTA</text>'+
+      '<text x="31" y="25" font-family="Manrope,system-ui,sans-serif" font-size="9.5" font-weight="700" letter-spacing=".05em" fill="var(--sub)">PERÚ</text>'+
+      '</svg>';
+  }
+
+  function header(){
+    var dark=state.dark;
+    return '<header style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">'+
+      '<div style="display:flex;align-items:center;gap:14px;min-width:0">'+
+        '<div style="background:#fff;border:1px solid var(--border);border-radius:11px;padding:7px 12px;display:flex;align-items:center;box-shadow:var(--shadow)">'+logoSvg()+'</div>'+
+        '<div style="min-width:0">'+
+          '<div style="font-size:19px;font-weight:800;letter-spacing:-.3px;line-height:1.15">Sistema de Alerta Temprana</div>'+
+          '<div style="font-size:12.5px;color:var(--sub);font-weight:500;margin-top:2px">Conflictos sociales · Región Cajamarca, Perú</div>'+
+        '</div>'+
+      '</div>'+
+      '<div style="flex:1"></div>'+
+      '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">'+
+        '<div style="text-align:right;line-height:1.2">'+
+          '<div style="font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600">Cliente</div>'+
+          '<div style="font-size:14px;font-weight:700">Bechtel</div>'+
+        '</div>'+
+        '<div style="display:flex;align-items:center;gap:7px;background:var(--lo-soft);color:var(--lo);border:1px solid var(--border);padding:7px 12px;border-radius:999px;font-size:12px;font-weight:600">'+
+          '<span style="width:7px;height:7px;border-radius:50%;background:var(--lo);box-shadow:0 0 0 3px color-mix(in srgb,var(--lo) 22%,transparent)"></span>'+
+          'Semana activa · Sem. 28 · 2026</div>'+
+        '<button data-action="toggle-theme" style="display:flex;align-items:center;gap:8px;background:var(--panel);color:var(--text);border:1px solid var(--border);padding:8px 13px;border-radius:999px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;box-shadow:var(--shadow)">'+
+          '<span style="width:14px;height:14px;border-radius:50%;border:2px solid var(--accent);background:'+(dark?'var(--accent)':'transparent')+'"></span>'+
+          (dark?'Modo claro':'Modo oscuro')+'</button>'+
+      '</div>'+
+    '</header>';
+  }
+
+  function banner(){
+    return '<div style="display:flex;align-items:center;gap:11px;margin-top:16px;background:var(--med-soft);border:1px solid color-mix(in srgb,var(--med) 30%,transparent);border-radius:10px;padding:10px 15px;font-size:12.5px;color:var(--text);font-weight:500">'+
+      '<span style="flex:none;width:19px;height:19px;border-radius:50%;background:var(--med);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">!</span>'+
+      '<span>Las probabilidades mostradas son una <strong>estimación del modelo predictivo</strong>, no una certeza. Úselas como apoyo a la decisión junto con el criterio del equipo de relacionamiento comunitario.</span>'+
+    '</div>';
+  }
+
+  function mainChartSection(){
+    var granOpts=[{v:'day',label:'Día'},{v:'week',label:'Semana'},{v:'month',label:'Mes'}];
+    var granBtns=granOpts.map(function(g){
+      var active=state.gran===g.v;
+      return '<button data-action="set-gran" data-value="'+g.v+'" style="border:none;cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;padding:6px 12px;border-radius:7px;background:'+(active?'var(--accent)':'transparent')+';color:'+(active?'#fff':'var(--sub)')+'">'+g.label+'</button>';
+    }).join('');
+
+    var monthOptHtml=function(selectedVal){
+      return MONTH_OPTS.map(function(m){return '<option value="'+m.v+'"'+(m.v===selectedVal?' selected':'')+'>'+m.label+'</option>';}).join('');
+    };
+
+    var shortcuts=[
+      {label:'6M',from:'2026-01',to:'2026-07'},
+      {label:'12M',from:'2025-07',to:'2026-07'},
+      {label:'Todo',from:'2024-07',to:'2026-07'},
+      {label:'Pronóstico',from:'2026-04',to:'2027-01'}
+    ];
+    var shortcutBtns=shortcuts.map(function(s){
+      return '<button data-action="shortcut" data-from="'+s.from+'" data-to="'+s.to+'" style="border:1px solid var(--border);cursor:pointer;font-family:inherit;font-size:11.5px;font-weight:600;padding:7px 12px;border-radius:8px;background:var(--panel2);color:var(--text)">'+s.label+'</button>';
+    }).join('');
+
+    var legendBtns=ZONES.map(function(z){
+      var hidden=!!state.hidden[z.id];
+      return '<button data-action="toggle-legend" data-zone="'+z.id+'" style="display:flex;align-items:center;gap:7px;border:1px solid var(--border);cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;padding:6px 11px;border-radius:999px;background:var(--panel2);color:var(--text);opacity:'+(hidden?0.4:1)+'">'+
+        '<span style="width:11px;height:11px;border-radius:3px;background:'+z.color+'"></span>'+z.id.charAt(0).toUpperCase()+z.id.slice(1)+'</button>';
+    }).join('');
+
+    return '<section style="margin-top:18px;background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:20px 22px 18px">'+
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">'+
+        '<div>'+
+          '<div style="font-size:16.5px;font-weight:800;letter-spacing:-.2px">Tendencia y pronóstico de probabilidad de protesta</div>'+
+          '<div style="font-size:12.5px;color:var(--sub);margin-top:3px">Probabilidad diaria (%) por unidad de gestión territorial · histórico continuo · pronóstico punteado tras <strong>Hoy</strong></div>'+
+        '</div>'+
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">'+
+          '<div style="display:inline-flex;background:var(--panel2);border:1px solid var(--border);border-radius:9px;padding:3px">'+granBtns+'</div>'+
+        '</div>'+
+      '</div>'+
+      '<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;margin-top:14px">'+
+        '<label style="display:flex;flex-direction:column;gap:4px;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)">Desde'+
+          '<select data-role="from" style="font-family:inherit;font-size:12.5px;font-weight:600;color:var(--text);background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:7px 10px;cursor:pointer">'+monthOptHtml(state.fromVal)+'</select></label>'+
+        '<label style="display:flex;flex-direction:column;gap:4px;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)">Hasta'+
+          '<select data-role="to" style="font-family:inherit;font-size:12.5px;font-weight:600;color:var(--text);background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:7px 10px;cursor:pointer">'+monthOptHtml(state.toVal)+'</select></label>'+
+        '<div style="display:flex;gap:7px;flex-wrap:wrap">'+shortcutBtns+'</div>'+
+        '<div style="flex:1"></div>'+
+        '<div style="display:flex;gap:9px;flex-wrap:wrap;align-items:center">'+legendBtns+'</div>'+
+      '</div>'+
+      buildMainChart()+
+    '</section>';
+  }
+
+  function kpiSection(){
+    return '<section style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:16px">'+
+      KPIS.map(function(k){
+        return '<div style="background:var(--panel);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:15px 16px;display:flex;flex-direction:column;gap:7px;min-width:0">'+
+          '<div style="display:flex;align-items:center;gap:8px">'+
+            '<span style="width:9px;height:9px;border-radius:3px;background:'+k.color+'"></span>'+
+            '<span style="font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700">'+k.label+'</span>'+
+          '</div>'+
+          '<div style="font-size:29px;font-weight:800;letter-spacing:-.6px;line-height:1;color:'+k.color+'">'+k.value+'</div>'+
+          '<div style="font-size:11.5px;color:var(--sub);font-weight:500">'+k.sub+'</div>'+
+        '</div>';
+      }).join('')+
+    '</section>';
+  }
+
+  function mapRankingDetail(){
+    var sel=state.selected;
+    var selZone=sel?ZONES.filter(function(z){return z.id===sel;})[0]:null;
+    var clearBtn=sel?'<button data-action="clear-selection" style="display:flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--accent-soft);color:var(--accent);cursor:pointer;font-family:inherit;font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px">'+esc(selZone.name)+' ✕</button>':'';
+
+    var pins=ZONES.map(function(z){
+      var isSel=sel===z.id, hov=state.hoverPin===z.id;
+      var size=isSel?26:20, ring=isSel?'8px':(hov?'6px':'0px'), zi=isSel||hov?15:5;
+      var showChip=hov||isSel;
+      var chip=showChip?(
+        '<div style="position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%);background:var(--panel);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 22px rgba(0,0,0,.22);padding:8px 11px;white-space:nowrap;z-index:20">'+
+          '<div style="font-size:11.5px;font-weight:800">'+esc(z.name)+'</div>'+
+          '<div style="display:flex;align-items:center;gap:7px;margin-top:3px">'+
+            '<span style="font-size:16px;font-weight:800;color:'+z.color+'">'+z.prob+'%</span>'+
+            '<span style="font-size:10.5px;font-weight:700;color:'+levelColor(z.level)+';background:'+levelSoft(z.level)+';padding:2px 7px;border-radius:999px">'+z.level+'</span>'+
+          '</div></div>'
+      ):'';
+      return '<div data-pin="'+z.id+'" style="position:absolute;left:'+z.left+'%;top:'+z.top+'%;transform:translate(-50%,-50%);cursor:pointer;z-index:'+zi+'">'+
+        '<span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:'+z.color+';animation:pulseRing 2.4s ease-out infinite"></span>'+
+        '<span style="position:relative;display:block;width:'+size+'px;height:'+size+'px;border-radius:50%;background:'+z.color+';border:3px solid #fff;box-shadow:0 2px 7px rgba(0,0,0,.35),0 0 0 '+ring+' color-mix(in srgb,'+z.color+' 30%,transparent)"></span>'+
+        chip+
+      '</div>';
+    }).join('');
+
+    var ranking=ZONES.map(function(z,i){
+      var isSel=sel===z.id;
+      return '<button data-action="select-zone" data-zone="'+z.id+'" style="text-align:left;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:11px;border:1px solid '+(isSel?'color-mix(in srgb,var(--accent) 45%,transparent)':'var(--border)')+';background:'+(isSel?'var(--accent-soft)':'var(--panel2)')+'">'+
+        '<span style="flex:none;width:22px;height:22px;border-radius:7px;background:'+z.color+';color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center">'+(i+1)+'</span>'+
+        '<span style="flex:1;min-width:0">'+
+          '<span style="display:block;font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text)">'+esc(z.name)+'</span>'+
+          '<span style="display:block;height:5px;border-radius:3px;margin-top:5px;background:var(--grid);overflow:hidden"><span style="display:block;height:100%;width:'+z.prob+'%;background:'+z.color+';border-radius:3px"></span></span>'+
+        '</span>'+
+        '<span style="flex:none;text-align:right">'+
+          '<span style="display:block;font-size:15px;font-weight:800;color:'+z.color+'">'+z.prob+'%</span>'+
+          '<span style="display:block;font-size:10px;font-weight:700;color:'+levelColor(z.level)+'">'+z.level+'</span>'+
+        '</span>'+
+      '</button>';
+    }).join('');
+
+    var dz=selZone||ZONES[0];
+    var mini=[
+      {k:'Prob. hoy',v:dz.prob+'%',color:dz.color},
+      {k:'Tendencia',v:dz.trend,color:'var(--text)'},
+      {k:'Índice riesgo',v:''+dz.idx,color:levelColor(dz.level)},
+      {k:'Última alerta',v:dz.last,color:'var(--text)'}
+    ].map(function(m){
+      return '<div style="background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:9px 11px">'+
+        '<div style="font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:700">'+m.k+'</div>'+
+        '<div style="font-size:17px;font-weight:800;margin-top:3px;color:'+m.color+'">'+m.v+'</div></div>';
+    }).join('');
+
+    return '<section style="display:grid;grid-template-columns:1.55fr 1fr 1.15fr;gap:14px;margin-top:16px">'+
+      '<div style="background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:16px 16px 14px;display:flex;flex-direction:column">'+
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px">'+
+          '<div style="font-size:14.5px;font-weight:800">Mapa ejecutivo · Cajamarca</div>'+clearBtn+
+        '</div>'+
+        '<div style="position:relative;flex:1;min-height:340px;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:repeating-linear-gradient(135deg,var(--panel2),var(--panel2) 11px,transparent 11px,transparent 22px),linear-gradient(160deg,#dbe7f1,#c5d6e4)">'+
+          '<div style="position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:flex-start;padding:12px">'+
+            '<span style="font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:#5a6b7a;background:rgba(255,255,255,.72);border:1px dashed #9fb2c1;border-radius:6px;padding:4px 9px">mapa_satelital_cajamarca.tif · pendiente de carga</span>'+
+          '</div>'+pins+
+        '</div>'+
+        '<div style="font-size:10.5px;color:var(--muted);margin-top:9px;font-weight:500">Pase el cursor para ver el detalle · haga clic en una zona para filtrar todo el tablero.</div>'+
+      '</div>'+
+      '<div style="background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;gap:9px">'+
+        '<div style="font-size:14.5px;font-weight:800;margin-bottom:2px">Ranking de riesgo</div>'+ranking+
+      '</div>'+
+      '<div style="background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column;gap:13px">'+
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px">'+
+          '<div style="font-size:14.5px;font-weight:800;min-width:0">'+esc(dz.name)+'</div>'+
+          '<span style="flex:none;font-size:11px;font-weight:700;color:'+levelColor(dz.level)+';background:'+levelSoft(dz.level)+';padding:4px 11px;border-radius:999px;border:1px solid color-mix(in srgb,'+levelColor(dz.level)+' 30%,transparent)">'+dz.level+'</span>'+
+        '</div>'+
+        '<div style="font-size:12px;color:var(--muted);font-weight:600;margin-top:-6px">'+esc(dz.prov)+'</div>'+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">'+mini+'</div>'+
+        '<div style="font-size:12.5px;line-height:1.55;color:var(--sub);font-weight:500">'+esc(dz.desc)+'</div>'+
+        '<div style="margin-top:auto;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);border-radius:11px;padding:12px 13px">'+
+          '<div style="font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:800">Acción recomendada</div>'+
+          '<div style="font-size:12.5px;line-height:1.5;font-weight:600;margin-top:5px;color:var(--text)">'+esc(dz.accion)+'</div>'+
+        '</div>'+
+      '</div>'+
+    '</section>';
+  }
+
+  function secondaryRow(){
+    return '<section style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:16px">'+
+      '<div style="background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:17px 18px">'+
+        '<div style="font-size:14px;font-weight:800">Matriz de prioridad</div>'+
+        '<div style="font-size:11.5px;color:var(--sub);margin-top:2px;margin-bottom:6px">Probabilidad × actividad histórica por distrito</div>'+
+        buildMatrix()+
+      '</div>'+
+      '<div style="background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:17px 18px">'+
+        '<div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">'+
+          '<div><div style="font-size:14px;font-weight:800">Actividad observada por zona</div>'+
+          '<div style="font-size:11.5px;color:var(--sub);margin-top:2px;margin-bottom:6px">Eventos registrados · 24 meses</div></div>'+
+          '<div style="display:flex;gap:11px;font-size:10.5px;font-weight:700">'+
+            '<span style="display:flex;align-items:center;gap:5px;color:var(--sub)"><span style="width:9px;height:9px;border-radius:2px;background:var(--accent)"></span>Protesta</span>'+
+            '<span style="display:flex;align-items:center;gap:5px;color:var(--sub)"><span style="width:9px;height:9px;border-radius:2px;background:var(--hi)"></span>Violencia</span>'+
+          '</div>'+
+        '</div>'+
+        buildActivity()+
+      '</div>'+
+      '<div style="background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:17px 18px;display:flex;flex-direction:column">'+
+        '<div style="font-size:14px;font-weight:800">Confiabilidad del modelo</div>'+
+        '<div style="font-size:11.5px;color:var(--sub);margin-top:2px;margin-bottom:6px">Capacidad predictiva (AUC) vs. tasa base histórica</div>'+
+        buildReliability()+
+        '<div style="margin-top:auto;font-size:11.5px;line-height:1.5;color:var(--sub);font-weight:500;background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:10px 12px">El modelo supera a la línea base de frecuencia histórica en <strong style="color:var(--accent)">+0.26</strong> puntos de AUC. Precisión de las últimas 12 alertas emitidas: <strong style="color:var(--text)">0.79</strong>.</div>'+
+      '</div>'+
+    '</section>';
+  }
+
+  function sourcesSection(){
+    return '<section style="margin-top:16px;background:var(--panel);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">'+
+      '<span style="font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:800">Fuentes de datos</span>'+
+      '<div style="display:flex;gap:9px;flex-wrap:wrap">'+
+        SOURCES.map(function(s){
+          return '<span style="display:flex;align-items:center;gap:7px;background:var(--panel2);border:1px solid var(--border);border-radius:999px;padding:6px 12px" title="'+esc(s.desc)+'">'+
+            '<span style="width:6px;height:6px;border-radius:50%;background:var(--lo)"></span>'+
+            '<span style="font-size:12px;font-weight:600;color:var(--text)">'+esc(s.name)+'</span></span>';
+        }).join('')+
+      '</div>'+
+    '</section>';
+  }
+
+  function tableSection(){
+    var sel=state.selected;
+    var rows=DISTRICTS.slice();
+    if(sel) rows=rows.filter(function(d){return d.ugtId===sel;});
+    var selZone=sel?ZONES.filter(function(z){return z.id===sel;})[0]:null;
+    var clearBtn=sel?'<button data-action="clear-selection" style="display:flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--accent-soft);color:var(--accent);cursor:pointer;font-family:inherit;font-size:11.5px;font-weight:700;padding:6px 12px;border-radius:999px">'+esc(selZone.name)+' ✕ Ver todos</button>':'';
+
+    var body=rows.map(function(d){
+      var z=ZONES.filter(function(x){return x.id===d.ugtId;})[0];
+      var news='https://news.google.com/search?q='+encodeURIComponent(d.distrito+' Cajamarca conflicto social');
+      return '<tr style="border-bottom:1px solid var(--border)">'+
+        '<td style="padding:11px 16px"><span style="display:inline-flex;align-items:center;gap:6px;font-weight:700"><span style="width:9px;height:9px;border-radius:3px;background:'+z.color+'"></span>'+d.ugt+'</span></td>'+
+        '<td style="padding:11px 12px;color:var(--sub);font-weight:500">'+esc(d.prov)+'</td>'+
+        '<td style="padding:11px 12px;font-weight:700">'+esc(d.distrito)+'</td>'+
+        '<td style="padding:11px 12px;text-align:right;font-weight:700;font-variant-numeric:tabular-nums">'+d.eventos+'</td>'+
+        '<td style="padding:11px 12px;color:var(--sub);font-variant-numeric:tabular-nums;font-weight:500">'+d.ultima+'</td>'+
+        '<td style="padding:11px 12px"><span style="display:flex;align-items:center;gap:9px">'+
+          '<span style="flex:1;height:7px;border-radius:4px;background:var(--grid);overflow:hidden;min-width:60px"><span style="display:block;height:100%;width:'+d.idx+'%;background:'+levelColor(d.level)+';border-radius:4px"></span></span>'+
+          '<span style="font-weight:800;font-variant-numeric:tabular-nums;color:'+levelColor(d.level)+';width:22px">'+d.idx+'</span></span></td>'+
+        '<td style="padding:11px 12px;color:var(--sub);font-weight:500;max-width:230px">'+esc(d.accion)+'</td>'+
+        '<td style="padding:11px 12px;text-align:center"><span style="display:inline-block;font-size:10.5px;font-weight:800;color:'+levelColor(d.level)+';background:'+levelSoft(d.level)+';padding:3px 10px;border-radius:999px;border:1px solid color-mix(in srgb,'+levelColor(d.level)+' 28%,transparent)">'+d.level+'</span></td>'+
+        '<td style="padding:11px 16px;text-align:center"><a href="'+news+'" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:5px 10px;border-radius:999px;text-decoration:none">Ver ↗</a></td>'+
+      '</tr>';
+    }).join('');
+
+    return '<section style="margin-top:16px;background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);overflow:hidden">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 20px 12px;flex-wrap:wrap">'+
+        '<div><div style="font-size:15px;font-weight:800">Distritos priorizados</div>'+
+        '<div style="font-size:11.5px;color:var(--sub);margin-top:2px">'+rows.length+' distritos · ordenados por índice de riesgo</div></div>'+
+        clearBtn+
+      '</div>'+
+      '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
+        '<thead><tr style="background:var(--panel2)">'+
+          '<th style="text-align:left;padding:10px 16px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)">UGT</th>'+
+          '<th style="text-align:left;padding:10px 12px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)">Provincia</th>'+
+          '<th style="text-align:left;padding:10px 12px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)">Distrito</th>'+
+          '<th style="text-align:right;padding:10px 12px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)">Eventos</th>'+
+          '<th style="text-align:left;padding:10px 12px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)">Última fecha</th>'+
+          '<th style="text-align:left;padding:10px 12px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border);min-width:120px">Índice</th>'+
+          '<th style="text-align:left;padding:10px 12px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)">Acción recomendada</th>'+
+          '<th style="text-align:center;padding:10px 12px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)">Nivel</th>'+
+          '<th style="text-align:center;padding:10px 16px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)">Noticias</th>'+
+        '</tr></thead><tbody>'+body+'</tbody></table></div>'+
+    '</section>';
+  }
+
+  function footer(){
+    return '<div style="text-align:center;font-size:11px;color:var(--muted);margin-top:22px;font-weight:500">PROTECTA Perú · Sistema de Alerta Temprana de Conflictos Sociales — datos simulados con fines de demostración · actualizado Sem. 28 · 2026</div>';
+  }
+
+  /* ---------- render ---------- */
+  var root = document.getElementById('root');
+
+  function render(){
+    var html =
+      '<div data-theme="'+(state.dark?'dark':'light')+'" style="min-height:100vh;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;transition:background .25s,color .25s">'+
+        '<div style="max-width:1380px;margin:0 auto;padding:22px 26px 60px">'+
+          header()+banner()+mainChartSection()+kpiSection()+mapRankingDetail()+secondaryRow()+sourcesSection()+tableSection()+footer()+
+        '</div>'+
+      '</div>';
+    root.innerHTML = html;
+    wireMainChart();
+  }
+
+  function wireMainChart(){
+    var svg = root.querySelector('[data-chart="main"]');
+    if(!svg) return;
+    var g=MAIN, padL=g.padL,padR=g.padR,cw=g.cw;
+    var W=cw-padL-padR;
+    svg.addEventListener('mousemove',function(e){
+      var f=filtered(),n=f.pts.length;
+      if(n<1) return;
+      var rect=svg.getBoundingClientRect();
+      var scale=rect.width/cw;
+      var localX=(e.clientX-rect.left)/scale;
+      var i=Math.round((localX-padL)/W*(n-1));
+      i=clamp(i,0,n-1);
+      if(i!==state.hover){state.hover=i;render();}
+    });
+    svg.addEventListener('mouseleave',function(){
+      if(state.hover!==null){state.hover=null;render();}
+    });
+  }
+
+  /* ---------- event delegation ---------- */
+  root.addEventListener('click',function(e){
+    var t=e.target.closest('[data-action]');
+    if(!t) return;
+    var action=t.getAttribute('data-action');
+    if(action==='toggle-theme'){ state.dark=!state.dark; render(); }
+    else if(action==='set-gran'){ state.gran=t.getAttribute('data-value'); state.hover=null; render(); }
+    else if(action==='shortcut'){ state.fromVal=t.getAttribute('data-from'); state.toVal=t.getAttribute('data-to'); state.hover=null; render(); }
+    else if(action==='toggle-legend'){ var z=t.getAttribute('data-zone'); state.hidden[z]=!state.hidden[z]; render(); }
+    else if(action==='select-zone'){ var z2=t.getAttribute('data-zone'); state.selected=(state.selected===z2?null:z2); render(); }
+    else if(action==='clear-selection'){ state.selected=null; render(); }
+  });
+
+  root.addEventListener('change',function(e){
+    if(e.target.matches('select[data-role="from"]')){ state.fromVal=e.target.value; state.hover=null; render(); }
+    else if(e.target.matches('select[data-role="to"]')){ state.toVal=e.target.value; state.hover=null; render(); }
+  });
+
+  root.addEventListener('mouseover',function(e){
+    var pin=e.target.closest('[data-pin]');
+    if(pin){ var id=pin.getAttribute('data-pin'); if(state.hoverPin!==id){ state.hoverPin=id; render(); } }
+  });
+  root.addEventListener('mouseout',function(e){
+    var pin=e.target.closest('[data-pin]');
+    if(pin && !(e.relatedTarget && pin.contains(e.relatedTarget))){ if(state.hoverPin){ state.hoverPin=null; render(); } }
+  });
+  root.addEventListener('click',function(e){
+    var pin=e.target.closest('[data-pin]');
+    if(pin){ var id=pin.getAttribute('data-pin'); state.selected=(state.selected===id?null:id); render(); }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
