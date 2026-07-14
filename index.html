@@ -63,6 +63,24 @@ button{outline:none}
   }
   function zonaColor(id){ return ZONA_COLORS[id] || 'var(--muted)'; }
   function zonaLabel(z){ return (z && z.nombre) ? z.nombre : (z ? z.zona_id : ''); }
+  function explicacionNivel(z){
+    var factores=[];
+    if(z.racha_semanas_protesta!=null && z.racha_semanas_protesta>0){
+      factores.push('una racha activa de protestas ('+z.racha_semanas_protesta+' semana'+(z.racha_semanas_protesta>1?'s':'')+')');
+    }
+    if(z.dias_desde_ultima_protesta!=null){
+      if(z.dias_desde_ultima_protesta<=14) factores.push('una protesta reciente (hace '+z.dias_desde_ultima_protesta+' días)');
+      else if(z.dias_desde_ultima_protesta>90) factores.push('ausencia de protestas en los últimos '+z.dias_desde_ultima_protesta+' días');
+    }
+    if(z.proxima_fecha_critica){
+      factores.push('una fecha crítica próxima ('+z.proxima_fecha_critica.evento+', '+z.proxima_fecha_critica.fecha+')');
+    }
+    if(z.eventos_4w!=null && z.eventos_4w>=3){
+      factores.push(z.eventos_4w+' eventos registrados en las últimas 4 semanas');
+    }
+    if(!factores.length) return null;
+    return 'Este nivel se explica principalmente por '+factores.slice(0,3).join(', ')+'.';
+  }
   var DAY_MS = 86400000;
   var HORIZON_DAYS = 30; // prob en serie_tiempo ya es P(protesta <= 30 dias) desde el cierre de esa semana
   function parseYMD(s){ var p=s.split('-').map(Number); return Date.UTC(p[0],p[1]-1,p[2]); }
@@ -289,7 +307,10 @@ button{outline:none}
   function buildReliability(){
     var g=REL, padL=g.padL,padR=g.padR,padT=g.padT,cw=g.cw,ch=g.ch;
     var W=cw-padL-padR;
-    var rows=(state.data.calibracion_modelo||[]).slice().sort(function(a,b){return NIVEL_ORDER.indexOf(a.nivel)-NIVEL_ORDER.indexOf(b.nivel);});
+    // Este panel usa solo los 3 niveles basicos (BAJO/MEDIO/ALTO); MEDIO ALTO
+    // es un nivel adicional que solo aplica a las predicciones por zona, no
+    // al criterio de confiabilidad del modelo.
+    var rows=(state.data.calibracion_modelo||[]).filter(function(b){return b.nivel!=='MEDIO ALTO';}).sort(function(a,b){return NIVEL_ORDER.indexOf(a.nivel)-NIVEL_ORDER.indexOf(b.nivel);});
     var svg='',bh=22,gap=(rows.length?(ch-padT-16-bh*rows.length)/Math.max(1,rows.length-1):0);
     gap=Math.max(gap,10);
     rows.forEach(function(b,i){
@@ -304,21 +325,12 @@ button{outline:none}
   }
 
   /* ---------- markup sections ---------- */
-  function logoSvg(){
-    return '<svg width="128" height="30" viewBox="0 0 128 30" xmlns="http://www.w3.org/2000/svg">'+
-      '<rect x="0" y="3" width="24" height="24" rx="6" fill="var(--accent)"></rect>'+
-      '<path d="M7 15 L11 19 L18 10" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>'+
-      '<text x="31" y="14" font-family="Manrope,system-ui,sans-serif" font-size="12.5" font-weight="800" fill="var(--text)">PROTECTA</text>'+
-      '<text x="31" y="25" font-family="Manrope,system-ui,sans-serif" font-size="9.5" font-weight="700" letter-spacing=".05em" fill="var(--sub)">PERÚ</text>'+
-      '</svg>';
-  }
-
   function header(){
     var dark=state.dark;
     var semana=state.data?state.data.meta.semana_mas_reciente:null;
     return '<header style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">'+
       '<div style="display:flex;align-items:center;gap:14px;min-width:0">'+
-        '<div style="background:#fff;border:1px solid var(--border);border-radius:11px;padding:7px 12px;display:flex;align-items:center;box-shadow:var(--shadow)">'+logoSvg()+'</div>'+
+        '<div style="background:#fff;border:1px solid var(--border);border-radius:11px;padding:7px 12px;display:flex;align-items:center;box-shadow:var(--shadow)"><img src="images/logoPROTECTA.png" alt="PROTECTA Perú" style="height:80px;width:auto;display:block"></div>'+
         '<div style="min-width:0">'+
           '<div style="font-size:19px;font-weight:800;letter-spacing:-.3px;line-height:1.15">Sistema de Alerta Temprana</div>'+
           '<div style="font-size:12.5px;color:var(--sub);font-weight:500;margin-top:2px">Conflictos sociales · Región Cajamarca, Perú</div>'+
@@ -387,9 +399,9 @@ button{outline:none}
         forecastBadge+
       '</div>'+
       '<div style="font-size:16.5px;font-weight:800;letter-spacing:-.2px;margin-top:6px">Tendencia y pronóstico de riesgo por UGT</div>'+
-      '<div style="font-size:12.5px;color:var(--sub);margin-top:3px">Probabilidad de protesta (%, ≤30 días) en el tiempo · línea suavizada para lectura (promedio móvil) · línea discontinua = vigencia del último pronóstico · pase el cursor para ver el valor real de cada semana</div>'+
+      '<div style="font-size:12.5px;color:var(--sub);margin-top:3px">Probabilidad de protesta (%, ≤30 días) en el tiempo · línea suavizada para que sea más fácil de leer · línea discontinua = vigencia del último pronóstico · pase el cursor para ver el valor real de cada semana</div>'+
       '<div style="display:flex;gap:22px;flex-wrap:wrap;align-items:flex-end;margin-top:16px">'+
-        '<div><div style="font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px">Granularidad</div>'+
+        '<div><div style="font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px">Ver por</div>'+
           '<div style="display:inline-flex;background:var(--panel2);border:1px solid var(--border);border-radius:9px;padding:3px">'+granBtns+'</div></div>'+
         '<label style="display:flex;flex-direction:column;gap:4px;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)">Desde'+monthSelect('from',state.fromVal)+'</label>'+
         '<label style="display:flex;flex-direction:column;gap:4px;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)">Hasta'+monthSelect('to',state.toVal)+'</label>'+
@@ -397,7 +409,7 @@ button{outline:none}
           '<div style="display:flex;gap:7px;flex-wrap:wrap">'+rangoBtns+'</div></div>'+
       '</div>'+
       buildMainChart()+
-      '<div style="font-size:10.5px;color:var(--muted);margin-top:8px">La línea se suaviza un poco solo para que sea más fácil de leer — el valor real puede subir o bajar bruscamente de una semana a otra cuando empieza o termina una racha de protestas, y eso es información real, no un error. El valor exacto de cada semana se muestra al pasar el cursor. Las semanas más antiguas del gráfico son una reconstrucción histórica del modelo (calculada usando solo la información que existía hasta esa fecha, sin adelantos); las últimas semanas ya son el resultado real del modelo funcionando en producción.</div>'+
+      '<div style="font-size:10.5px;color:var(--muted);margin-top:8px">El modelo considera señales como rachas de protesta recientes, tiempo desde la última protesta, denuncias ambientales, cobertura de noticias y el calendario de fechas críticas (festividades, elecciones); se actualiza cada semana con información nueva, así que estos valores pueden cambiar la próxima semana. El valor exacto de cada semana se muestra al pasar el cursor. Las semanas más antiguas del gráfico son una reconstrucción histórica del modelo (calculada usando solo la información que existía hasta esa fecha, sin adelantos); las últimas semanas ya son el resultado real del modelo funcionando en producción.</div>'+
       '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">'+legendBtns+'</div>'+
     '</section>';
   }
@@ -416,7 +428,7 @@ button{outline:none}
     var proxima=proximas[0];
 
     var kpis=[
-      {label:'Riesgo máximo (30 días)',value: maxZona?fmtPct(maxZona.prob_actual):'—', sub: maxZona?esc(zonaLabel(maxZona)):'Sin datos aún', color:'var(--hi)'},
+      {label:'Nivel más alto (30 días)',value: maxZona?esc(maxZona.nivel_riesgo||'—'):'—', sub: maxZona?(esc(zonaLabel(maxZona))+' · '+fmtPct(maxZona.prob_actual)):'Sin datos aún', color: maxZona?levelColor(maxZona.nivel_riesgo):'var(--hi)'},
       {label:'Zonas en alerta (30 días)',value: modelo.length?(enAlerta.length+' / '+modelo.length):'—', sub: enAlerta.length?enAlerta.map(zonaLabel).join(', '):'Ninguna en este momento', color:'var(--hi)'},
       {label:'Precisión del modelo',value: precisionPonderada!=null?fmtPct1(precisionPonderada):'—', sub: nTotal?(nTotal+' predicciones pasadas revisadas'):'Sin calibración aún', color:'var(--med)'},
       {label:'Eventos últimas 4 semanas',value: ''+eventos4w, sub:'Suma de las 5 zonas', color:'var(--accent)'},
@@ -447,12 +459,14 @@ button{outline:none}
       var isSel=sel===z.zona_id, hov=state.hoverPin===z.zona_id;
       var size=isSel?26:20, ring=isSel?'8px':(hov?'6px':'0px'), zi=isSel||hov?15:5;
       var showChip=hov||isSel;
-      var badge = z.track==='modelo' ? (fmtPct(z.prob_actual)+' <span style="font-size:10.5px;font-weight:700;color:'+levelColor(z.nivel_riesgo)+';background:'+levelSoft(z.nivel_riesgo)+';padding:2px 7px;border-radius:999px">'+esc(z.nivel_riesgo||'—')+'</span>')
+      var badge = z.track==='modelo'
+        ? ('<span style="font-size:15px;font-weight:800;color:'+levelColor(z.nivel_riesgo)+'">'+esc(z.nivel_riesgo||'—')+'</span>'+
+           '<div style="font-size:10px;color:var(--muted);font-weight:600;margin-top:1px">'+fmtPct(z.prob_actual)+' de probabilidad</div>')
         : '<span style="font-size:10.5px;font-weight:700;color:var(--muted);background:var(--panel2);padding:2px 7px;border-radius:999px">Sin modelo predictivo aún</span>';
       var chip=showChip?(
         '<div style="position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%);background:var(--panel);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 22px rgba(0,0,0,.22);padding:8px 11px;white-space:nowrap;z-index:20">'+
           '<div style="font-size:11.5px;font-weight:800">'+esc(zonaLabel(z))+'</div>'+
-          '<div style="display:flex;align-items:center;gap:7px;margin-top:3px;font-size:16px;font-weight:800;color:'+zonaColor(z.zona_id)+'">'+badge+'</div></div>'
+          '<div style="margin-top:3px">'+badge+'</div></div>'
       ):'';
       return '<div data-pin="'+z.zona_id+'" style="position:absolute;left:'+pos.x+'%;top:'+pos.y+'%;transform:translate(-50%,-50%);cursor:pointer;z-index:'+zi+'">'+
         '<span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:'+zonaColor(z.zona_id)+';animation:pulseRing 2.4s ease-out infinite"></span>'+
@@ -467,7 +481,7 @@ button{outline:none}
     }).map(function(z,i){
       var isSel=sel===z.zona_id;
       var right = z.track==='modelo'
-        ? ('<span style="display:block;font-size:15px;font-weight:800;color:'+zonaColor(z.zona_id)+'">'+fmtPct(z.prob_actual)+'</span><span style="display:block;font-size:10px;font-weight:700;color:'+levelColor(z.nivel_riesgo)+'">'+esc(z.nivel_riesgo||'—')+'</span>')
+        ? ('<span style="display:block;font-size:15px;font-weight:800;color:'+levelColor(z.nivel_riesgo)+'">'+esc(z.nivel_riesgo||'—')+'</span><span style="display:block;font-size:10px;font-weight:600;color:var(--muted)">'+fmtPct(z.prob_actual)+'</span>')
         : ('<span style="display:block;font-size:11px;font-weight:700;color:var(--muted)">sin modelo predictivo</span><span style="display:block;font-size:10px;font-weight:600;color:var(--sub)">según historial: '+fmtPct1(z.tasa_historica)+'</span>');
       var barWidth = z.track==='modelo' ? Math.round((z.prob_actual||0)*100) : Math.round((z.tasa_historica||0)*100);
       return '<button data-action="select-zone" data-zone="'+z.zona_id+'" style="text-align:left;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:11px;border:1px solid '+(isSel?'color-mix(in srgb,var(--accent) 45%,transparent)':'var(--border)')+';background:'+(isSel?'var(--accent-soft)':'var(--panel2)')+'">'+
@@ -482,7 +496,7 @@ button{outline:none}
 
     var dz=selZona||zonas[0];
     var mini = dz.track==='modelo' ? [
-      {k:'Probabilidad (30 días)',v:fmtPct(dz.prob_actual),color:zonaColor(dz.zona_id)},
+      {k:'Probabilidad (30 días)',v:fmtPct(dz.prob_actual),color:levelColor(dz.nivel_riesgo)},
       {k:'Cambio vs. semana anterior',v: dz.tendencia_delta==null?'—':((dz.tendencia_delta>=0?'↑ +':'↓ ')+Math.round(dz.tendencia_delta*100)+' pts'),color:'var(--text)'},
       {k:'Eventos (últimas 4 semanas)',v:''+(dz.eventos_4w==null?'—':dz.eventos_4w),color:'var(--text)'},
       {k:'Días desde última protesta',v:''+(dz.dias_desde_ultima_protesta==null?'—':dz.dias_desde_ultima_protesta),color:'var(--text)'}
@@ -509,6 +523,9 @@ button{outline:none}
       '</div>'
     ) : '';
 
+    var explicacion = explicacionNivel(dz);
+    var explicacionHtml = explicacion ? '<div style="font-size:12px;line-height:1.5;color:var(--sub);font-style:italic">'+esc(explicacion)+'</div>' : '';
+
     var descHtml = dz.descripcion ? esc(dz.descripcion) : '<span style="color:var(--muted)">Descripción pendiente de contenido editorial.</span>';
     var accionHtml = dz.accion_recomendada ? esc(dz.accion_recomendada) : '<span style="color:var(--muted)">Acción recomendada pendiente de definir.</span>';
 
@@ -531,8 +548,8 @@ button{outline:none}
         '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px">'+
           '<div style="font-size:14.5px;font-weight:800;min-width:0">'+esc(zonaLabel(dz))+'</div>'+levelBadge+
         '</div>'+
-        '<div style="font-size:12px;color:var(--muted);font-weight:600;margin-top:-6px">'+esc(dz.provincia||'Provincia pendiente')+'</div>'+
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">'+miniHtml+'</div>'+
+        explicacionHtml+
         '<div style="font-size:12.5px;line-height:1.55;color:var(--sub);font-weight:500">'+descHtml+'</div>'+
         '<div style="font-size:12.5px;line-height:1.55;color:var(--sub);font-weight:500;background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:10px 12px"><strong style="color:var(--text)">Acción recomendada:</strong> '+accionHtml+'</div>'+
         proximaHtml+
@@ -607,7 +624,6 @@ button{outline:none}
         : '<span style="display:inline-block;font-size:10.5px;font-weight:800;color:var(--muted);background:var(--panel2);padding:3px 10px;border-radius:999px;border:1px solid var(--border)">Estimado</span>';
       return '<tr style="border-bottom:1px solid var(--border)">'+
         '<td style="padding:11px 16px"><span style="display:inline-flex;align-items:center;gap:6px;font-weight:700"><span style="width:9px;height:9px;border-radius:3px;background:'+zonaColor(z.zona_id)+'"></span>'+esc(zonaLabel(z))+'</span></td>'+
-        '<td style="padding:11px 12px;color:var(--sub);font-weight:500">'+esc(z.provincia||'—')+'</td>'+
         '<td style="padding:11px 12px;text-align:right;font-weight:700;font-variant-numeric:tabular-nums">'+(z.eventos_4w==null?'—':z.eventos_4w)+'</td>'+
         '<td style="padding:11px 12px;color:var(--sub);font-variant-numeric:tabular-nums;font-weight:500">'+(z.dias_desde_ultima_protesta==null?'—':z.dias_desde_ultima_protesta)+'</td>'+
         '<td style="padding:11px 12px">'+scoreCell+'</td>'+
@@ -626,7 +642,6 @@ button{outline:none}
       '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
         '<thead><tr style="background:var(--panel2)">'+
           '<th style="text-align:left;padding:10px 16px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)">UGT</th>'+
-          '<th style="text-align:left;padding:10px 12px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)">Provincia</th>'+
           '<th style="text-align:right;padding:10px 12px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)">Eventos (4 semanas)</th>'+
           '<th style="text-align:left;padding:10px 12px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)">Días desde última protesta</th>'+
           '<th style="text-align:left;padding:10px 12px;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border);min-width:120px">Probabilidad (30 días)</th>'+
@@ -734,7 +749,7 @@ button{outline:none}
 
   render();
 
-  fetch('./data/data.json')
+  fetch('./data/data.json?v='+Date.now(), {cache:'no-store'})
     .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
     .then(function(data){ state.data=data; render(); })
     .catch(function(err){ state.loadError=err; render(); });

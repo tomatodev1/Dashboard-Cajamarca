@@ -1,24 +1,24 @@
 {
   "meta": {
-    "generado_en": "2026-07-14T00:06:44Z",
+    "generado_en": "2026-07-14T21:33:19Z",
     "fuente": "Google Sheets 1Jb8eP7XTAlxj2S2nFc9jZ_j5C9Hj59EqOZF9VE9SRuo (scoring_modelo, scoring_separadas, features_historicas, calibracion_modelo, calendario_criticidad)",
-    "fecha_scoring_mas_reciente": "2026-07-13T17:49:43",
+    "fecha_scoring_mas_reciente": "2026-07-14T16:24:27",
     "semana_mas_reciente": "2026-07-12"
   },
   "zonas": [
     {
       "zona_id": "UGT1",
       "track": "modelo",
-      "nombre": "UGT1 – Zona de Operaciones (AISD)",
+      "nombre": "UGT1 – Cajamarca",
       "provincia": "Cajamarca",
       "descripcion": null,
       "accion_recomendada": null,
       "mapa_x": null,
       "mapa_y": null,
       "eventos_1w": 0.0,
-      "eventos_4w": 5.0,
+      "eventos_4w": 4.0,
       "delta_actividad_4w": -4.0,
-      "dias_desde_ultima_protesta": 8.0,
+      "dias_desde_ultima_protesta": 15.0,
       "racha_semanas_protesta": 0.0,
       "proxima_fecha_critica": {
         "evento": "Sorteo de miembros de mesa",
@@ -26,15 +26,16 @@
         "criticidad": null,
         "fecha": "2026-07-26"
       },
-      "prob_actual": 0.8559007251146339,
+      "prob_actual": 0.4097467593491993,
+      "prob_original": 0.8384160117734062,
       "nivel_riesgo": "MEDIO",
       "semana": "2026-07-12",
-      "tendencia_delta": -0.1441
+      "tendencia_delta": -0.4334
     },
     {
       "zona_id": "UGT2",
       "track": "separado",
-      "nombre": "UGT2 – Corredor Logístico Costa",
+      "nombre": "UGT2 – Pacasmayo/Chepén (La Libertad), Contumazá",
       "provincia": "Pacasmayo/Chepén (La Libertad), Contumazá",
       "descripcion": null,
       "accion_recomendada": null,
@@ -43,7 +44,7 @@
       "eventos_1w": 0.0,
       "eventos_4w": 0.0,
       "delta_actividad_4w": 0.0,
-      "dias_desde_ultima_protesta": 377.0,
+      "dias_desde_ultima_protesta": 384.0,
       "racha_semanas_protesta": 0.0,
       "proxima_fecha_critica": {
         "evento": "Sorteo de miembros de mesa",
@@ -60,7 +61,7 @@
     {
       "zona_id": "UGT3",
       "track": "separado",
-      "nombre": "UGT3 – Corredor Sierra Norte",
+      "nombre": "UGT3 – San Pablo, San Miguel",
       "provincia": "San Pablo, San Miguel",
       "descripcion": null,
       "accion_recomendada": null,
@@ -86,7 +87,7 @@
     {
       "zona_id": "UGT4",
       "track": "separado",
-      "nombre": "UGT4 – Corredor Sur (ruta 106)",
+      "nombre": "UGT4 – Cajamarca",
       "provincia": "Cajamarca",
       "descripcion": null,
       "accion_recomendada": null,
@@ -94,8 +95,8 @@
       "mapa_y": null,
       "eventos_1w": 0.0,
       "eventos_4w": 0.0,
-      "delta_actividad_4w": -1.0,
-      "dias_desde_ultima_protesta": 52.0,
+      "delta_actividad_4w": 0.0,
+      "dias_desde_ultima_protesta": 59.0,
       "racha_semanas_protesta": 0.0,
       "proxima_fecha_critica": {
         "evento": "Sorteo de miembros de mesa",
@@ -112,27 +113,28 @@
     {
       "zona_id": "UGT5",
       "track": "modelo",
-      "nombre": "UGT5 – Zona Conga (Nor-Este)",
+      "nombre": "UGT5 – Celendín, Hualgayoc",
       "provincia": "Celendín, Hualgayoc",
       "descripcion": null,
       "accion_recomendada": null,
       "mapa_x": null,
       "mapa_y": null,
-      "eventos_1w": 1.0,
+      "eventos_1w": 0.0,
       "eventos_4w": 2.0,
       "delta_actividad_4w": 1.0,
-      "dias_desde_ultima_protesta": 6.0,
-      "racha_semanas_protesta": 1.0,
+      "dias_desde_ultima_protesta": 13.0,
+      "racha_semanas_protesta": 0.0,
       "proxima_fecha_critica": {
         "evento": "Día central Virgen del Carmen (Bambamarca)",
         "tipo": "fecha_critica",
         "criticidad": "muy_alta",
         "fecha": "2026-07-16"
       },
-      "prob_actual": 0.9165347525238766,
+      "prob_actual": 0.4251638078224641,
+      "prob_original": 0.9153392463477407,
       "nivel_riesgo": "MEDIO",
       "semana": "2026-07-12",
-      "tendencia_delta": -0.0543
+      "tendencia_delta": -0.0239
     }
   ],
   "serie_tiempo": [
@@ -141,6 +143,7 @@
       "fecha_scoring": null,
       "semana": "2024-01-28",
       "prob": 0.49609375,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.496094
@@ -150,6 +153,7 @@
       "fecha_scoring": null,
       "semana": "2024-02-04",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.248047
@@ -159,6 +163,7 @@
       "fecha_scoring": null,
       "semana": "2024-02-11",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.124023
@@ -168,6 +173,7 @@
       "fecha_scoring": null,
       "semana": "2024-02-18",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.062012
@@ -177,6 +183,7 @@
       "fecha_scoring": null,
       "semana": "2024-02-25",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.031006
@@ -186,6 +193,7 @@
       "fecha_scoring": null,
       "semana": "2024-03-03",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.015503
@@ -195,6 +203,7 @@
       "fecha_scoring": null,
       "semana": "2024-03-10",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.007751
@@ -204,6 +213,7 @@
       "fecha_scoring": null,
       "semana": "2024-03-17",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.003876
@@ -213,6 +223,7 @@
       "fecha_scoring": null,
       "semana": "2024-03-24",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.001938
@@ -222,6 +233,7 @@
       "fecha_scoring": null,
       "semana": "2024-03-31",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.000969
@@ -231,6 +243,7 @@
       "fecha_scoring": null,
       "semana": "2024-04-07",
       "prob": 0.052308716084785406,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.026639
@@ -240,6 +253,7 @@
       "fecha_scoring": null,
       "semana": "2024-04-14",
       "prob": 0.11191443672934694,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.069277
@@ -249,6 +263,7 @@
       "fecha_scoring": null,
       "semana": "2024-04-21",
       "prob": 0.15664794965048756,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.112962
@@ -258,6 +273,7 @@
       "fecha_scoring": null,
       "semana": "2024-04-28",
       "prob": 0.1975872343743282,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.155275
@@ -267,6 +283,7 @@
       "fecha_scoring": null,
       "semana": "2024-05-05",
       "prob": 0.2585210556935067,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.206898
@@ -276,6 +293,7 @@
       "fecha_scoring": null,
       "semana": "2024-05-12",
       "prob": 0.2888682294567246,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.247883
@@ -285,1023 +303,1137 @@
       "fecha_scoring": null,
       "semana": "2024-05-19",
       "prob": 0.316008313785865,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.281946
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-05-26",
-      "prob": 0.9923298049889294,
+      "prob": 0.4781993367874737,
+      "prob_original": 0.9923298049889294,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.637138
+      "prob_suavizado": 0.380073
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-06-02",
-      "prob": 0.9990758089583202,
+      "prob": 0.5240018228595722,
+      "prob_original": 0.9990758089583202,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.818107
+      "prob_suavizado": 0.452037
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-06-09",
-      "prob": 0.9630129674329907,
+      "prob": 0.44381030938577504,
+      "prob_original": 0.9630129674329907,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.89056
+      "prob_suavizado": 0.447924
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-06-16",
-      "prob": 0.9978395196628665,
+      "prob": 0.5056597098150682,
+      "prob_original": 0.9978395196628665,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.9442
+      "prob_suavizado": 0.476792
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-06-23",
-      "prob": 0.8479666086365354,
+      "prob": 0.41125670041609336,
+      "prob_original": 0.8479666086365354,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.896083
+      "prob_suavizado": 0.444024
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-06-30",
-      "prob": 0.3202105346805088,
+      "prob": 0.3607255793157995,
+      "prob_original": 0.3202105346805088,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.608147
+      "prob_suavizado": 0.402375
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-07-07",
-      "prob": 0.8717212460426015,
+      "prob": 0.4153930624580228,
+      "prob_original": 0.8717212460426015,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.739934
+      "prob_suavizado": 0.408884
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-07-14",
-      "prob": 0.9516075142825781,
+      "prob": 0.4378351207406469,
+      "prob_original": 0.9516075142825781,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.845771
+      "prob_suavizado": 0.42336
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-07-21",
-      "prob": 0.9952967329739817,
+      "prob": 0.4888112153482985,
+      "prob_original": 0.9952967329739817,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.920534
+      "prob_suavizado": 0.456085
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-07-28",
-      "prob": 0.4647255671231238,
+      "prob": 0.3729903557647366,
+      "prob_original": 0.4647255671231238,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.69263
+      "prob_suavizado": 0.414538
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-08-04",
-      "prob": 0.9212895921456143,
+      "prob": 0.4268395919931516,
+      "prob_original": 0.9212895921456143,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.80696
+      "prob_suavizado": 0.420689
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-08-11",
-      "prob": 0.9976212593670599,
+      "prob": 0.5035773229338215,
+      "prob_original": 0.9976212593670599,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.90229
+      "prob_suavizado": 0.462133
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-08-18",
-      "prob": 0.9989972590484183,
+      "prob": 0.5222427134908819,
+      "prob_original": 0.9989972590484183,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.950644
+      "prob_suavizado": 0.492188
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-08-25",
-      "prob": 0.9999908327415874,
+      "prob": 0.621181219949114,
+      "prob_original": 0.9999908327415874,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.975317
+      "prob_suavizado": 0.556685
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-09-01",
-      "prob": 0.9999979114120104,
+      "prob": 0.6507427194767372,
+      "prob_original": 0.9999979114120104,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.987658
+      "prob_suavizado": 0.603714
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-09-08",
-      "prob": 0.9999992182524619,
+      "prob": 0.6697761935607514,
+      "prob_original": 0.9999992182524619,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.993828
+      "prob_suavizado": 0.636745
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-09-15",
-      "prob": 0.9999998634996228,
+      "prob": 0.7022195411716966,
+      "prob_original": 0.9999998634996228,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.996914
+      "prob_suavizado": 0.669482
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-09-22",
-      "prob": 0.469738063240238,
+      "prob": 0.37339714489264164,
+      "prob_original": 0.469738063240238,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.733326
+      "prob_suavizado": 0.52144
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-09-29",
-      "prob": 0.010949620801437571,
+      "prob": 0.28984793150167976,
+      "prob_original": 0.010949620801437571,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.372138
+      "prob_suavizado": 0.405644
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-10-06",
-      "prob": 0.02751321247234596,
+      "prob": 0.30680583511703613,
+      "prob_original": 0.02751321247234596,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.199826
+      "prob_suavizado": 0.356225
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-10-13",
-      "prob": 0.020142638472083668,
+      "prob": 0.30097134818022636,
+      "prob_original": 0.020142638472083668,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.109984
+      "prob_suavizado": 0.328598
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-10-20",
-      "prob": 0.4476003615721879,
+      "prob": 0.3715970465426771,
+      "prob_original": 0.4476003615721879,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.278792
+      "prob_suavizado": 0.350098
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-10-27",
-      "prob": 0.9930496839720464,
+      "prob": 0.48033911566979876,
+      "prob_original": 0.9930496839720464,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.635921
+      "prob_suavizado": 0.415218
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-11-03",
-      "prob": 0.9781483216974232,
+      "prob": 0.45539022439133126,
+      "prob_original": 0.9781483216974232,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.807035
+      "prob_suavizado": 0.435304
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-11-10",
-      "prob": 0.9985537900455719,
+      "prob": 0.5143373948449457,
+      "prob_original": 0.9985537900455719,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.902794
+      "prob_suavizado": 0.474821
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-11-17",
-      "prob": 0.615540366013463,
+      "prob": 0.38543140884128635,
+      "prob_original": 0.615540366013463,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.759167
+      "prob_suavizado": 0.430126
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-11-24",
-      "prob": 0.8770265680001159,
+      "prob": 0.416406464597772,
+      "prob_original": 0.8770265680001159,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.818097
+      "prob_suavizado": 0.423266
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-12-01",
-      "prob": 0.808174671697631,
+      "prob": 0.40540331789137085,
+      "prob_original": 0.808174671697631,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.813136
+      "prob_suavizado": 0.414335
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-12-08",
-      "prob": 0.1818232510583287,
+      "prob": 0.34590383026791005,
+      "prob_original": 0.1818232510583287,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.49748
+      "prob_suavizado": 0.380119
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-12-15",
-      "prob": 0.03436204266313103,
+      "prob": 0.31103436800369405,
+      "prob_original": 0.03436204266313103,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.265921
+      "prob_suavizado": 0.345577
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-12-22",
-      "prob": 0.17114898860763336,
+      "prob": 0.34446981984340674,
+      "prob_original": 0.17114898860763336,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.218535
+      "prob_suavizado": 0.345023
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-12-29",
-      "prob": 0.302846728426134,
+      "prob": 0.35911456266080827,
+      "prob_original": 0.302846728426134,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.260691
+      "prob_suavizado": 0.352069
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-01-05",
-      "prob": 0.2706180596689321,
+      "prob": 0.3559859651831374,
+      "prob_original": 0.2706180596689321,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.265654
+      "prob_suavizado": 0.354027
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-01-12",
-      "prob": 0.9922462444992033,
+      "prob": 0.4779640372545647,
+      "prob_original": 0.9922462444992033,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.62895
+      "prob_suavizado": 0.415996
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-01-19",
-      "prob": 0.2491204672703864,
+      "prob": 0.35377514331792226,
+      "prob_original": 0.2491204672703864,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.439035
+      "prob_suavizado": 0.384885
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-01-26",
-      "prob": 0.4396052217276276,
+      "prob": 0.37094402796608367,
+      "prob_original": 0.4396052217276276,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.43932
+      "prob_suavizado": 0.377915
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-02-02",
-      "prob": 0.40912267629208154,
+      "prob": 0.36843202765897465,
+      "prob_original": 0.40912267629208154,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.424221
+      "prob_suavizado": 0.373173
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-02-09",
-      "prob": 0.36647348484793124,
+      "prob": 0.3648267052836561,
+      "prob_original": 0.36647348484793124,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.395347
+      "prob_suavizado": 0.369
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-02-16",
-      "prob": 0.1656120639909067,
+      "prob": 0.34369907191658927,
+      "prob_original": 0.1656120639909067,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.28048
+      "prob_suavizado": 0.35635
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-02-23",
-      "prob": 0.05932851307256585,
+      "prob": 0.321723810960543,
+      "prob_original": 0.05932851307256585,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.169904
+      "prob_suavizado": 0.339037
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-03-02",
-      "prob": 0.9436683837984057,
+      "prob": 0.4344309381996658,
+      "prob_original": 0.9436683837984057,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.556786
+      "prob_suavizado": 0.386734
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-03-09",
-      "prob": 0.9801378338397703,
+      "prob": 0.4574791227353076,
+      "prob_original": 0.9801378338397703,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.768462
+      "prob_suavizado": 0.422106
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-03-16",
-      "prob": 0.9910265169758281,
+      "prob": 0.47479035210665593,
+      "prob_original": 0.9910265169758281,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.879744
+      "prob_suavizado": 0.448448
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-03-23",
-      "prob": 0.983118201420154,
+      "prob": 0.46103104651175114,
+      "prob_original": 0.983118201420154,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.931431
+      "prob_suavizado": 0.45474
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-03-30",
-      "prob": 0.3338734712082901,
+      "prob": 0.3619629568668543,
+      "prob_original": 0.3338734712082901,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.632652
+      "prob_suavizado": 0.408351
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-04-06",
-      "prob": 0.3185045418922495,
+      "prob": 0.360569293478093,
+      "prob_original": 0.3185045418922495,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.475578
+      "prob_suavizado": 0.38446
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-04-13",
-      "prob": 1.0690921195545572e-14,
+      "prob": 0.036076707571738566,
+      "prob_original": 1.0690921195545572e-14,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.237789
+      "prob_suavizado": 0.210269
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-04-20",
-      "prob": 5.8760524726767374e-05,
+      "prob": 0.2061115903286457,
+      "prob_original": 5.8760524726767374e-05,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.118924
+      "prob_suavizado": 0.20819
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-04-27",
-      "prob": 1.0192088316968811e-10,
+      "prob": 0.07627408037527302,
+      "prob_original": 1.0192088316968811e-10,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.059462
+      "prob_suavizado": 0.142232
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-05-04",
-      "prob": 1.6166310496674739e-07,
+      "prob": 0.13497297566406488,
+      "prob_original": 1.6166310496674739e-07,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.029731
+      "prob_suavizado": 0.138603
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-05-11",
-      "prob": 2.5825692868671126e-09,
+      "prob": 0.09841724431091074,
+      "prob_original": 2.5825692868671126e-09,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.014866
+      "prob_suavizado": 0.11851
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-05-18",
-      "prob": 1.0,
+      "prob": 0.9999506407325641,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.507433
+      "prob_suavizado": 0.55923
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-05-25",
-      "prob": 1.0,
+      "prob": 0.9725192856829545,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.753716
+      "prob_suavizado": 0.765875
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-06-01",
-      "prob": 1.0,
+      "prob": 0.9893443022636738,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.876858
+      "prob_suavizado": 0.87761
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-06-08",
-      "prob": 1.0,
+      "prob": 0.9442756065850874,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.938429
+      "prob_suavizado": 0.910943
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-06-15",
-      "prob": 1.0,
+      "prob": 0.9725481725327253,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.969215
+      "prob_suavizado": 0.941745
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-06-22",
-      "prob": 0.9999999999999132,
+      "prob": 0.8899456067566939,
+      "prob_original": 0.9999999999999132,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.984607
+      "prob_suavizado": 0.915845
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-06-29",
-      "prob": 1.0,
+      "prob": 0.9996961575059589,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.992304
+      "prob_suavizado": 0.957771
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-07-06",
-      "prob": 0.9999999999999973,
+      "prob": 0.916124271982563,
+      "prob_original": 0.9999999999999973,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.996152
+      "prob_suavizado": 0.936948
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-07-13",
-      "prob": 1.0,
+      "prob": 0.9988897143874136,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.998076
+      "prob_suavizado": 0.967919
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-07-20",
-      "prob": 1.0,
+      "prob": 0.9998999583424498,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999038
+      "prob_suavizado": 0.983909
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-07-27",
-      "prob": 1.0,
+      "prob": 0.9930570812567346,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999519
+      "prob_suavizado": 0.988483
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-08-03",
-      "prob": 1.0,
+      "prob": 0.9972241822135213,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999759
+      "prob_suavizado": 0.992854
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-08-10",
-      "prob": 1.0,
+      "prob": 0.9980372075068401,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.99988
+      "prob_suavizado": 0.995445
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-08-17",
-      "prob": 1.0,
+      "prob": 0.999822688370143,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.99994
+      "prob_suavizado": 0.997634
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-08-24",
-      "prob": 1.0,
+      "prob": 0.9984454332528517,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.99997
+      "prob_suavizado": 0.99804
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-08-31",
-      "prob": 1.0,
+      "prob": 0.998135499555578,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999985
+      "prob_suavizado": 0.998088
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-09-07",
-      "prob": 1.0,
+      "prob": 0.9996819623028371,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999992
+      "prob_suavizado": 0.998885
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-09-14",
-      "prob": 0.9999999999999305,
+      "prob": 0.8917937637180482,
+      "prob_original": 0.9999999999999305,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999996
+      "prob_suavizado": 0.945339
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-09-21",
-      "prob": 0.9999999992238842,
+      "prob": 0.7865668296310421,
+      "prob_original": 0.9999999992238842,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999998
+      "prob_suavizado": 0.865953
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-09-28",
-      "prob": 0.9999999999999976,
+      "prob": 0.916422529637047,
+      "prob_original": 0.9999999999999976,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999999
+      "prob_suavizado": 0.891188
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-10-05",
-      "prob": 1.0,
+      "prob": 0.9424628040694317,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.916825
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-10-12",
-      "prob": 0.9999999999994369,
+      "prob": 0.873097304188401,
+      "prob_original": 0.9999999999994369,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.894961
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-10-19",
-      "prob": 0.9999999995898001,
+      "prob": 0.7956657836890343,
+      "prob_original": 0.9999999995898001,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.845314
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-10-26",
-      "prob": 0.9999999939436921,
+      "prob": 0.7552703877823784,
+      "prob_original": 0.9999999939436921,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.800292
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-11-02",
-      "prob": 0.9999999998680225,
+      "prob": 0.8111279438818806,
+      "prob_original": 0.9999999998680225,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.80571
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-11-09",
-      "prob": 0.9999999999581344,
+      "prob": 0.8258523206474444,
+      "prob_original": 0.9999999999581344,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.815781
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-11-16",
-      "prob": 0.999999994467321,
+      "prob": 0.7567109780606717,
+      "prob_original": 0.999999994467321,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.786246
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-11-23",
-      "prob": 1.0,
+      "prob": 0.9694125282883573,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.877829
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-11-30",
-      "prob": 0.9999999999999987,
+      "prob": 0.9211644325995179,
+      "prob_original": 0.9999999999999987,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.899497
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-12-07",
-      "prob": 0.9999999999978442,
+      "prob": 0.8596860071460994,
+      "prob_original": 0.9999999999978442,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.879591
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-12-14",
-      "prob": 0.9998660290216559,
+      "prob": 0.5653581013559472,
+      "prob_original": 0.9998660290216559,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999933
+      "prob_suavizado": 0.722475
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-12-21",
-      "prob": 0.9999999965568971,
+      "prob": 0.764172313428338,
+      "prob_original": 0.9999999965568971,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999967
+      "prob_suavizado": 0.743324
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-12-28",
-      "prob": 0.999999971770907,
+      "prob": 0.7298755694689898,
+      "prob_original": 0.999999971770907,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999983
+      "prob_suavizado": 0.7366
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-01-04",
-      "prob": 0.9999985107554706,
+      "prob": 0.6573516284616626,
+      "prob_original": 0.9999985107554706,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999991
+      "prob_suavizado": 0.696976
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-01-11",
-      "prob": 0.9999999290131897,
+      "prob": 0.7138904823427298,
+      "prob_original": 0.9999999290131897,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999995
+      "prob_suavizado": 0.705433
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-01-18",
-      "prob": 0.9999999999999705,
+      "prob": 0.8987183546137036,
+      "prob_original": 0.9999999999999705,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999998
+      "prob_suavizado": 0.802076
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-01-25",
-      "prob": 0.9999999999439477,
+      "prob": 0.8221979624420677,
+      "prob_original": 0.9999999999439477,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999999
+      "prob_suavizado": 0.812137
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-02-01",
-      "prob": 0.9999999999928875,
+      "prob": 0.8467838796410508,
+      "prob_original": 0.9999999999928875,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999999
+      "prob_suavizado": 0.82946
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-02-08",
-      "prob": 0.9999999999997569,
+      "prob": 0.8809160361991689,
+      "prob_original": 0.9999999999997569,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.855188
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-02-15",
-      "prob": 0.9999999999999996,
+      "prob": 0.9269203707435851,
+      "prob_original": 0.9999999999999996,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.891054
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-02-22",
-      "prob": 0.9999999999442875,
+      "prob": 0.8222747157893553,
+      "prob_original": 0.9999999999442875,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.856664
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-03-01",
-      "prob": 0.9999999999942981,
+      "prob": 0.8492444837078137,
+      "prob_original": 0.9999999999942981,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.852954
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-03-08",
-      "prob": 1.0,
+      "prob": 0.9602213354767177,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.906588
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-03-15",
-      "prob": 0.9999999999999998,
+      "prob": 0.9330769746511102,
+      "prob_original": 0.9999999999999998,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.919832
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-03-22",
-      "prob": 1.0,
+      "prob": 0.963867967529667,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.94185
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-03-29",
-      "prob": 1.0,
+      "prob": 0.9485800062934447,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.945215
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-04-05",
-      "prob": 0.9999999999999973,
+      "prob": 0.9162261003718286,
+      "prob_original": 0.9999999999999973,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.930721
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-04-12",
-      "prob": 0.9999999996969839,
+      "prob": 0.799885235955861,
+      "prob_original": 0.9999999996969839,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.865303
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-04-19",
-      "prob": 0.9999999999999998,
+      "prob": 0.9294958100593104,
+      "prob_original": 0.9999999999999998,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.897399
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-04-26",
-      "prob": 0.999999999985058,
+      "prob": 0.8382802840491087,
+      "prob_original": 0.999999999985058,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.86784
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-05-03",
-      "prob": 0.9999999999999998,
+      "prob": 0.9309028809774607,
+      "prob_original": 0.9999999999999998,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.899371
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-05-10",
-      "prob": 1.0,
+      "prob": 0.9520661262948025,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.925719
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-05-17",
-      "prob": 1.0,
+      "prob": 0.97859143513118,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.952155
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-05-24",
-      "prob": 1.0,
+      "prob": 0.9722004027042989,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.962178
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-05-31",
-      "prob": 0.9999999999999996,
+      "prob": 0.9286318087997021,
+      "prob_original": 0.9999999999999996,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.945405
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-06-07",
-      "prob": 1.0,
+      "prob": 0.9725402212849291,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.958972
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-06-14",
-      "prob": 1.0,
+      "prob": 0.9808156231181069,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.969894
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-06-21",
-      "prob": 1.0,
+      "prob": 0.9826399953605475,
+      "prob_original": 1.0,
       "nivel": "ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.976267
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-06-28",
-      "prob": 0.9999999999999964,
+      "prob": 0.9140864487635436,
+      "prob_original": 0.9999999999999964,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 1.0
+      "prob_suavizado": 0.945177
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-11T16:28:55",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-07-05",
-      "prob": 0.99903827260769,
+      "prob": 0.8431482104189438,
+      "prob_original": 0.9999999999901916,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.999519
+      "prob_suavizado": 0.894162
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-13T08:00:49",
+      "fecha_scoring": "2026-07-14T16:24:27",
       "semana": "2026-07-12",
-      "prob": 0.8559007251146339,
+      "prob": 0.4097467593491993,
+      "prob_original": 0.8384160117734062,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.92771
+      "prob_suavizado": 0.651955
     },
     {
       "zona_id": "UGT5",
       "fecha_scoring": null,
       "semana": "2024-01-28",
       "prob": 0.49609375,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.496094
@@ -1311,6 +1443,7 @@
       "fecha_scoring": null,
       "semana": "2024-02-04",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.248047
@@ -1320,6 +1453,7 @@
       "fecha_scoring": null,
       "semana": "2024-02-11",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.124023
@@ -1329,6 +1463,7 @@
       "fecha_scoring": null,
       "semana": "2024-02-18",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.062012
@@ -1338,6 +1473,7 @@
       "fecha_scoring": null,
       "semana": "2024-02-25",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.031006
@@ -1347,6 +1483,7 @@
       "fecha_scoring": null,
       "semana": "2024-03-03",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.015503
@@ -1356,6 +1493,7 @@
       "fecha_scoring": null,
       "semana": "2024-03-10",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.007751
@@ -1365,6 +1503,7 @@
       "fecha_scoring": null,
       "semana": "2024-03-17",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.003876
@@ -1374,6 +1513,7 @@
       "fecha_scoring": null,
       "semana": "2024-03-24",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.001938
@@ -1383,6 +1523,7 @@
       "fecha_scoring": null,
       "semana": "2024-03-31",
       "prob": 0.0,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.000969
@@ -1392,6 +1533,7 @@
       "fecha_scoring": null,
       "semana": "2024-04-07",
       "prob": 0.050949680842842196,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.025959
@@ -1401,6 +1543,7 @@
       "fecha_scoring": null,
       "semana": "2024-04-14",
       "prob": 0.10753758647581034,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.066748
@@ -1410,6 +1553,7 @@
       "fecha_scoring": null,
       "semana": "2024-04-21",
       "prob": 0.1493897533675388,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.108069
@@ -1419,6 +1563,7 @@
       "fecha_scoring": null,
       "semana": "2024-04-28",
       "prob": 0.1855869160481232,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.146828
@@ -1428,6 +1573,7 @@
       "fecha_scoring": null,
       "semana": "2024-05-05",
       "prob": 0.18265627794637082,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.164742
@@ -1437,6 +1583,7 @@
       "fecha_scoring": null,
       "semana": "2024-05-12",
       "prob": 0.1972455649349171,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.180994
@@ -1446,1017 +1593,1130 @@
       "fecha_scoring": null,
       "semana": "2024-05-19",
       "prob": 0.21426479046285904,
+      "prob_original": null,
       "nivel": null,
       "origen": "oof_backfill",
       "prob_suavizado": 0.197629
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-05-26",
-      "prob": 0.005281935715740758,
+      "prob": 0.27696350215365706,
+      "prob_original": 0.005281935715740758,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.101456
+      "prob_suavizado": 0.237296
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-06-02",
-      "prob": 0.008442406778587291,
+      "prob": 0.2852028137194057,
+      "prob_original": 0.008442406778587291,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.054949
+      "prob_suavizado": 0.26125
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-06-09",
-      "prob": 0.000489984105113503,
+      "prob": 0.23770088039953907,
+      "prob_original": 0.000489984105113503,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.02772
+      "prob_suavizado": 0.249475
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-06-16",
-      "prob": 0.018181808359460972,
+      "prob": 0.29907760067737216,
+      "prob_original": 0.018181808359460972,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.022951
+      "prob_suavizado": 0.274276
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-06-23",
-      "prob": 0.020043895237823434,
+      "prob": 0.3008802373058541,
+      "prob_original": 0.020043895237823434,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.021497
+      "prob_suavizado": 0.287578
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-06-30",
-      "prob": 0.0021967039818814645,
+      "prob": 0.26199825048224895,
+      "prob_original": 0.0021967039818814645,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.011847
+      "prob_suavizado": 0.274788
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-07-07",
-      "prob": 0.0006412880269917859,
+      "prob": 0.2419399968573657,
+      "prob_original": 0.0006412880269917859,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.006244
+      "prob_suavizado": 0.258364
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-07-14",
-      "prob": 0.0036308599119874094,
+      "prob": 0.2705000404097435,
+      "prob_original": 0.0036308599119874094,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.004937
+      "prob_suavizado": 0.264432
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-07-21",
-      "prob": 0.010978550687455626,
+      "prob": 0.28989535785022474,
+      "prob_original": 0.010978550687455626,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.007958
+      "prob_suavizado": 0.277164
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-07-28",
-      "prob": 0.0016394269257573783,
+      "prob": 0.25713241710989654,
+      "prob_original": 0.0016394269257573783,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.004799
+      "prob_suavizado": 0.267148
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-08-04",
-      "prob": 0.1005416078523567,
+      "prob": 0.33260232011868485,
+      "prob_original": 0.1005416078523567,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.05267
+      "prob_suavizado": 0.299875
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-08-11",
-      "prob": 0.4494157245369315,
+      "prob": 0.37174506469291124,
+      "prob_original": 0.4494157245369315,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.251043
+      "prob_suavizado": 0.33581
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-08-18",
-      "prob": 0.47411560159384986,
+      "prob": 0.3737521424095526,
+      "prob_original": 0.47411560159384986,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.362579
+      "prob_suavizado": 0.354781
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-08-25",
-      "prob": 0.4989428043649484,
+      "prob": 0.37576357518255565,
+      "prob_original": 0.4989428043649484,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.430761
+      "prob_suavizado": 0.365272
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-09-01",
-      "prob": 0.08147588324928283,
+      "prob": 0.32818434088614334,
+      "prob_original": 0.08147588324928283,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.256118
+      "prob_suavizado": 0.346728
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-09-08",
-      "prob": 0.18181645755799974,
+      "prob": 0.3459029379601166,
+      "prob_original": 0.18181645755799974,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.218967
+      "prob_suavizado": 0.346316
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-09-15",
-      "prob": 0.5729691346355369,
+      "prob": 0.3818233993589476,
+      "prob_original": 0.5729691346355369,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.395968
+      "prob_suavizado": 0.36407
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-09-22",
-      "prob": 0.6199596393678087,
+      "prob": 0.3858143276723636,
+      "prob_original": 0.6199596393678087,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.507964
+      "prob_suavizado": 0.374942
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-09-29",
-      "prob": 0.5830457579376485,
+      "prob": 0.38266589135068757,
+      "prob_original": 0.5830457579376485,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.545505
+      "prob_suavizado": 0.378804
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-10-06",
-      "prob": 0.7862409878521754,
+      "prob": 0.40257993142740683,
+      "prob_original": 0.7862409878521754,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.665873
+      "prob_suavizado": 0.390692
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-10-13",
-      "prob": 0.8687667044535621,
+      "prob": 0.4148444160445171,
+      "prob_original": 0.8687667044535621,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.76732
+      "prob_suavizado": 0.402768
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-10-20",
-      "prob": 0.8296369940830115,
+      "prob": 0.40842252381137023,
+      "prob_original": 0.8296369940830115,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.798478
+      "prob_suavizado": 0.405595
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-10-27",
-      "prob": 0.7994074977743776,
+      "prob": 0.4042464520777711,
+      "prob_original": 0.7994074977743776,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.798943
+      "prob_suavizado": 0.404921
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-11-03",
-      "prob": 0.6503768910251495,
+      "prob": 0.38850511589842546,
+      "prob_original": 0.6503768910251495,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.72466
+      "prob_suavizado": 0.396713
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-11-10",
-      "prob": 0.637855598245856,
+      "prob": 0.38738494190572903,
+      "prob_original": 0.637855598245856,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.681258
+      "prob_suavizado": 0.392049
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-11-17",
-      "prob": 0.9620012055274767,
+      "prob": 0.44321268789571283,
+      "prob_original": 0.9620012055274767,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.821629
+      "prob_suavizado": 0.417631
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-11-24",
-      "prob": 0.9108635293098438,
+      "prob": 0.42397345867241276,
+      "prob_original": 0.9108635293098438,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.866247
+      "prob_suavizado": 0.420802
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-12-01",
-      "prob": 0.9473413336210584,
+      "prob": 0.43594465292442036,
+      "prob_original": 0.9473413336210584,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.906794
+      "prob_suavizado": 0.428373
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-12-08",
-      "prob": 0.9595261452414774,
+      "prob": 0.4418134407746568,
+      "prob_original": 0.9595261452414774,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.93316
+      "prob_suavizado": 0.435093
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-12-15",
-      "prob": 0.41810088426055847,
+      "prob": 0.36917624444898134,
+      "prob_original": 0.41810088426055847,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.67563
+      "prob_suavizado": 0.402135
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-12-22",
-      "prob": 0.4256200900387844,
+      "prob": 0.3697965235427741,
+      "prob_original": 0.4256200900387844,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.550625
+      "prob_suavizado": 0.385966
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2024-12-29",
-      "prob": 0.7273480758745656,
+      "prob": 0.395926757118689,
+      "prob_original": 0.7273480758745656,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.638987
+      "prob_suavizado": 0.390946
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-01-05",
-      "prob": 0.8716333942417847,
+      "prob": 0.41537659119730486,
+      "prob_original": 0.8716333942417847,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.75531
+      "prob_suavizado": 0.403161
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-01-12",
-      "prob": 0.8889275505339941,
+      "prob": 0.4188274632208861,
+      "prob_original": 0.8889275505339941,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.822119
+      "prob_suavizado": 0.410994
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-01-19",
-      "prob": 0.1392365997440284,
+      "prob": 0.339724582701514,
+      "prob_original": 0.1392365997440284,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.480678
+      "prob_suavizado": 0.37536
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-01-26",
-      "prob": 0.11542334611337991,
+      "prob": 0.3355748972811918,
+      "prob_original": 0.11542334611337991,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.298051
+      "prob_suavizado": 0.355467
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-02-02",
-      "prob": 0.039857163052553476,
+      "prob": 0.31389253376386184,
+      "prob_original": 0.039857163052553476,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.168954
+      "prob_suavizado": 0.33468
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-02-09",
-      "prob": 0.034168537403753266,
+      "prob": 0.31092615966348425,
+      "prob_original": 0.034168537403753266,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.101561
+      "prob_suavizado": 0.322803
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-02-16",
-      "prob": 0.029267073905374554,
+      "prob": 0.30797523534693205,
+      "prob_original": 0.029267073905374554,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.065414
+      "prob_suavizado": 0.315389
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-02-23",
-      "prob": 0.008510355311942887,
+      "prob": 0.28534517281858435,
+      "prob_original": 0.008510355311942887,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.036962
+      "prob_suavizado": 0.300367
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-03-02",
-      "prob": 0.007261874083900798,
+      "prob": 0.28253748435210385,
+      "prob_original": 0.007261874083900798,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.022112
+      "prob_suavizado": 0.291452
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-03-09",
-      "prob": 0.006195402375407045,
+      "prob": 0.2797466082420868,
+      "prob_original": 0.006195402375407045,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.014154
+      "prob_suavizado": 0.285599
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-03-16",
-      "prob": 0.005284717904112367,
+      "prob": 0.27697265764113704,
+      "prob_original": 0.005284717904112367,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.009719
+      "prob_suavizado": 0.281286
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-03-23",
-      "prob": 0.0025537385017205746,
+      "prob": 0.26452679473493135,
+      "prob_original": 0.0025537385017205746,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.006136
+      "prob_suavizado": 0.272906
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-03-30",
-      "prob": 0.004064710306000622,
+      "prob": 0.2724353150767439,
+      "prob_original": 0.004064710306000622,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.005101
+      "prob_suavizado": 0.272671
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-04-06",
-      "prob": 0.0015286860417426168,
+      "prob": 0.2559785748702484,
+      "prob_original": 0.0015286860417426168,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.003315
+      "prob_suavizado": 0.264325
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-04-13",
-      "prob": 0.001303079528323098,
+      "prob": 0.25335740267465034,
+      "prob_original": 0.001303079528323098,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.002309
+      "prob_suavizado": 0.258841
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-04-20",
-      "prob": 1.6452014630800035e-05,
+      "prob": 0.18870182114664638,
+      "prob_original": 1.6452014630800035e-05,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.001163
+      "prob_suavizado": 0.223771
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-04-27",
-      "prob": 0.0009467490002845957,
+      "prob": 0.24816850672839014,
+      "prob_original": 0.0009467490002845957,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.001055
+      "prob_suavizado": 0.23597
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-05-04",
-      "prob": 0.0016284161026327675,
+      "prob": 0.25702108465639256,
+      "prob_original": 0.0016284161026327675,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.001342
+      "prob_suavizado": 0.246496
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-05-11",
-      "prob": 0.07073997691548524,
+      "prob": 0.32527933674879406,
+      "prob_original": 0.07073997691548524,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.036041
+      "prob_suavizado": 0.285887
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-05-18",
-      "prob": 0.9999766150483269,
+      "prob": 0.6019726084763352,
+      "prob_original": 0.9999766150483269,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.518009
+      "prob_suavizado": 0.44393
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-05-25",
-      "prob": 0.12845904260130478,
+      "prob": 0.33792519553435874,
+      "prob_original": 0.12845904260130478,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.323234
+      "prob_suavizado": 0.390928
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-06-01",
-      "prob": 0.002590142447593766,
+      "prob": 0.26476529541942706,
+      "prob_original": 0.002590142447593766,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.162912
+      "prob_suavizado": 0.327846
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-06-08",
-      "prob": 0.13329580235538804,
+      "prob": 0.33874734769981885,
+      "prob_original": 0.13329580235538804,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.148104
+      "prob_suavizado": 0.333297
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-06-15",
-      "prob": 0.9965449457376233,
+      "prob": 0.49549532972761196,
+      "prob_original": 0.9965449457376233,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.572324
+      "prob_suavizado": 0.414396
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-06-22",
-      "prob": 0.0002640997528058315,
+      "prob": 0.22816175660345273,
+      "prob_original": 0.0002640997528058315,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.286294
+      "prob_suavizado": 0.321279
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-06-29",
-      "prob": 0.9991737174261405,
+      "prob": 0.5264154850861811,
+      "prob_original": 0.9991737174261405,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.642734
+      "prob_suavizado": 0.423847
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-07-06",
-      "prob": 0.30185984164385665,
+      "prob": 0.3590215759929358,
+      "prob_original": 0.30185984164385665,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.472297
+      "prob_suavizado": 0.391434
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-07-13",
-      "prob": 0.9999996110426465,
+      "prob": 0.6829707401499362,
+      "prob_original": 0.9999996110426465,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.736148
+      "prob_suavizado": 0.537203
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-07-20",
-      "prob": 7.411730566835447e-05,
+      "prob": 0.2094120924752176,
+      "prob_original": 7.411730566835447e-05,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.368111
+      "prob_suavizado": 0.373307
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-07-27",
-      "prob": 0.999999999989537,
+      "prob": 0.8424089233027562,
+      "prob_original": 0.999999999989537,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.684056
+      "prob_suavizado": 0.607858
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-08-03",
-      "prob": 0.9999988448714642,
+      "prob": 0.6622763221118215,
+      "prob_original": 0.9999988448714642,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.842027
+      "prob_suavizado": 0.635067
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-08-10",
-      "prob": 0.9999998344853888,
+      "prob": 0.6987273983311331,
+      "prob_original": 0.9999998344853888,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.921014
+      "prob_suavizado": 0.666897
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-08-17",
-      "prob": 0.9999999999989062,
+      "prob": 0.8666063907355755,
+      "prob_original": 0.9999999999989062,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.960507
+      "prob_suavizado": 0.766752
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-08-24",
-      "prob": 0.999995045979167,
+      "prob": 0.6336052485697713,
+      "prob_original": 0.999995045979167,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.980251
+      "prob_suavizado": 0.700179
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-08-31",
-      "prob": 0.2522204254001591,
+      "prob": 0.3541010551825658,
+      "prob_original": 0.2522204254001591,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.616236
+      "prob_suavizado": 0.52714
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-09-07",
-      "prob": 0.9999999973761733,
+      "prob": 0.7683752142065022,
+      "prob_original": 0.9999999973761733,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.808118
+      "prob_suavizado": 0.647758
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-09-14",
-      "prob": 0.9999999882502336,
+      "prob": 0.744537568640107,
+      "prob_original": 0.9999999882502336,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.904059
+      "prob_suavizado": 0.696148
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-09-21",
-      "prob": 0.9340893703402581,
+      "prob": 0.43088558629539736,
+      "prob_original": 0.9340893703402581,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.919074
+      "prob_suavizado": 0.563517
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-09-28",
-      "prob": 0.9938049073391156,
+      "prob": 0.48283563518124556,
+      "prob_original": 0.9938049073391156,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.95644
+      "prob_suavizado": 0.523176
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-10-05",
-      "prob": 0.9272211706137744,
+      "prob": 0.42863150989052234,
+      "prob_original": 0.9272211706137744,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.94183
+      "prob_suavizado": 0.475904
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-10-12",
-      "prob": 0.9736947371246417,
+      "prob": 0.4513226554695689,
+      "prob_original": 0.9736947371246417,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.957763
+      "prob_suavizado": 0.463613
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-10-19",
-      "prob": 0.6221863339944605,
+      "prob": 0.38600796833117645,
+      "prob_original": 0.6221863339944605,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.789974
+      "prob_suavizado": 0.424811
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-10-26",
-      "prob": 0.9410806472286559,
+      "prob": 0.4334199316956257,
+      "prob_original": 0.9410806472286559,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.865528
+      "prob_suavizado": 0.429115
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-11-02",
-      "prob": 0.8798710017592315,
+      "prob": 0.4169656597786518,
+      "prob_original": 0.8798710017592315,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.872699
+      "prob_suavizado": 0.42304
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-11-09",
-      "prob": 0.13493554496105886,
+      "prob": 0.33902054994639685,
+      "prob_original": 0.13493554496105886,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.503817
+      "prob_suavizado": 0.381031
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-11-16",
-      "prob": 0.32875202284085164,
+      "prob": 0.3615020184354751,
+      "prob_original": 0.32875202284085164,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.416285
+      "prob_suavizado": 0.371266
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-11-23",
-      "prob": 0.9554669153091024,
+      "prob": 0.43968867569947445,
+      "prob_original": 0.9554669153091024,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.685876
+      "prob_suavizado": 0.405477
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-11-30",
-      "prob": 0.5618904332860454,
+      "prob": 0.3809037363866153,
+      "prob_original": 0.5618904332860454,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.623883
+      "prob_suavizado": 0.393191
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-12-07",
-      "prob": 0.5958043662793377,
+      "prob": 0.3837420983497967,
+      "prob_original": 0.5958043662793377,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.609844
+      "prob_suavizado": 0.388466
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-12-14",
-      "prob": 0.6706677993828637,
+      "prob": 0.3903636923949418,
+      "prob_original": 0.6706677993828637,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.640256
+      "prob_suavizado": 0.389415
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-12-21",
-      "prob": 0.5180582288261082,
+      "prob": 0.37731437541077295,
+      "prob_original": 0.5180582288261082,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.579157
+      "prob_suavizado": 0.383365
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2025-12-28",
-      "prob": 0.3623832207273277,
+      "prob": 0.36447337408710373,
+      "prob_original": 0.3623832207273277,
       "nivel": "BAJO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.47077
+      "prob_suavizado": 0.373919
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-01-04",
-      "prob": 0.6561497276389352,
+      "prob": 0.38902813714538176,
+      "prob_original": 0.6561497276389352,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.56346
+      "prob_suavizado": 0.381474
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-01-11",
-      "prob": 0.9004453606183512,
+      "prob": 0.42140157098972175,
+      "prob_original": 0.9004453606183512,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.731953
+      "prob_suavizado": 0.401438
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-01-18",
-      "prob": 0.9475609423628779,
+      "prob": 0.43603832461693565,
+      "prob_original": 0.9475609423628779,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.839757
+      "prob_suavizado": 0.418738
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-01-25",
-      "prob": 0.9658287943570752,
+      "prob": 0.4455612407468179,
+      "prob_original": 0.9658287943570752,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.902793
+      "prob_suavizado": 0.43215
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-02-01",
-      "prob": 0.99138867544153,
+      "prob": 0.47568545981182436,
+      "prob_original": 0.99138867544153,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.947091
+      "prob_suavizado": 0.453918
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-02-08",
-      "prob": 0.9903540003078176,
+      "prob": 0.47321965103222846,
+      "prob_original": 0.9903540003078176,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.968722
+      "prob_suavizado": 0.463569
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-02-15",
-      "prob": 0.9971232342607448,
+      "prob": 0.49946242387254713,
+      "prob_original": 0.9971232342607448,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.982923
+      "prob_suavizado": 0.481516
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-02-22",
-      "prob": 0.9499115165899743,
+      "prob": 0.4370651447369302,
+      "prob_original": 0.9499115165899743,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.966417
+      "prob_suavizado": 0.45929
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-03-01",
-      "prob": 0.7770152250701989,
+      "prob": 0.4014576409935999,
+      "prob_original": 0.7770152250701989,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.871716
+      "prob_suavizado": 0.430374
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-03-08",
-      "prob": 0.9744522029151778,
+      "prob": 0.45196420517238567,
+      "prob_original": 0.9744522029151778,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.923084
+      "prob_suavizado": 0.441169
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-03-15",
-      "prob": 0.7830702896584021,
+      "prob": 0.40219023495536793,
+      "prob_original": 0.7830702896584021,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.853077
+      "prob_suavizado": 0.42168
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-03-22",
-      "prob": 0.9979361614040805,
+      "prob": 0.5066496765611802,
+      "prob_original": 0.9979361614040805,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.925507
+      "prob_suavizado": 0.464165
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-03-29",
-      "prob": 0.9973382872522194,
+      "prob": 0.5011445602196914,
+      "prob_original": 0.9973382872522194,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.961422
+      "prob_suavizado": 0.482655
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-04-05",
-      "prob": 0.9984334408019815,
+      "prob": 0.5126102381971048,
+      "prob_original": 0.9984334408019815,
       "nivel": "MEDIO ALTO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.979928
+      "prob_suavizado": 0.497632
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-04-12",
-      "prob": 0.9455213330621739,
+      "prob": 0.4351824120668324,
+      "prob_original": 0.9455213330621739,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.962725
+      "prob_suavizado": 0.466407
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-04-19",
-      "prob": 0.9953444265178526,
+      "prob": 0.489032193666252,
+      "prob_original": 0.9953444265178526,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.979035
+      "prob_suavizado": 0.47772
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-04-26",
-      "prob": 0.9975077081740683,
+      "prob": 0.5025681252057322,
+      "prob_original": 0.9975077081740683,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.988271
+      "prob_suavizado": 0.490144
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-05-03",
-      "prob": 0.9675764875064745,
+      "prob": 0.4467201371362888,
+      "prob_original": 0.9675764875064745,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.977924
+      "prob_suavizado": 0.468432
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-05-10",
-      "prob": 0.9933814423863185,
+      "prob": 0.4814007351013719,
+      "prob_original": 0.9933814423863185,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.985653
+      "prob_suavizado": 0.474916
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-05-17",
-      "prob": 0.9503108510550954,
+      "prob": 0.437244164164369,
+      "prob_original": 0.9503108510550954,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.967982
+      "prob_suavizado": 0.45608
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-05-24",
-      "prob": 0.6250383382987068,
+      "prob": 0.3862566977812555,
+      "prob_original": 0.6250383382987068,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.79651
+      "prob_suavizado": 0.421168
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-05-31",
-      "prob": 0.9410856143192025,
+      "prob": 0.4334218315461687,
+      "prob_original": 0.9410856143192025,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.868798
+      "prob_suavizado": 0.427295
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-06-07",
-      "prob": 0.9596547977547532,
+      "prob": 0.44188410328581573,
+      "prob_original": 0.9596547977547532,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.914226
+      "prob_suavizado": 0.43459
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-06-14",
-      "prob": 0.8519869302736597,
+      "prob": 0.41191614105777263,
+      "prob_original": 0.8519869302736597,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.883107
+      "prob_suavizado": 0.423253
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-06-21",
-      "prob": 0.950916107671011,
+      "prob": 0.4375181456770839,
+      "prob_original": 0.950916107671011,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.917011
+      "prob_suavizado": 0.430386
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T17:49:43",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-06-28",
-      "prob": 0.9616446350711532,
+      "prob": 0.44300574716021385,
+      "prob_original": 0.9616446350711532,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.939328
+      "prob_suavizado": 0.436696
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-11T16:28:55",
+      "fecha_scoring": "2026-07-14T16:23:16",
       "semana": "2026-07-05",
-      "prob": 0.9223008195410153,
+      "prob": 0.44908042731453873,
+      "prob_original": 0.9708702728315503,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.930814
+      "prob_suavizado": 0.442888
     },
     {
       "zona_id": "UGT5",
-      "fecha_scoring": "2026-07-13T08:00:49",
+      "fecha_scoring": "2026-07-14T16:24:27",
       "semana": "2026-07-12",
-      "prob": 0.9165347525238766,
+      "prob": 0.4251638078224641,
+      "prob_original": 0.9153392463477407,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.923675
+      "prob_suavizado": 0.434026
     }
   ],
   "calibracion_modelo": [

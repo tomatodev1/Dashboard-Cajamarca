@@ -48,11 +48,11 @@ MODELO_ZONAS = {"UGT1", "UGT5"}  # confirmado via features_historicas.grupo_mode
 # "zonas_meta" del Sheet no trae el dato (esta sirve de respaldo mientras esa
 # pestana no exista o no cubra alguna zona).
 ZONAS_META_FALLBACK = {
-    "UGT1": {"nombre": "UGT1 – Zona de Operaciones (AISD)", "provincia": "Cajamarca"},
-    "UGT2": {"nombre": "UGT2 – Corredor Logístico Costa", "provincia": "Pacasmayo/Chepén (La Libertad), Contumazá"},
-    "UGT3": {"nombre": "UGT3 – Corredor Sierra Norte", "provincia": "San Pablo, San Miguel"},
-    "UGT4": {"nombre": "UGT4 – Corredor Sur (ruta 106)", "provincia": "Cajamarca"},
-    "UGT5": {"nombre": "UGT5 – Zona Conga (Nor-Este)", "provincia": "Celendín, Hualgayoc"},
+    "UGT1": {"nombre": "UGT1 – Cajamarca", "provincia": "Cajamarca"},
+    "UGT2": {"nombre": "UGT2 – Pacasmayo/Chepén (La Libertad), Contumazá", "provincia": "Pacasmayo/Chepén (La Libertad), Contumazá"},
+    "UGT3": {"nombre": "UGT3 – San Pablo, San Miguel", "provincia": "San Pablo, San Miguel"},
+    "UGT4": {"nombre": "UGT4 – Cajamarca", "provincia": "Cajamarca"},
+    "UGT5": {"nombre": "UGT5 – Celendín, Hualgayoc", "provincia": "Celendín, Hualgayoc"},
 }
 
 
@@ -182,11 +182,17 @@ def latest_features_by_zona(features_historicas):
 def build_serie_tiempo(scoring_modelo, features_historicas):
     serie = []
     for row in scoring_modelo:
+        prob_crudo = to_float(row["prob"])
+        # prob_calibrado es la probabilidad ajustada para leerse como un %
+        # real (ver ROADMAP calibracion). Si por algun motivo una fila no la
+        # trae aun, usamos el prob crudo como respaldo en vez de romper.
+        prob_calibrado = to_float(row.get("prob_calibrado"))
         serie.append({
             "zona_id": row["ugt"],
             "fecha_scoring": row["fecha_scoring"],
             "semana": row["semana"],
-            "prob": to_float(row["prob"]),
+            "prob": prob_calibrado if prob_calibrado is not None else prob_crudo,
+            "prob_original": prob_crudo,
             "nivel": row["nivel"],
             "origen": "scoring_modelo",
         })
@@ -230,6 +236,7 @@ def build_serie_tiempo(scoring_modelo, features_historicas):
             "fecha_scoring": None,
             "semana": oof["semana"],
             "prob": oof["prob"],
+            "prob_original": None,
             "nivel": None,
             "origen": "oof_backfill",
         }
@@ -288,13 +295,23 @@ def build_zonas(scoring_modelo, calendario_criticidad, latest_features, proximas
         if z in MODELO_ZONAS:
             cur = latest_score.get(z)
             prev = prev_score.get(z)
+
+            def prob_legible(row):
+                if row is None:
+                    return None
+                calibrado = to_float(row.get("prob_calibrado"))
+                return calibrado if calibrado is not None else to_float(row["prob"])
+
+            prob_actual = prob_legible(cur)
+            prob_prev = prob_legible(prev)
             base.update({
-                "prob_actual": to_float(cur["prob"]) if cur else None,
+                "prob_actual": prob_actual,
+                "prob_original": to_float(cur["prob"]) if cur else None,
                 "nivel_riesgo": cur["nivel"] if cur else None,
                 "semana": cur["semana"] if cur else None,
                 "tendencia_delta": (
-                    round(to_float(cur["prob"]) - to_float(prev["prob"]), 4)
-                    if cur and prev else None
+                    round(prob_actual - prob_prev, 4)
+                    if prob_actual is not None and prob_prev is not None else None
                 ),
             })
         else:
