@@ -28,9 +28,9 @@ button{outline:none}
 (function(){
   "use strict";
 
-  var ALL_ZONAS = ["UGT1","UGT2","UGT3","UGT4","UGT5"];
-  var ZONA_COLORS = {UGT1:'#2b7cc0',UGT2:'#7a5cc7',UGT3:'#c77d2b',UGT4:'#3a9d6b',UGT5:'#d64545'};
-  var FALLBACK_POS = {UGT1:{x:30,y:35},UGT2:{x:58,y:22},UGT3:{x:72,y:52},UGT4:{x:50,y:72},UGT5:{x:24,y:64}};
+  var ALL_ZONAS = ["UGT1","UGT2"];
+  var ZONA_COLORS = {UGT1:'#2b7cc0',UGT2:'#d64545'};
+  var FALLBACK_POS = {UGT1:{x:35,y:40},UGT2:{x:65,y:55}};
   var NIVEL_ORDER = ["BAJO","MEDIO","MEDIO ALTO","ALTO"];
 
   var SOURCES = [
@@ -97,7 +97,7 @@ button{outline:none}
   /* ---------- state ---------- */
   var state = {
     dark:false,
-    hidden:{}, hover:null, hoverPin:null, selected:null,
+    hidden:{}, hover:null, hoverForecast:false, hoverPin:null, selected:null,
     gran:'week', fromVal:null, toVal:null,
     data:null, loadError:null
   };
@@ -237,6 +237,16 @@ button{outline:none}
             var x1=X(lastMs), x2e=X(segEndMs), y1=Y(lastRaw.prob_suavizado!=null?lastRaw.prob_suavizado:lastRaw.prob);
             svg+='<line x1="'+x1+'" x2="'+x2e+'" y1="'+y1+'" y2="'+y1+'" style="stroke:'+zonaColor(z.zona_id)+'" stroke-width="2.2" stroke-dasharray="2 4" stroke-linecap="round" opacity=".8"></line>';
             svg+='<circle cx="'+x2e+'" cy="'+y1+'" r="3.6" fill="'+zonaColor(z.zona_id)+'" stroke="var(--panel)" stroke-width="1.4" opacity=".8"></circle>';
+            // marca la fecha critica sobre el tramo de pronostico si cae dentro de esta ventana
+            var pf=z.proxima_fecha_critica;
+            if(pf){
+              var pfMs=parseYMD(pf.fecha);
+              if(pfMs>=lastMs && pfMs<=segEndMs){
+                var xpf=X(pfMs);
+                svg+='<line x1="'+xpf+'" x2="'+xpf+'" y1="'+(y1-9)+'" y2="'+(y1+9)+'" style="stroke:'+zonaColor(z.zona_id)+'" stroke-width="1.6" opacity=".9"></line>';
+                svg+='<circle cx="'+xpf+'" cy="'+y1+'" r="4.5" fill="var(--panel)" stroke="'+zonaColor(z.zona_id)+'" stroke-width="2"></circle>';
+              }
+            }
           }
         }
       }
@@ -272,6 +282,32 @@ button{outline:none}
         var leftPct=clamp((x2/cw)*100,2,80);
         tooltip='<div style="position:absolute;left:'+leftPct+'%;top:'+(padT+6)+'px;width:190px;background:var(--panel);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.22);padding:8px 11px;pointer-events:none;font-size:11.5px;z-index:5">'+
           '<div style="font-weight:800;font-size:11px;margin-bottom:6px;color:var(--text)">Semana del '+fmtDateISO(hi)+' · probabilidad de protesta (30 días)</div>'+rows+'</div>';
+      }
+    } else if(state.hoverForecast && showForecast){
+      var frows='';
+      zonas.forEach(function(z){
+        if(state.hidden[z.zona_id]) return;
+        var rawPts=(dom.rawByZona[z.zona_id]||[]);
+        if(!rawPts.length) return;
+        var lastRaw=rawPts[rawPts.length-1];
+        var lastMsZ=parseYMD(lastRaw.semana);
+        var segEndMsZ=Math.min(lastMsZ+HORIZON_DAYS*DAY_MS, maxMs);
+        var explic=explicacionNivel(z);
+        frows+='<div style="margin-bottom:8px">'+
+          '<div style="display:flex;align-items:center;gap:6px;font-weight:800;color:var(--text)">'+
+            '<span style="width:8px;height:8px;border-radius:2px;background:'+zonaColor(z.zona_id)+';display:inline-block"></span>'+esc(zonaLabel(z))+
+          '</div>'+
+          '<div style="color:var(--muted);font-size:10.5px;margin-top:2px">Vigente hasta '+fmtDateISO(segEndMsZ)+'</div>'+
+          (explic?'<div style="color:var(--sub);margin-top:3px;line-height:1.4">'+esc(explic)+'</div>':'')+
+        '</div>';
+      });
+      if(frows){
+        var xMid=(X(trueMaxMs)+(cw-padR))/2;
+        var leftPctF=clamp((xMid/cw)*100,2,72);
+        tooltip='<div style="position:absolute;left:'+leftPctF+'%;top:'+(padT+6)+'px;width:220px;background:var(--panel);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.22);padding:9px 12px;pointer-events:none;font-size:11.5px;z-index:5">'+
+          '<div style="font-weight:800;font-size:11px;margin-bottom:6px;color:var(--med)">Contexto del pronóstico</div>'+frows+
+          '<div style="font-size:10px;color:var(--muted);line-height:1.4;padding-top:4px;border-top:1px solid var(--border)">No es una predicción de tendencia — el modelo mantiene este valor durante toda la ventana. Esto es contexto real que puede influir en las próximas semanas.</div>'+
+        '</div>';
       }
     }
     return '<div style="position:relative;width:100%;margin-top:8px">'+
@@ -352,7 +388,7 @@ button{outline:none}
   function banner(){
     return '<div style="display:flex;align-items:center;gap:11px;margin-top:16px;background:var(--med-soft);border:1px solid color-mix(in srgb,var(--med) 30%,transparent);border-radius:10px;padding:10px 15px;font-size:12.5px;color:var(--text);font-weight:500">'+
       '<span style="flex:none;width:19px;height:19px;border-radius:50%;background:var(--med);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">!</span>'+
-      '<span>Las probabilidades mostradas son una <strong>estimación del modelo predictivo</strong>, no una certeza. Úselas como apoyo a la decisión junto con el criterio del equipo de relacionamiento comunitario. Las zonas UGT2, UGT3 y UGT4 aún no tienen suficiente historial de protestas para un modelo entrenado — se monitorean con indicadores heurísticos y calendario de criticidad.</span>'+
+      '<span>Las probabilidades mostradas son una <strong>estimación del modelo predictivo</strong>, no una certeza. Úselas como apoyo a la decisión junto con el criterio del equipo de relacionamiento comunitario.</span>'+
     '</div>';
   }
 
@@ -399,7 +435,7 @@ button{outline:none}
         forecastBadge+
       '</div>'+
       '<div style="font-size:16.5px;font-weight:800;letter-spacing:-.2px;margin-top:6px">Tendencia y pronóstico de riesgo por UGT</div>'+
-      '<div style="font-size:12.5px;color:var(--sub);margin-top:3px">Probabilidad de protesta (%, ≤30 días) en el tiempo · línea suavizada para que sea más fácil de leer · línea discontinua = vigencia del último pronóstico · pase el cursor para ver el valor real de cada semana</div>'+
+      
       '<div style="display:flex;gap:22px;flex-wrap:wrap;align-items:flex-end;margin-top:16px">'+
         '<div><div style="font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px">Ver por</div>'+
           '<div style="display:inline-flex;background:var(--panel2);border:1px solid var(--border);border-radius:9px;padding:3px">'+granBtns+'</div></div>'+
@@ -409,7 +445,7 @@ button{outline:none}
           '<div style="display:flex;gap:7px;flex-wrap:wrap">'+rangoBtns+'</div></div>'+
       '</div>'+
       buildMainChart()+
-      '<div style="font-size:10.5px;color:var(--muted);margin-top:8px">El modelo considera señales como rachas de protesta recientes, tiempo desde la última protesta, denuncias ambientales, cobertura de noticias y el calendario de fechas críticas (festividades, elecciones); se actualiza cada semana con información nueva, así que estos valores pueden cambiar la próxima semana. El valor exacto de cada semana se muestra al pasar el cursor. Las semanas más antiguas del gráfico son una reconstrucción histórica del modelo (calculada usando solo la información que existía hasta esa fecha, sin adelantos); las últimas semanas ya son el resultado real del modelo funcionando en producción.</div>'+
+      '<div style="font-size:10.5px;color:var(--muted);margin-top:8px">El modelo considera señales como rachas de protesta recientes, tiempo desde la última protesta, denuncias ambientales, cobertura de noticias y el calendario de fechas críticas (festividades, elecciones); se actualiza cada semana con información nueva, así que estos valores pueden cambiar la próxima semana. El valor exacto de cada semana se muestra al pasar el cursor. Todo el histórico de este gráfico se calculó con el mismo modelo de producción de forma consistente en el tiempo, para que la tendencia se vea sin saltos artificiales entre semanas antiguas y recientes. Esto da una vista clara de la evolución, pero no reemplaza la medición real de qué tan confiable es el modelo — esa validación (hecha con datos que el modelo nunca vio antes de predecirlos) está aparte, en el panel "Confiabilidad del modelo" más abajo.</div>'+
       '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">'+legendBtns+'</div>'+
     '</section>';
   }
@@ -431,7 +467,7 @@ button{outline:none}
       {label:'Nivel más alto (30 días)',value: maxZona?esc(maxZona.nivel_riesgo||'—'):'—', sub: maxZona?(esc(zonaLabel(maxZona))+' · '+fmtPct(maxZona.prob_actual)):'Sin datos aún', color: maxZona?levelColor(maxZona.nivel_riesgo):'var(--hi)'},
       {label:'Zonas en alerta (30 días)',value: modelo.length?(enAlerta.length+' / '+modelo.length):'—', sub: enAlerta.length?enAlerta.map(zonaLabel).join(', '):'Ninguna en este momento', color:'var(--hi)'},
       {label:'Precisión del modelo',value: precisionPonderada!=null?fmtPct1(precisionPonderada):'—', sub: nTotal?(nTotal+' predicciones pasadas revisadas'):'Sin calibración aún', color:'var(--med)'},
-      {label:'Eventos últimas 4 semanas',value: ''+eventos4w, sub:'Suma de las 5 zonas', color:'var(--accent)'},
+      {label:'Eventos últimas 4 semanas',value: ''+eventos4w, sub:'Suma de las '+zonas.length+' zonas', color:'var(--accent)'},
       {label:'Próxima fecha crítica',value: proxima?proxima.fecha:'—', sub: proxima?esc(proxima.evento):'Sin eventos próximos', color:'var(--accent)'}
     ];
     return '<section style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:16px">'+
@@ -689,19 +725,25 @@ button{outline:none}
     var W=cw-padL-padR;
     svg.addEventListener('mousemove',function(e){
       var dom=mainChartDomain();
-      if(!dom||!dom.allMs.length) return;
+      if(!dom) return;
       var rect=svg.getBoundingClientRect();
       var scale=rect.width/cw;
       var localX=(e.clientX-rect.left)/scale;
       var frac=clamp((localX-padL)/W,0,1);
       var ms=dom.minMs+frac*(dom.maxMs-dom.minMs);
+      var inForecast = dom.horizonEndMs>dom.trueMaxMs && ms>dom.trueMaxMs && ms<=dom.maxMs;
+      if(inForecast){
+        if(!state.hoverForecast || state.hover!==null){ state.hoverForecast=true; state.hover=null; render(); }
+        return;
+      }
+      if(!dom.allMs.length) return;
       var uniqMs=[]; var seenMs={};
       dom.allMs.forEach(function(m){ if(!seenMs[m]){seenMs[m]=1; uniqMs.push(m);} });
       var nearest=uniqMs.reduce(function(best,m){ return Math.abs(m-ms)<Math.abs(best-ms)?m:best; }, uniqMs[0]);
-      if(nearest!==state.hover){state.hover=nearest;render();}
+      if(nearest!==state.hover || state.hoverForecast){ state.hover=nearest; state.hoverForecast=false; render(); }
     });
     svg.addEventListener('mouseleave',function(){
-      if(state.hover!==null){state.hover=null;render();}
+      if(state.hover!==null || state.hoverForecast){ state.hover=null; state.hoverForecast=false; render(); }
     });
   }
 

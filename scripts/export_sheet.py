@@ -41,19 +41,54 @@ TABS = {
 OUT_PATH = Path(__file__).resolve().parent.parent / "data" / "data.json"
 
 NIVEL_ORDER = ["BAJO", "MEDIO", "MEDIO ALTO", "ALTO"]
-ALL_ZONAS = ["UGT1", "UGT2", "UGT3", "UGT4", "UGT5"]
-MODELO_ZONAS = {"UGT1", "UGT5"}  # confirmado via features_historicas.grupo_modelo
 
-# Nombres/provincias reales por UGT. Se usan solo si la pestana opcional
-# "zonas_meta" del Sheet no trae el dato (esta sirve de respaldo mientras esa
-# pestana no exista o no cubra alguna zona).
+# El dashboard solo cubre las 2 zonas con modelo predictivo real. Las otras
+# 3 UGT del Sheet original (sin pronostico, solo heuristica) se descartan
+# por completo -- no aparecen en ningun lado del tablero. La UGT que en el
+# Sheet crudo es "UGT5" se renumera a "UGT2" en el dashboard (ya no hay
+# UGT2 viejo con quien confundirse, porque se elimina).
+ZONA_ID_REMAP = {"UGT1": "UGT1", "UGT5": "UGT2"}  # id crudo del Sheet -> id del dashboard
+ALL_ZONAS = list(dict.fromkeys(ZONA_ID_REMAP.values()))  # ["UGT1", "UGT2"]
+MODELO_ZONAS = set(ALL_ZONAS)  # las 2 zonas activas tienen modelo predictivo
+
+# Nombres/provincias reales por UGT (id ya remapeado). Se usan solo si la
+# pestana opcional "zonas_meta" del Sheet no trae el dato.
 ZONAS_META_FALLBACK = {
-    "UGT1": {"nombre": "UGT1 – Cajamarca", "provincia": "Cajamarca"},
-    "UGT2": {"nombre": "UGT2 – Pacasmayo/Chepén (La Libertad), Contumazá", "provincia": "Pacasmayo/Chepén (La Libertad), Contumazá"},
-    "UGT3": {"nombre": "UGT3 – San Pablo, San Miguel", "provincia": "San Pablo, San Miguel"},
-    "UGT4": {"nombre": "UGT4 – Cajamarca", "provincia": "Cajamarca"},
-    "UGT5": {"nombre": "UGT5 – Celendín, Hualgayoc", "provincia": "Celendín, Hualgayoc"},
+    "UGT1": {"nombre": "UGT1 (Proyecto WTP / BECHTL)", "provincia": "Cajamarca"},
+    "UGT2": {"nombre": "UGT2 (AISD)", "provincia": "Celendín, Hualgayoc"},
 }
+
+
+def remap_rows(rows, field="ugt"):
+    """Renombra el campo de zona segun ZONA_ID_REMAP y descarta las filas de
+    zonas que ya no estan en el dashboard (no estan en el mapeo)."""
+    out = []
+    for row in rows:
+        nuevo_id = ZONA_ID_REMAP.get(row.get(field))
+        if nuevo_id is None:
+            continue
+        row = dict(row)
+        row[field] = nuevo_id
+        out.append(row)
+    return out
+
+
+def remap_ugts_field(rows):
+    """Igual que remap_rows pero para la columna 'ugts' de scoring_separadas,
+    que trae una lista separada por comas o el literal 'TODAS'."""
+    out = []
+    for row in rows:
+        crudo = (row.get("ugts") or "").strip()
+        if crudo == "TODAS":
+            zonas = list(ALL_ZONAS)
+        else:
+            zonas = [ZONA_ID_REMAP[p.strip()] for p in crudo.split(",") if p.strip() in ZONA_ID_REMAP]
+        if not zonas:
+            continue
+        row = dict(row)
+        row["ugts"] = ",".join(zonas)
+        out.append(row)
+    return out
 
 
 def fetch_csv(gid):
@@ -328,12 +363,12 @@ def build_zonas(scoring_modelo, calendario_criticidad, latest_features, proximas
 
 
 def main():
-    scoring_modelo = fetch_tab("scoring_modelo")
-    scoring_separadas = fetch_tab("scoring_separadas")
-    features_historicas = fetch_tab("features_historicas")
-    calibracion_modelo = fetch_tab("calibracion_modelo")
-    calendario_criticidad = fetch_tab("calendario_criticidad")
-    zonas_meta = fetch_tab("zonas_meta")
+    scoring_modelo = remap_rows(fetch_tab("scoring_modelo"))
+    scoring_separadas = remap_ugts_field(fetch_tab("scoring_separadas"))
+    features_historicas = remap_rows(fetch_tab("features_historicas"))
+    calibracion_modelo = fetch_tab("calibracion_modelo")  # agregado por nivel, no por zona
+    calendario_criticidad = remap_rows(fetch_tab("calendario_criticidad"))
+    zonas_meta = remap_rows(fetch_tab("zonas_meta"), field="zona_id")
 
     today = date.today()
     latest_features = latest_features_by_zona(features_historicas)
