@@ -28,10 +28,20 @@ SHEET_ID = "1Jb8eP7XTAlxj2S2nFc9jZ_j5C9Hj59EqOZF9VE9SRuo"
 
 TABS = {
     "scoring_modelo": "0",
-    "scoring_separadas": "1316050240",
+    # gid 1316050240: calendario de fechas/eventos criticos (antes llamada
+    # "scoring_separadas" en el Sheet, misma pestana, la renombraron a
+    # "calendario_criticidad" y le agregaron fuente/evidencia_historica/
+    # usar_como_proxima_fecha_critica -- el gid no cambio).
+    "calendario_criticidad_eventos": "1316050240",
     "features_historicas": "2034826287",
     "calibracion_modelo": "777887404",
-    "calendario_criticidad": "778093189",
+    # gid 778093189: senales semanales (oefa/dias_desde_ultima_protesta/
+    # tasa_historica) de las UGT sin modelo predictivo, que ya no se
+    # muestran en el dashboard (se eliminaron). Se deja mapeada por si se
+    # vuelve a necesitar, pero remap_rows la vacia porque ninguna de esas
+    # UGT esta en ZONA_ID_REMAP.
+    "senales_semanales_separado": "778093189",
+    "alertas_electorales_2026": "168360210",
     # Pestana opcional con contenido editorial (nombre, provincia, descripcion,
     # accion_recomendada, mapa_x, mapa_y) por zona -- se agrega aparte por el
     # equipo. Si no existe todavia, el export sigue funcionando sin ella.
@@ -54,7 +64,7 @@ MODELO_ZONAS = set(ALL_ZONAS)  # las 2 zonas activas tienen modelo predictivo
 # Nombres/provincias reales por UGT (id ya remapeado). Se usan solo si la
 # pestana opcional "zonas_meta" del Sheet no trae el dato.
 ZONAS_META_FALLBACK = {
-    "UGT1": {"nombre": "UGT1 (Proyecto WTP / BECHTL)", "provincia": "Cajamarca"},
+    "UGT1": {"nombre": "UGT1 (Proyecto WTP / BECHTEL)", "provincia": "Cajamarca"},
     "UGT2": {"nombre": "UGT2 (AISD)", "provincia": "Celendín, Hualgayoc"},
 }
 
@@ -93,6 +103,16 @@ def remap_ugts_field(rows):
 
 def fetch_csv(gid):
     url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid={gid}"
+    with urllib.request.urlopen(url, timeout=30) as resp:
+        raw = resp.read().decode("utf-8")
+    return list(csv.DictReader(io.StringIO(raw)))
+
+
+def fetch_csv_by_name(sheet_name):
+    """Igual que fetch_csv pero por nombre de pestana en vez de gid (via el
+    endpoint gviz de Google Sheets). Util para pestanas nuevas cuyo gid no
+    esta hardcodeado en TABS todavia."""
+    url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
     with urllib.request.urlopen(url, timeout=30) as resp:
         raw = resp.read().decode("utf-8")
     return list(csv.DictReader(io.StringIO(raw)))
@@ -153,10 +173,17 @@ def next_occurrence(mmdd, today):
     return candidate
 
 
-def compute_proxima_fecha_critica(scoring_separadas, today):
-    """Para cada zona, el proximo evento de calendario (recurrente o electoral)."""
+def compute_proxima_fecha_critica(calendario_eventos, today):
+    """Para cada zona, el proximo evento de calendario -- solo entre las
+    fechas marcadas usar_como_proxima_fecha_critica == "True" (respaldadas
+    con evidencia real contra la base de 410 incidentes 2001-2026). Las
+    demas fechas del calendario (festividades sin evidencia, ventana
+    electoral, etc.) quedan fuera de esta funcion -- sirven de contexto en
+    otro lado, no para "proxima fecha critica"."""
     per_zona = {z: [] for z in ALL_ZONAS}
-    for row in scoring_separadas:
+    for row in calendario_eventos:
+        if (row.get("usar_como_proxima_fecha_critica") or "").strip().lower() != "true":
+            continue
         zonas_field = (row.get("ugts") or "").strip()
         if zonas_field == "TODAS":
             zonas = ALL_ZONAS
@@ -178,6 +205,9 @@ def compute_proxima_fecha_critica(scoring_separadas, today):
                 "tipo": "electoral",
                 "criticidad": row.get("criticidad") or None,
                 "fecha": fecha.isoformat(),
+                "evidencia_historica": row.get("evidencia_historica") or None,
+                "fuente": row.get("fuente") or None,
+                "fuente_url": row.get("fuente_url") or None,
             }
         else:
             inicio = (row.get("inicio_mes_dia") or "").strip()
@@ -189,6 +219,9 @@ def compute_proxima_fecha_critica(scoring_separadas, today):
                 "tipo": "fecha_critica",
                 "criticidad": row.get("criticidad") or None,
                 "fecha": fecha.isoformat(),
+                "evidencia_historica": row.get("evidencia_historica") or None,
+                "fuente": row.get("fuente") or None,
+                "fuente_url": row.get("fuente_url") or None,
             }
 
         for z in zonas:
@@ -200,6 +233,143 @@ def compute_proxima_fecha_critica(scoring_separadas, today):
         entries.sort(key=lambda e: e["fecha"])
         proximas[z] = entries[0] if entries else None
     return proximas
+
+
+def compute_calendario_fechas_criticas(calendario_eventos, today, horizon_days=365):
+    """Lista completa (no solo la mas cercana por zona) de todas las fechas
+    del calendario marcadas usar_como_proxima_fecha_critica == 'True', dentro
+    de los proximos horizon_days. Se usa para la tarjeta 'Proximas fechas
+    criticas', que debe mostrar todo el panorama del año, no solo un evento
+    por zona."""
+    entries_by_key = {}
+    for row in calendario_eventos:
+        if (row.get("usar_como_proxima_fecha_critica") or "").strip().lower() != "true":
+            continue
+        zonas_field = (row.get("ugts") or "").strip()
+        zonas = ALL_ZONAS if zonas_field == "TODAS" else [z.strip() for z in zonas_field.split(",") if z.strip()]
+
+        if row.get("tipo") == "electoral":
+            fecha_str = (row.get("fecha") or "").strip()
+            if not fecha_str:
+                continue
+            try:
+                fecha = datetime.strptime(fecha_str, "%Y-%m-%d").date()
+            except ValueError:
+                continue
+            if fecha < today:
+                continue
+            tipo = "electoral"
+        else:
+            inicio = (row.get("inicio_mes_dia") or "").strip()
+            if not inicio:
+                continue
+            fecha = next_occurrence(inicio, today)
+            tipo = "fecha_critica"
+
+        if (fecha - today).days > horizon_days:
+            continue
+
+        key = (fecha.isoformat(), row.get("evento"))
+        if key not in entries_by_key:
+            entries_by_key[key] = {
+                "evento": row.get("evento"),
+                "tipo": tipo,
+                "criticidad": row.get("criticidad") or None,
+                "fecha": fecha.isoformat(),
+                "dias_restantes": (fecha - today).days,
+                "evidencia_historica": row.get("evidencia_historica") or None,
+                "fuente": row.get("fuente") or None,
+                "fuente_url": row.get("fuente_url") or None,
+                "zonas": [],
+            }
+        for z in zonas:
+            if z in ALL_ZONAS and z not in entries_by_key[key]["zonas"]:
+                entries_by_key[key]["zonas"].append(z)
+
+    return sorted(entries_by_key.values(), key=lambda e: e["fecha"])
+
+
+def build_eventos_historicos(rows):
+    """Historial de eventos de protesta/paro/bloqueo ya ocurridos, uno por
+    incidente real (no agregado), con fuente publica verificable. Viene de
+    FRM01 (mismo formulario de monitoreo que score_yanacocha.py), filtrado a
+    Categoria == 'Protestas, Paros y Bloqueos'. A diferencia de las fechas
+    criticas futuras, aqui la fuente es obligatoria: si un evento no tiene
+    fuente_url, el equipo de ML ya lo excluyo de la pestana."""
+    out = []
+    for row in remap_rows(rows, field="ugt"):
+        fecha = (row.get("fecha") or "").strip()
+        if not fecha:
+            continue
+        out.append({
+            "fecha": fecha,
+            "zona_id": row["ugt"],
+            "evento": row.get("evento") or None,
+            "tipo": row.get("tipo") or None,
+            "severidad": row.get("severidad") or None,
+            "fuente_url": row.get("fuente_url") or None,
+        })
+    out.sort(key=lambda e: e["fecha"], reverse=True)
+    return out
+
+
+ACTORES_CRITICOS_CARGA = "2026-07-16"  # catalogo estatico, no se recalcula en cada export
+
+FECHA_TOKEN_RE = re.compile(r"(\d{1,2})\.(\d{1,2})(?:\.(\d{2,4}))?")
+
+
+def parse_ultima_mencion(fechas_mencion_raw):
+    """fechas_mencion es texto libre semi-estructurado (ej. '12.05-26.05.25
+    (Ley Soto); periodo 22.07-11.08.25 (disputa...)'), no una lista de fechas
+    limpia. Cada entrada separada por ';' puede ser una fecha unica o un
+    rango 'dd.mm-dd.mm.aa' donde solo la fecha final trae el anio. Se toma
+    el ultimo token dd.mm.aa de cada entrada (el que sí trae anio) y se
+    devuelve la fecha maxima entre todas las entradas. Si no se puede
+    determinar con confianza (sin anio en ningun token), se devuelve None
+    en vez de adivinar."""
+    if not fechas_mencion_raw:
+        return None
+    candidatos = []
+    for entry in fechas_mencion_raw.split(";"):
+        tokens = FECHA_TOKEN_RE.findall(entry)
+        if not tokens:
+            continue
+        dd, mm, yy = tokens[-1]
+        if not yy:
+            continue
+        anio = int(yy)
+        anio = 2000 + anio if anio < 100 else anio
+        try:
+            candidatos.append(date(anio, int(mm), int(dd)))
+        except ValueError:
+            continue
+    if not candidatos:
+        return None
+    return max(candidatos).isoformat()
+
+
+def build_actores_criticos(rows):
+    """Actores (alcaldes, dirigentes, voceros, funcionarios) con historial de
+    protagonismo en la conflictividad social, extraidos de 32 reportes
+    quincenales internos. Es contexto informativo -- NO una senal validada
+    del modelo -- y un catalogo ESTATICO (ACTORES_CRITICOS_CARGA), no
+    monitoreo en vivo. Ya viene filtrado a cargos publicos/organizacionales;
+    ciudadanos privados citados una sola vez se excluyeron a proposito."""
+    out = []
+    for row in rows:
+        nombre = (row.get("nombre") or "").strip()
+        if not nombre:
+            continue
+        out.append({
+            "nombre": nombre,
+            "cargo_o_rol": row.get("cargo_o_rol") or None,
+            "distrito_o_zona": row.get("distrito_o_zona") or None,
+            "n_apariciones": int(to_float(row.get("n_apariciones"), 0)),
+            "ultima_mencion_aprox": parse_ultima_mencion(row.get("fechas_mencion")),
+            "contexto_resumen": row.get("contexto_resumen") or None,
+        })
+    out.sort(key=lambda a: (a["ultima_mencion_aprox"] or "", a["n_apariciones"]), reverse=True)
+    return out
 
 
 def latest_features_by_zona(features_historicas):
@@ -281,7 +451,90 @@ def build_serie_tiempo(scoring_modelo, features_historicas):
     return con_ewm(out)
 
 
-def build_zonas(scoring_modelo, calendario_criticidad, latest_features, proximas, zonas_meta):
+MESES_ES = {
+    "enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6,
+    "julio": 7, "agosto": 8, "septiembre": 9, "setiembre": 9, "octubre": 10,
+    "noviembre": 11, "diciembre": 12,
+}
+
+
+def parse_periodo_electoral(periodo):
+    """'15 julio-5 agosto 2026' / '6-20 agosto 2026' / '4 octubre 2026' ->
+    (fecha_inicio, fecha_fin). None si el periodo no trae una fecha fija
+    (ej. 'Segunda eleccion regional, si corresponde')."""
+    s = (periodo or "").strip()
+    m = re.match(r"^(\d{1,2})\s+([A-Za-zñÑ]+)\s*[–-]\s*(\d{1,2})\s+([A-Za-zñÑ]+)\s+(\d{4})$", s)
+    if m:
+        d1, mes_a, d2, mes_b, anio = m.groups()
+        ma, mb = MESES_ES.get(mes_a.lower()), MESES_ES.get(mes_b.lower())
+        if ma and mb:
+            return date(int(anio), ma, int(d1)), date(int(anio), mb, int(d2))
+    m = re.match(r"^(\d{1,2})\s*[–-]\s*(\d{1,2})\s+([A-Za-zñÑ]+)\s+(\d{4})$", s)
+    if m:
+        d1, d2, mes, anio = m.groups()
+        mo = MESES_ES.get(mes.lower())
+        if mo:
+            return date(int(anio), mo, int(d1)), date(int(anio), mo, int(d2))
+    m = re.match(r"^(\d{1,2})\s+([A-Za-zñÑ]+)\s+(\d{4})$", s)
+    if m:
+        d, mes, anio = m.groups()
+        mo = MESES_ES.get(mes.lower())
+        if mo:
+            dt = date(int(anio), mo, int(d))
+            return dt, dt
+    return None
+
+
+# Palabras clave de "zonas_prioritarias" (texto libre con nombres de lugar,
+# no codigos UGT) que mapean a cada zona del dashboard segun su provincia.
+ZONA_KEYWORDS = {
+    "UGT1": ["cajamarca", "baños del inca", "banos del inca"],
+    "UGT2": ["celendín", "celendin", "bambamarca", "hualgayoc"],
+}
+ZONA_KEYWORDS_AMPLIAS = ["regional", "todos los distritos", "capitales provinciales"]
+
+
+def zonas_para_prioritarias(texto):
+    t = (texto or "").lower()
+    zonas = set()
+    for zona_id, palabras in ZONA_KEYWORDS.items():
+        if any(p in t for p in palabras):
+            zonas.add(zona_id)
+    if any(p in t for p in ZONA_KEYWORDS_AMPLIAS):
+        zonas.update(ALL_ZONAS)
+    if not zonas:
+        zonas.update(ALL_ZONAS)  # texto no reconocido: no perder la alerta, mostrar en todas
+    return zonas
+
+
+def build_alertas_electorales(rows, today):
+    """Para cada zona, la fase electoral vigente hoy (si hay alguna con
+    fecha fija que la cubra). Es guia operativa (cronograma JNE + informes
+    Defensoria del Pueblo), no un patron probado contra el historial de
+    incidentes -- se expone aparte de accion_recomendada, no se mezcla."""
+    por_zona = {z: None for z in ALL_ZONAS}
+    for row in rows:
+        rango = parse_periodo_electoral(row.get("periodo"))
+        if not rango:
+            continue
+        inicio, fin = rango
+        if not (inicio <= today <= fin):
+            continue
+        zonas = zonas_para_prioritarias(row.get("zonas_prioritarias"))
+        alerta = {
+            "fase": row.get("fase"),
+            "periodo": row.get("periodo"),
+            "riesgo": row.get("riesgo"),
+            "accion_recomendada": row.get("accion_recomendada"),
+            "fuente": row.get("fuente") or None,
+        }
+        for z in zonas:
+            if z in por_zona:
+                por_zona[z] = alerta
+    return por_zona
+
+
+def build_zonas(scoring_modelo, calendario_criticidad, latest_features, proximas, zonas_meta, alertas_electorales):
     meta_by_id = {row["zona_id"]: row for row in zonas_meta if row.get("zona_id")}
 
     # ultimo score por zona (track modelo)
@@ -326,6 +579,7 @@ def build_zonas(scoring_modelo, calendario_criticidad, latest_features, proximas
             "dias_desde_ultima_protesta": to_float(feat.get("dias_desde_ultima_protesta")),
             "racha_semanas_protesta": to_float(feat.get("racha_semanas_protesta")),
             "proxima_fecha_critica": proximas.get(z),
+            "alerta_electoral": alertas_electorales.get(z),
         }
         if z in MODELO_ZONAS:
             cur = latest_score.get(z)
@@ -364,17 +618,24 @@ def build_zonas(scoring_modelo, calendario_criticidad, latest_features, proximas
 
 def main():
     scoring_modelo = remap_rows(fetch_tab("scoring_modelo"))
-    scoring_separadas = remap_ugts_field(fetch_tab("scoring_separadas"))
+    calendario_eventos = remap_ugts_field(fetch_tab("calendario_criticidad_eventos"))
     features_historicas = remap_rows(fetch_tab("features_historicas"))
     calibracion_modelo = fetch_tab("calibracion_modelo")  # agregado por nivel, no por zona
-    calendario_criticidad = remap_rows(fetch_tab("calendario_criticidad"))
+    senales_separado = remap_rows(fetch_tab("senales_semanales_separado"))  # queda vacia (UGT sin modelo, ya eliminadas)
+    alertas_electorales_raw = fetch_tab("alertas_electorales_2026")  # zonas_prioritarias es texto libre, no se remapea por ugt
     zonas_meta = remap_rows(fetch_tab("zonas_meta"), field="zona_id")
+    eventos_historicos_raw = fetch_csv_by_name("eventos_historicos")
+    actores_criticos_raw = fetch_csv_by_name("actores_criticos")
 
     today = date.today()
     latest_features = latest_features_by_zona(features_historicas)
-    proximas = compute_proxima_fecha_critica(scoring_separadas, today)
+    proximas = compute_proxima_fecha_critica(calendario_eventos, today)
+    calendario_fechas_criticas = compute_calendario_fechas_criticas(calendario_eventos, today)
+    alertas_electorales = build_alertas_electorales(alertas_electorales_raw, today)
     serie_tiempo = build_serie_tiempo(scoring_modelo, features_historicas)
-    zonas = build_zonas(scoring_modelo, calendario_criticidad, latest_features, proximas, zonas_meta)
+    zonas = build_zonas(scoring_modelo, senales_separado, latest_features, proximas, zonas_meta, alertas_electorales)
+    eventos_historicos = build_eventos_historicos(eventos_historicos_raw)
+    actores_criticos = build_actores_criticos(actores_criticos_raw)
 
     fechas_scoring = [r["fecha_scoring"] for r in scoring_modelo if r.get("fecha_scoring")]
     semanas = [r["semana"] for r in scoring_modelo if r.get("semana")]
@@ -392,14 +653,19 @@ def main():
     data = {
         "meta": {
             "generado_en": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "fuente": f"Google Sheets {SHEET_ID} (scoring_modelo, scoring_separadas, "
-                      f"features_historicas, calibracion_modelo, calendario_criticidad)",
+            "fuente": f"Google Sheets {SHEET_ID} (scoring_modelo, calendario_criticidad, "
+                      f"features_historicas, calibracion_modelo, alertas_electorales_2026, "
+                      f"eventos_historicos, actores_criticos)",
             "fecha_scoring_mas_reciente": max(fechas_scoring) if fechas_scoring else None,
             "semana_mas_reciente": max(semanas) if semanas else None,
+            "actores_criticos_actualizado": ACTORES_CRITICOS_CARGA,
         },
         "zonas": zonas,
         "serie_tiempo": serie_tiempo,
         "calibracion_modelo": calibracion,
+        "calendario_fechas_criticas": calendario_fechas_criticas,
+        "eventos_historicos": eventos_historicos,
+        "actores_criticos": actores_criticos,
     }
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)

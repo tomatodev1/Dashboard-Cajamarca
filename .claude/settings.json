@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import ast; ast.parse\\(open\\('scripts/export_sheet.py', encoding='utf-8'\\).read\\(\\)\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(node -e ' *)",
+      "Bash(node --check /tmp/check.js)",
+      "Bash(pkill -f \"http.server 8010\")",
+      "Bash(pkill -f \"http.server 8011\")",
+      "Bash(python -c ' *)",
+      "Bash(pkill -f \"http.server 8012\")",
+      "Bash(pkill -f \"http.server 8013\")",
+      "Bash(pkill -f \"http.server 8014\")",
+      "Bash(pkill -f \"http.server 8015\")",
+      "Bash(pkill -f \"http.server 8016\")",
+      "Bash(pkill -f \"http.server 8017\")",
+      "Bash(pkill -f \"http.server 8018\")",
+      "Bash(pkill -f \"http.server 8019\")",
+      "Bash(pkill -f \"http.server 8020\")",
+      "Bash(pkill -f \"http.server 8021\")",
+      "Bash(pkill -f \"http.server 8022\")",
+      "Bash(pkill -f \"http.server 8023\")",
+      "Bash(pkill -f \"http.server 8024\")",
+      "Bash(pkill -f \"http.server 8025\")",
+      "Bash(pkill -f \"http.server 8026\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\OPERAD_01\\AppData\\Local\\Temp\\claude\\c--proyectos-dashboard-dashboard-cajamarca\\b30b8747-4cd6-42b1-9987-0f6bba09d7b5\\scratchpad"
+    ]
+  }
+}

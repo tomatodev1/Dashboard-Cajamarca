@@ -1,15 +1,16 @@
 {
   "meta": {
-    "generado_en": "2026-07-14T23:18:54Z",
-    "fuente": "Google Sheets 1Jb8eP7XTAlxj2S2nFc9jZ_j5C9Hj59EqOZF9VE9SRuo (scoring_modelo, scoring_separadas, features_historicas, calibracion_modelo, calendario_criticidad)",
-    "fecha_scoring_mas_reciente": "2026-07-14T17:48:11",
-    "semana_mas_reciente": "2026-07-12"
+    "generado_en": "2026-07-16T18:45:07Z",
+    "fuente": "Google Sheets 1Jb8eP7XTAlxj2S2nFc9jZ_j5C9Hj59EqOZF9VE9SRuo (scoring_modelo, calendario_criticidad, features_historicas, calibracion_modelo, alertas_electorales_2026, eventos_historicos, actores_criticos)",
+    "fecha_scoring_mas_reciente": "2026-07-16T13:31:02",
+    "semana_mas_reciente": "2026-07-12",
+    "actores_criticos_actualizado": "2026-07-16"
   },
   "zonas": [
     {
       "zona_id": "UGT1",
       "track": "modelo",
-      "nombre": "UGT1 (Proyecto WTP / BECHTL)",
+      "nombre": "UGT1 (Proyecto WTP / BECHTEL)",
       "provincia": "Cajamarca",
       "descripcion": null,
       "accion_recomendada": null,
@@ -21,16 +22,26 @@
       "dias_desde_ultima_protesta": 15.0,
       "racha_semanas_protesta": 0.0,
       "proxima_fecha_critica": {
-        "evento": "Sorteo de miembros de mesa",
-        "tipo": "electoral",
-        "criticidad": null,
-        "fecha": "2026-07-26"
+        "evento": "Defensa del cerro Quilish",
+        "tipo": "fecha_critica",
+        "criticidad": "alta",
+        "fecha": "2026-09-02",
+        "evidencia_historica": "evidencia_moderada",
+        "fuente": "contexto_dashboard",
+        "fuente_url": null
+      },
+      "alerta_electoral": {
+        "fase": "Inscripción y admisión de listas",
+        "periodo": "15 julio–5 agosto 2026",
+        "riesgo": "Medio",
+        "accion_recomendada": "Seguimiento diario de resoluciones y redes políticas",
+        "fuente": "https://www.gob.pe/institucion/jne/informes-publicaciones/8055863-cronograma-electoral-de-las-elecciones-regionales-y-municipales-2026"
       },
       "prob_actual": 0.4097467593491993,
       "prob_original": 0.8384160117734062,
       "nivel_riesgo": "MEDIO",
       "semana": "2026-07-12",
-      "tendencia_delta": -0.1163
+      "tendencia_delta": -0.003
     },
     {
       "zona_id": "UGT2",
@@ -47,16 +58,26 @@
       "dias_desde_ultima_protesta": 13.0,
       "racha_semanas_protesta": 0.0,
       "proxima_fecha_critica": {
-        "evento": "Día central Virgen del Carmen (Bambamarca)",
+        "evento": "Aniversario del inicio del paro indefinido contra Conga (2011)",
         "tipo": "fecha_critica",
-        "criticidad": "muy_alta",
-        "fecha": "2026-07-16"
+        "criticidad": "alta",
+        "fecha": "2026-11-24",
+        "evidencia_historica": "evidencia_fuerte",
+        "fuente": "modelo",
+        "fuente_url": null
+      },
+      "alerta_electoral": {
+        "fase": "Inscripción y admisión de listas",
+        "periodo": "15 julio–5 agosto 2026",
+        "riesgo": "Medio",
+        "accion_recomendada": "Seguimiento diario de resoluciones y redes políticas",
+        "fuente": "https://www.gob.pe/institucion/jne/informes-publicaciones/8055863-cronograma-electoral-de-las-elecciones-regionales-y-municipales-2026"
       },
       "prob_actual": 0.4251638078224641,
       "prob_original": 0.9153392463477408,
       "nivel_riesgo": "MEDIO",
       "semana": "2026-07-12",
-      "tendencia_delta": -0.0015
+      "tendencia_delta": 0.0
     }
   ],
   "serie_tiempo": [
@@ -1342,13 +1363,13 @@
     },
     {
       "zona_id": "UGT1",
-      "fecha_scoring": "2026-07-14T16:24:27",
+      "fecha_scoring": "2026-07-16T13:31:02",
       "semana": "2026-07-12",
-      "prob": 0.4097467593491993,
-      "prob_original": 0.8384160117734062,
+      "prob": 0.41270428173395673,
+      "prob_original": 0.8566737661249996,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
-      "prob_suavizado": 0.480126
+      "prob_suavizado": 0.481605
     },
     {
       "zona_id": "UGT2",
@@ -2632,10 +2653,10 @@
     },
     {
       "zona_id": "UGT2",
-      "fecha_scoring": "2026-07-14T16:24:27",
+      "fecha_scoring": "2026-07-16T13:31:02",
       "semana": "2026-07-12",
       "prob": 0.4251638078224641,
-      "prob_original": 0.9153392463477408,
+      "prob_original": 0.9153392463477407,
       "nivel": "MEDIO",
       "origen": "scoring_modelo",
       "prob_suavizado": 0.421625
@@ -2661,6 +2682,1822 @@
       "nivel": "ALTO",
       "n": 35,
       "tasa_acierto": 1.0
+    }
+  ],
+  "calendario_fechas_criticas": [
+    {
+      "evento": "Defensa del cerro Quilish",
+      "tipo": "fecha_critica",
+      "criticidad": "alta",
+      "fecha": "2026-09-02",
+      "dias_restantes": 48,
+      "evidencia_historica": "evidencia_moderada",
+      "fuente": "contexto_dashboard",
+      "fuente_url": null,
+      "zonas": [
+        "UGT1"
+      ]
+    },
+    {
+      "evento": "Aniversario del inicio del paro indefinido contra Conga (2011)",
+      "tipo": "fecha_critica",
+      "criticidad": "alta",
+      "fecha": "2026-11-24",
+      "dias_restantes": 131,
+      "evidencia_historica": "evidencia_fuerte",
+      "fuente": "modelo",
+      "fuente_url": null,
+      "zonas": [
+        "UGT1",
+        "UGT2"
+      ]
+    },
+    {
+      "evento": "Día del Trabajo (marchas sindicales)",
+      "tipo": "fecha_critica",
+      "criticidad": "media_alta",
+      "fecha": "2027-05-01",
+      "dias_restantes": 289,
+      "evidencia_historica": "evidencia_moderada",
+      "fuente": "modelo",
+      "fuente_url": null,
+      "zonas": [
+        "UGT1",
+        "UGT2"
+      ]
+    },
+    {
+      "evento": "Día del Campesino",
+      "tipo": "fecha_critica",
+      "criticidad": "media_alta",
+      "fecha": "2027-06-24",
+      "dias_restantes": 343,
+      "evidencia_historica": "evidencia_fuerte",
+      "fuente": "modelo",
+      "fuente_url": null,
+      "zonas": [
+        "UGT1",
+        "UGT2"
+      ]
+    },
+    {
+      "evento": "Día de la Dignidad Cajamarquina",
+      "tipo": "fecha_critica",
+      "criticidad": "alta",
+      "fecha": "2027-06-30",
+      "dias_restantes": 349,
+      "evidencia_historica": "evidencia_fuerte",
+      "fuente": "modelo",
+      "fuente_url": null,
+      "zonas": [
+        "UGT1"
+      ]
+    },
+    {
+      "evento": "Aniversario de fallecidos en protestas contra Conga (2012)",
+      "tipo": "fecha_critica",
+      "criticidad": "muy_alta",
+      "fecha": "2027-07-03",
+      "dias_restantes": 352,
+      "evidencia_historica": "evidencia_moderada",
+      "fuente": "modelo",
+      "fuente_url": null,
+      "zonas": [
+        "UGT2",
+        "UGT1"
+      ]
+    }
+  ],
+  "eventos_historicos": [
+    {
+      "fecha": "2026-07-16",
+      "zona_id": "UGT2",
+      "evento": "Rondas exigen mantener lucha contra la minería ilegal",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/2390076558188561/?__cft__[0]=AZb63tu2iv7IjPvMev55QMOswgoYB0v3gb5WCLS7tAxwY82ejb6eEua4NQYhrWU57M4BX6KkbM7MR6gV6fC3zu4k5XoCHoZ6O6QU1s36ykyExWEFYwNBMn1SeYWZ4TvwjFUjs-m-sTItD8Y9P9CmJEtMzge0bB8wFKSZqCsz9PiPfh21F19v289FHnRCNwvca2LJ3DzEOEsw2UfCYYNLm31n&__tn__=%2CO%2CP*x-R"
+    },
+    {
+      "fecha": "2026-07-14",
+      "zona_id": "UGT2",
+      "evento": "Reportan tensiones por conflicto social en Bambamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/elqui.herrera.cabanillas.2025/posts/pfbid031rQ3fcjSYgUGuPkzt2cjywmFkCNDRzEZjQDSfMoWxpZeteQxf7uKc2GdqmjnBstDl?__cft__[0]=AZY4iwpGG2Uz_sE9PWifWJjaObf_-IElGFsUxbCCtjgsRKeg9nyS4kQk8-PDNlXRdJgz-sLAJo7OgXoSQY3Jio_r5HtIlcRsPajRqfh0IuAEbNUN1JNfS2oYq0XZo8lYzLuWsgqFbxo2Bgd7DeC7i5wMOUOvy5_-yjWHb_ulKA6oHf5jsgsCwrYcKRBtt0uC-7M&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-07-10",
+      "zona_id": "UGT1",
+      "evento": "Persiste rechazo al proyecto Colpayoc",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/5a6og"
+    },
+    {
+      "fecha": "2026-07-10",
+      "zona_id": "UGT1",
+      "evento": "Dirigentes anuncian movilización por proyecto de agua y desagüe",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/Continente820/videos/1711358463434604/?__tn__=%2CO"
+    },
+    {
+      "fecha": "2026-06-23",
+      "zona_id": "UGT1",
+      "evento": "Ronderos exigen informe sobre avance de carretera Otuzco Combayo",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/1353053753587544/?__cft__[0]=AZaOXeaePNYwzWhD9xdX9yHTtfLuoQ3-x2uwnRzvxQvCURsfTuUqlrCRdpCL5jDJ3BXyniqqYTscpwoB6-gosLb5JiwRS7A9LK35Fl33Jq-eGG396DswHM5A3v5v7uEKWIEtWX312QPuihj-I2SzgnFg9S-fwSz8FTtTlz2EkJuLpU4sB2LtAntetkwI50NNvFzlNZrcAACRp92lgmdJPUXy&__tn__=%2CO%2CP*x-R"
+    },
+    {
+      "fecha": "2026-06-23",
+      "zona_id": "UGT1",
+      "evento": "CGTP realiza protesta en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/diarioelcajamarquino/videos/2015952852355276/?__cft__[0]=AZZTOVCma20CBj0xbuyocFUfoRQHOyW8UwGUxEC2UQ_mqBDnIJdWLO5ronBJZ6Vm1KuFxZJyfWSx1Q7PWEMA5zu5qMb7otdDFUjA7ZUm6v2LDi7ZLZqy6449CfaEsAN8jV4OY5NIP-ULmzAyKPm6obvaOS6fnIvwqzFPRXWhYm6a1EpQUhQbrstdVgN3jWQt-F2oRnQZUr2k59Ba3DMLPWFt&__tn__=%2CO%2CP*x-R"
+    },
+    {
+      "fecha": "2026-06-23",
+      "zona_id": "UGT2",
+      "evento": "Pobladores denuncian daños por tránsito de minería ilegal en Huasmín",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/NoticiasconElerAlcantara/posts/pfbid02iFGiG63rnUvrQgoVGT7xzJfCL39ZNuxdPi4AJbag8NkS8EudF9jYpsLpunUEW8fnl?__cft__[0]=AZbYO5UvslIhi9vZnLTLQrUws_WHrrMtp5b82YSsaeiUJPPMcMjYDxYEtKJf2PTpsY2saJQDkline5W7jMArKtqgnwTjJjEKVGsbDjRvNM4dwR1wrZh7RnZkHiws_rY-WncfNPBfr7B2f6OkeepTHDAOKoKx6rkQlS3KW0uNzZ2D3g&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-06-22",
+      "zona_id": "UGT1",
+      "evento": "Pobladores de Combayo exigen informe sobre carretera Otuzco Combayo",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://short.do/9RtCYP"
+    },
+    {
+      "fecha": "2026-06-19",
+      "zona_id": "UGT1",
+      "evento": "Pobladores de Pajuela realizan plantón contra Yanacocha",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/1006026575487878/?__cft__[0]=AZZQtpO5y8XWJuYa9OcJoiT_QS97bCfTcfM7_TCTtdI1D1dlHUEzQu9mvE72m3ZNKJpU3-g85RLNXJh-ZwoCtFfgPphIGLr-dEMqPAa4fRyqQrL88GKL-jGOr2zIEeg4gBYegSoIx-UbM2_2H-TN4Mqzr1wls55_ugM-QsWbyzd_LqkTft4c4zQXSppWxtQWqa1LtgpaRUyN0DuTRr4x8PE6&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-06-18",
+      "zona_id": "UGT1",
+      "evento": "Inicia paro de 48 horas de trabajadores del Ministerio Público",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/diarioelcajamarquino/videos/1650697282701328/?__cft__[0]=AZYqIT5KqnrFkXInPWM6pDc518nDRyiBkPIKtr5ITWwcvzm283Pg0dw0WFmn5Zpu2p3MYUGA5R2Jj-9zGo8JnVvLmJZgaWNTtn7xlD9QdOGk7DMKvZYquXO0fixnD_fw7OUzIb_YYT7LXBFGmyc5uBQTm0pdLLzbqSs-I6Rg9olQYzdALjarT-JPhuzF8txN7GkmaHC-W3BmrfrmEus4UQmA&__tn__=%2CO%2CP*x-R"
+    },
+    {
+      "fecha": "2026-06-18",
+      "zona_id": "UGT2",
+      "evento": "Pobladores realizan plantón por obra paralizada del canal El Toro",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/1450036063595677/?__cft__[0]=AZYNwK4vgwVyR8-vL-1DzPQgmlqffvXm0MIB8VcyCiTM5a9v6M-6wQdRI3IuEvcrmaWIzq-ZKamoQKATfIx6mrsF2dCoXfBnKNHVjE3PzPzHwPgEtnE1sRS1VYah076di4znLdNuXdrbZxthu38dRLCDujiRcw9xh8mCcBYIz5ULyOAmQn-iXwS0ph2l_Pz3wAxmc9IKaIFtsCmc6MzE9COq&__tn__=%2CO%2CP*x-R"
+    },
+    {
+      "fecha": "2026-06-16",
+      "zona_id": "UGT2",
+      "evento": "Juntos por el Perú convoca vigilia y movilización en Bambamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02NG18JtRPRjvgG8gGW5VuPdMgYDRptui1MhBCWBCzUk4bq4hmtNW7g72H1dAy8cWvl&id=100064383774051&__cft__[0]=AZYr9S325fvoMue67dQN1ulrBVVQh2fxwuF-QJaqH8c3AEblPCmyam4JLPOI_aupA8zpOn3_uPJCPmjaHWELDbo7NroIEFpQAbTxFqFCLTXtoppv1qRCGA1QP_0c0lROO7p-ne-_PV5AR0bZF8aUCOdHsFKX3gxfI2ZhoomMHoDsYf656P_Ye1T07FS6giLSilFODlZBryBO9XNgZqwkd0vD&__tn__=%2CO*F"
+    },
+    {
+      "fecha": "2026-06-16",
+      "zona_id": "UGT1",
+      "evento": "Pobladores de Combayo exigen ejecución de proyecto de agua potable",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/yvt5k"
+    },
+    {
+      "fecha": "2026-06-08",
+      "zona_id": "UGT1",
+      "evento": "Poblador se encadena exigiendo proyecto de agua potable para Combayo",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/881722884949683/?__cft__[0]=AZaFDtAeoO4CywLG7f-HVPkhg25TJlynkuxCiJm5i5dRN5X-z0mKiezk4HnU9mzjdfM9qN16T9zYJEQTrbdyi0HrkCJiHWkvBwCUPeJzUg7MD58K7jTGxJfsCbCCM-D-cuU6q68seV8b-mlaw7UgtoIIFotLYZV-RbUyd1KdxploDDmRGEX8cGGyhwBJdbgsUyg&__cft__[1]=AZaFDtAeoO4CywLG7f-HVPkhg25TJlynkuxCiJm5i5dRN5X-z0mKiezk4HnU9mzjdfM9qN16T9zYJEQTrbdyi0HrkCJiHWkvBwCUPeJzUg7MD58K7jTGxJfsCbCCM-D-cuU6q68seV8b-mlaw7UgtoIIFotLYZV-RbUyd1KdxploDDmRGEX8cGGyhwBJdbgsUyg&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-06-08",
+      "zona_id": "UGT1",
+      "evento": "Combayo exige financiamiento para proyecto de agua potable",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/v7mse"
+    },
+    {
+      "fecha": "2026-06-08",
+      "zona_id": "UGT1",
+      "evento": "Pobladores de Combayo protestan exigiendo acceso a agua potable",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/diarioelcajamarquino/videos/2741446129581718/?__cft__[0]=AZbzPVBoQcWXzppBOAjqq6G674uP4ND2Ujl0c6ouRWc9jSzRV2E-Z3pH_AC3Oq0_9w764epk1Y7vwA7ctupYWxysnUnUBObqNmsS-TgRaWjcX-gDsnpWgi1zDHH5HQWpFmYE_VMUX-iIIM-vSu5uhRErqJptQr416VQHaTTDf-TdRm6MKI-spGF0QRVf_jPFsEw&__cft__[1]=AZbzPVBoQcWXzppBOAjqq6G674uP4ND2Ujl0c6ouRWc9jSzRV2E-Z3pH_AC3Oq0_9w764epk1Y7vwA7ctupYWxysnUnUBObqNmsS-TgRaWjcX-gDsnpWgi1zDHH5HQWpFmYE_VMUX-iIIM-vSu5uhRErqJptQr416VQHaTTDf-TdRm6MKI-spGF0QRVf_jPFsEw&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-06-05",
+      "zona_id": "UGT2",
+      "evento": "Comunidades rechazan actividades de IAMGOLD",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02ZEN5pYJjHKHMPHuhTXSizUXi4xDjg2hveV15XVC8AJueesEnctjJRs9AM8YcK32Ul&id=61580622211190&__cft__[0]=AZYLG9I0s269cvVGxfWy6fhl-vzzE2TDEoy0ATDUNbTs0JhP4JOxuyNt9bUWDFSJJAGVR0e0tGwU1Bawyv-WFPQeBBxCSJn3PypXo67HN6afIzRUOLindSnkR6M8gfbMlZk9q7TOMjtCKW6FUG6geGDuEpZhsHb4amElNnyz5nh_O4m1KXPrnFkAgOYYKOkLEUdCkp6X-S3B0u3Q3NKFkKfP&__tn__=%2CO%2CP*x-R"
+    },
+    {
+      "fecha": "2026-06-03",
+      "zona_id": "UGT2",
+      "evento": "Dirigentes anuncian medidas de protesta contra Gold Fields",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.tiktok.com/@bambamarcatv/video/7647343156198952213?_r=1&_t=ZS-96v96nFOD3M"
+    },
+    {
+      "fecha": "2026-06-01",
+      "zona_id": "UGT1",
+      "evento": "Pobladores exigen transferencia de recursos al Gobierno Regional",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n8n.to/pPET"
+    },
+    {
+      "fecha": "2026-05-29",
+      "zona_id": "UGT1",
+      "evento": "CGTP anuncia movilización contra la corrupción y respaldo a Roberto Sánchez en segunda vuelta",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/786838251061158/?__cft__[0]=AZbCvfqJGIMhkdcogFuAAh85nP2NdRDovDRjuCjiNfQiPt3Pmz2KjkJz_xraw_93GlSjq7h5nZn0MHp7U3vutzFamBQBdxv6YKy5vzTWiF0OV7fb8UGhNR78OUr2o9a9cdYFAKMJts7zUIKAhabfHt5Y39xgJg-hI9SDDC4Qx_BugPC9SSjpwy5abh0yZRpcJcg9zN4z_iLd1EyCCGCV2qqr&__tn__=%2CO%2CP*x-R"
+    },
+    {
+      "fecha": "2026-05-25",
+      "zona_id": "UGT1",
+      "evento": "Combayo protesta por ejecución de proyecto de agua",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://n9.cl/vg34x"
+    },
+    {
+      "fecha": "2026-05-21",
+      "zona_id": "UGT1",
+      "evento": "Trabajadores del Hospital Regional exigen homologación remunerativa",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/nhmmo"
+    },
+    {
+      "fecha": "2026-05-21",
+      "zona_id": "UGT1",
+      "evento": "Agricultores exigen financiamiento para presa Chonta",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/bambamarcaaldia/posts/pfbid02G9iAGCfyQgTfuSn4r4qzKwPBToySqoKgKYzKuttYoYmvcvEbBzmFfBzsuktU6bqkl?__cft__[0]=AZZDPHPA8Huwp4WylIxFnkJUBcGmzmtdKEDK92--kqXKqlLyvbvd4dhWO33Sr7f3z_d7FmbS2Ep3-mbSXCWGdSFoAIfo4b2Hzmg9tKDUqB_hulTSrh6L-lGjB-F_HLgC3dYY42Gs9qU3BBtnIRztoU7wGg1x2NrwaVjlNd50loTyAA&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-05-06",
+      "zona_id": "UGT2",
+      "evento": "Ronderos retienen maquinaria por presunta mineria ilegal en Hualgayoc",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02n6UEJCa6GxWV6uAGP8WDQytx3f2jfZFnUiuvSvBoTZAx7gnUbwdC7M4f49cqVsuYl&id=100083450016420&__cft__[0]=AZZNBTUd3dUqZ9tYHYsLO7hllOGoKVWbLHa-VkeuRdz5HwFuP8nBKjP_bqilbPLuGw6rjcnk6VpDVa9AsmBrRjf3MhMobIn-XxXfRGsj0CgpfSKBaWZbdrAN8pTjxFtl35Rbo_003Fp8kQgyCPp4zuEdhF29pexAAzkMpeOkdrMu78uV4EasX5lJa8GcuqajH3uqxL0CEwrlsdSnLWxsDnzr&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-05-06",
+      "zona_id": "UGT1",
+      "evento": "Sutep evalua protesta por deuda social en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/1631975821369222/?__cft__[0]=AZZk9jqyug1GccPZjTD4CNuvJYtHhDccbrf6ofz2fjLGlc4-wMnak0b-vaE8I1gVcAiJPgC_IdVMOQhUy5rWS2CWxt7axJYT_9sgu6j0fTmNBQWuKZEIQAlqVMuBDMW2hvrD7FRgWBdnHHCp-jmH3z1tfvFCHhy0xgSgHOK4V0NmkoZeD_Aoky0kl5ME1VD1ttp_LSYEGu9aXcqUp4CsmEU4&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-04-30",
+      "zona_id": "UGT1",
+      "evento": "Trabajadores de Yanacocha exigen pago de cheques",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/1508225880937256"
+    },
+    {
+      "fecha": "2026-04-29",
+      "zona_id": "UGT1",
+      "evento": "Reclamos contra minera Yanacocha por retencion de pagos a trabajadores",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://n9.cl/0y7evl"
+    },
+    {
+      "fecha": "2026-04-27",
+      "zona_id": "UGT1",
+      "evento": "Usuarios protestan contra Yanacocha por presunta corrupcion y falta de transparencia",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://n9.cl/8rglo"
+    },
+    {
+      "fecha": "2026-04-27",
+      "zona_id": "UGT1",
+      "evento": "Usuarios de canales de riego protestan contra Yanacocha por uso de agua",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/watch/live/?v=746878491752025&rdid=EjhdGh80Mdm1SiFk"
+    },
+    {
+      "fecha": "2026-04-25",
+      "zona_id": "UGT1",
+      "evento": "Convocan movilizacion por defensa de manantiales en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02nN5fwtYTHEJzEqB914HK5Vh1zsxRXNwEY5MQ15xwtQBkiBBdrrMi4pjDKqV5jTdul&id=61580622211190&__cft__[0]=AZZhQoN-pYwP6cuFQmMzblWZm1C5iZ68WEJXc0nQcyQGNKTWL0HWd7MjVvCGS60x70ePbVGHmUT5B70pKdkSvRU3Q86qOs-FanIPz1BGiQHeQ1BtBqSefrL4o_dinAOBsMKNre1zCuW5ALLGS7l9vLOu2l6psaHU0QOActF5sARZqYgqmwh_xQefdghmzqQIgjF5v_B5XY9YtPVuXHmFV_ZA&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-04-24",
+      "zona_id": "UGT1",
+      "evento": "Transportistas dan plazo por cambios en gerencia de transportes",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/Caxamarcaaldia/videos/26683992814565483/?__cft__[0]=AZbUpn06Osir0bectK_ZoJZOs6uCkzT_GcgDYckOc9V2_R-cRskVPythrXmEg_sW53aNm5n9znS69fyNK82TZMPWFYh1cdqjATSCiK8qboo7LYULZm3OYUf4JmLz2iU21SpmZZxY3FqOf6lJ-zbfUuIhQ_Y6rRUC64LYCvFYhdGaSonRPNmsGihzImU_JsvdUI_j7kLKQqHU0Va-cCiZWYTp&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-04-21",
+      "zona_id": "UGT2",
+      "evento": "Exsubprefecto exige acciones frente a mineria ilegal en Hualgayoc",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/s9s8e"
+    },
+    {
+      "fecha": "2026-04-20",
+      "zona_id": "UGT2",
+      "evento": "Anuncian movilizacion en Bambamarca por respeto a elecciones 2026",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/61584753147950/videos/26894577136827833/?__cft__[0]=AZajJJKo1gXwsfu7YzgHNVVMp59uNZInXz3Stby5Ku8MVcKVGUcFrISIXbeuUVqTfLXjRXfdRjViPSTxmLs78ta5n4SzAusvcR7WuCfybNW_mcRv1Bhzh6mgRkPVJWYq7mDKPIV0r4Q-ZC_OtMLHojkwnL9cukFsEWDgYl5w_iWfqW67HhE__qeoDu-bk-LSblLTY1EOtFerBIOymP71VoWY&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-04-20",
+      "zona_id": "UGT1",
+      "evento": "Poblacion realiza planton por presunto fraude electoral",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/61584753147950/videos/1331267542181727/?__cft__[0]=AZa06c73lYeYyw0HgGz-W2Vtam2n0_ozBQl9jc4srJe8azKE6GfOXOmzsNf6T_aSjN5JUpXg7wPWgKm2GsMbdFxpDKjfcbfL65wzKduEqdrXdoGsruf9LFuPz2BLQwiBy3G3Mp9lwR1UjcF2DZcQsu-2Lxz_ftUWwopGMG-NJm62np3dTvCdstP-bcemQ4NVj6lvZiZqSFQRNIgnM7TIvv6j&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-04-17",
+      "zona_id": "UGT1",
+      "evento": "Transportistas bloquean via Cajamarca por alza de combustible",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://x.com/radiomaranon/status/2044815816420684233?s=20"
+    },
+    {
+      "fecha": "2026-04-16",
+      "zona_id": "UGT1",
+      "evento": "Transportistas bloquean carretera Cajamarca por alza de combustible",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://x.com/radiomaranon/status/2044815816420684233?s=20"
+    },
+    {
+      "fecha": "2026-04-16",
+      "zona_id": "UGT2",
+      "evento": "Pobladores bloquean carretera a Bambamarca por alza de pasajes",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/HablaCajamarcaNoticias/posts/pfbid02ubSehK3p9T4L9L5sY92VXbba9NZowLCoKxFzJ2xcHQLo8HKRRnj3zxMWZExpZ78xl?__cft__[0]=AZbuY5eRwGYE21pA9VklT5tYfxrN0BYdX62LGH6jxSIgLa5gYHKU6wTXkJRTmXZ-eSKT3Zr1NeuCdvji0UUnaIlB3qN9iOjs010B5N3Fe0h6uzD14_7JmaDYbaiARzE2DNomMpxAlqLRZVz90ZN9WixfEL02X0A5SJiYdhrdwrJAOv3PSu-ypu2aIVko14IFoOQxEjRX2N-HkPl3UjSAHJUV&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-04-15",
+      "zona_id": "UGT1",
+      "evento": "Transportistas no acataran paro convocado en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/cajamarcahoy/videos/1624685042133973/?__cft__[0]=AZbenjofS9IbgrS_QYiFP27tDEVvwso_Ztc9VKbjwmMN1xKx9qdvPL1OgNw9pHYH8nwoi4zpk1wpPUAcPBb90szKR6JFwf2v0OPpLef-0y4B-CnmjyuEau4ywJXCkpAh2q5TEbA6LLrr-QxO1q0rJUc2XBs9gQx5dc1AFPxII9TpNIl8jhvnXrdXj81th_Hfe9VtkvXXsOsNX9WVv6sWQmTy&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-04-14",
+      "zona_id": "UGT1",
+      "evento": "Convocan movilizacion en Cajamarca por alza de combustible",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/radiocampesinanoticias/posts/pfbid0Rx8RUE8GpiPDTi6eQ2D9ba6SrfdE5GrpFYxhnFrLEtVtjJNm99BrBhtKRHHwg3KKl?__cft__[0]=AZZINKVanLEkHFHrzc9WqVrb7F77dbqyrvTLLpbhyzHcNvxjmHhWf_n8c0BuMG-fJV-iCjJ3KSSKSSUSuZOo9uKqCsDDbOwRVlQcITTDRMvP5VVAm9PIbJQkOLsNzS-AtNikXpYn8gVeBsIqQaW41GPquGqj-_Aoqn8rvckiEPAwHXnbCwS6ms3P7gBt4H3QT9XaIlVFYR1gXsj751YYFtLA&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-28",
+      "zona_id": "UGT1",
+      "evento": "Cesantes y jubilados evalúan nueva medida de protesta nacional",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.tiktok.com/@cajamarca.noticiosa/video/7622341084051508500?_r=1&_t=ZS-954koEFREjU"
+    },
+    {
+      "fecha": "2026-03-26",
+      "zona_id": "UGT2",
+      "evento": "Comunidad rechaza proyecto minero por riesgo a fuentes de agua",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/bb3tz"
+    },
+    {
+      "fecha": "2026-03-25",
+      "zona_id": "UGT1",
+      "evento": "Pobladores de Huambocancha Alta advierten protestas por alza de pasajes",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/NoticiasImpactantesdeCajamarca/posts/pfbid02y6tVopvvWeVfXZZXe7TJXwc5T2NXh9HiqbBTtZ2TT6QW2kAWBXFo1SXhjkRyZGdul?__cft__[0]=AZbfsbuzxKMJR5F2uPx0JOggTNg7jGVZJCg4-RhGenGMQ1UEFWKnBcNXZDMpGtP5QRAXUENxFH75MVILER8wL-0tLaC9iBQmPhD_MwU0pSMrGaLk_Lv9QcKnixZMRkOBkXsELSdPbPY-KRb82wuXWua775qBLIjzb5tueQUzDqrdDIBkfClZP0bss1XYnLw1ySY&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-24",
+      "zona_id": "UGT1",
+      "evento": "Transportistas bloquean via Cajamarca a la costa por alza de combustible",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0354YCPGfcoS3tn27NdpPs6gcagUonjnYTZTXkLUbAmWWqAPnS8UHD8Pe41kRJLLZJl&id=100063522184247&__cft__[0]=AZY0t_zNq6t-S-TV2KVzXz9Cl_JZds3t85_dSnk7ZLHMcvrt_wxa0FLch2bDK48xbTTinIz9xUFH61jjtjXy91xKhpS68jsEECh_4mKGLunBVZBz6BzO1s0eJyZDumDBeL2u8Y5Hp8MLqsR48GXCSPMz2rPMfFrekPtT3A9TlfPCHoeFxapYc0QlLP7ttF8WYjU&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-23",
+      "zona_id": "UGT1",
+      "evento": "Yanacocha reafirma seguridad ante presiones de transportistas",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/PortafolioPeriodistico/posts/pfbid02ga8ejNUNWiuBvMjMwQTvE81oqXYK6oGSY5fSjCkUqSQEV66x1Li5AsdAXiPTfKNLl?__cft__[0]=AZaYL7SIYiFX3Y5YAfPEBi9gwUsYARIvvlkm8ElCUtuUwwoN8PfFNBw6CaJmHOtVag3KQJlIXqg-6dvSm9BsRPuF7J2VAjjwNFPkQurIzCUbUo2OdlHqkoWVV61Hc0XSkj6L-sL0VkaV5JNFiJpUe74KRlEOCKXG8EUqBL-HFVs18avTFWK0fheqMiFDyVOS-sU&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-23",
+      "zona_id": "UGT1",
+      "evento": "Yanacocha reafirma seguridad ante presiones de transportistas",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/groups/286957271344184/?multi_permalinks=26572684872344732&hoisted_section_header_type=recently_seen&__cft__[0]=AZYTzP1-q_Kqy0MJ7OLj-RoNPJ49L5mc2qykVXi8Rb5nTMJRSlf1YZrYm4dEnOnQ8odk5knqSnXwIwJjXVCCYPpePM9pb_PKN4Yq_3zZAUhAyn0ulkvu3ILGEQJAXkoL4C9fGmQfGTkY0EgINDjhNL4s-7l3iVsLqcXXsNIa9fcGpHF2jNjvDCFRFGqg85lkvp7S5pQJYjpK6H6QIAWCCbZF&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-23",
+      "zona_id": "UGT1",
+      "evento": "Yanacocha ratifica estandares de seguridad ante protestas de transportistas",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0yjN9hWGiBFZRjk4hHvKfqchLM6x9XFPcQBYYos82ALUpN2ZtUXJYLgbc3dupUyu1l&id=61571810467318&__cft__[0]=AZaUj4-nvRb2uzhwwF3ALufxUJO-8CdNKVrLUsr7-wmckIRU2qnDilBfan9SiraRPZfSdvZ9ZakM7IDB0HRHgyU5aJZkfL9gkt_34PwY6jsyEAWtSy9748N3ozOZTTgPkL5VYsCOCAgKedAEIwwaZMGWiz0BQXniJ1_JVq8GoVEzqVMnBTh7gfEZMIlQ7xenda34vto9WzlbPWYNHpzVn7U5&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-23",
+      "zona_id": "UGT1",
+      "evento": "Yanacocha reafirma seguridad ante presiones de transportistas",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/HablaCajamarcaNoticias/posts/pfbid02A1SAUuFj4L8mhvjKjHHg6EkKsoNxrYAJbkbJzYgjvQaFXtc22f7xGjTWmxdztrnPl?__cft__[0]=AZZ-FILcVB93wAgYN1ndGEtAnff8Lxb_8VPPVx5wlESK-ZJuKR7l9cb_CCPTRv6TdaqB1lziq3mJImMaYKKH59HzEIjGgqjy7HmCsHfvXN5ONDiflonPdBLw0nUJvuo4CNQThoZ10Pi12oqDPtWSBO4-YD2A2yQSU_U7aXDFDU5WwdeCfWBFhxGjE7SAwEzcdKI&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-23",
+      "zona_id": "UGT1",
+      "evento": "Yanacocha reafirma postura sobre seguridad ante reclamos",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/groups/426314680780046/?multi_permalinks=26107164732268355&hoisted_section_header_type=recently_seen&__cft__[0]=AZYiuQW_Yjx6J4iZCIWMYBOMwvDKDmiZhPNG1VZY4spEcIBVYWp-OSTR1UzlMrjxVjsjRiV-qy0e8q-2Ozr4uHp-HqfK6ey3cPmySAke78bku64SjkV37uE9BLX8eFOe_GURkgkCW35oMQ2edzOLaZR-b_J4T0XZEU0jT9YctaSCgPtRSmZ2EmmVi7F-Zr3-mI3jpXghqFUlr4PveAJtErdA&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-23",
+      "zona_id": "UGT1",
+      "evento": "Yanacocha emite pronunciamiento ante reclamos de transportistas",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0UeWLLLGvRPDKqdNq4dbUBoNAn21oEaGNTYQpJ7xcsztyQ3Buzwj5dPk25RLgf5jhl&id=61570897988153&__cft__[0]=AZZ1y5TulH6A2uOhXoJkIvaNR_4mknXba1e1OL8fvwm41bgq5gbCQU4dp8Jd6rg6NNyLBy840LnewjLGEXnOciJ_aYkDLFaAKNWYCDIfnr9nVUCJnixbuvXirNfMzEUx47oM41BAGCG1f18Si7GDKxcmsblnp_96Fcc7k1XPyqyPWbltXpmVuh4Rx7-zeuzY5oBB9hOfJU8l-fbm2f6-AwKp&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-23",
+      "zona_id": "UGT1",
+      "evento": "Yanacocha difunde comunicado sobre seguridad en transporte",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/santos.chilonchilon.75/posts/pfbid02Qa4m6LNh4z1XDkhr6CL5eBqUCDwU4EgF323tzYf7kq89P6DSLBJhAzWWVQgBA5dml?__cft__[0]=AZboHAiwf1nltLUVIwGN6wExzoiOJIR3GYrZM2D_Wfm8a_PgQxDVUrzka83GD29wIQPkD6d2A2nuJy4d-OyrD9hjfcA3GsdawAGaJLg3lpVigZEW2-EelhJHAtZbe7g9dKiu31GIghPb8BXGFjqR5xSIj_R-_ini-umIEFahkfEI1MS7YHKwCjW1Rby6w4wyiPIOTgoGjGpKffC_rk0wRmjIPRk3dTajPd4Q9OI1l1HgYA&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-23",
+      "zona_id": "UGT1",
+      "evento": "Yanacocha ratifica exigencia de seguridad ante protestas",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://x.com/rcrperu/status/2036200889774456986?s=20"
+    },
+    {
+      "fecha": "2026-03-20",
+      "zona_id": "UGT1",
+      "evento": "Trabajadores toman instalaciones de la UNC por reclamos laborales",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/x6un9"
+    },
+    {
+      "fecha": "2026-03-19",
+      "zona_id": "UGT2",
+      "evento": "Convocan reunion para rechazar proyecto minero Nueva Esperanza",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/e0sug"
+    },
+    {
+      "fecha": "2026-03-16",
+      "zona_id": "UGT1",
+      "evento": "Rondas campesinas anuncian paro regional indefinido desde el 16 de marzo",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/1836820923575761/?__cft__[0]=AZak6dIIXKbLQUm7s3GmgEzlf2LjdXcMLhPDcS9yoNgmKroG6zRSk1e8n-mlCxAkBBoWEIUwZhia_a8_WMD_3iupyURGKjPD7LgzSecdqJ3TbyKQ7wXJcMiOMw7GyADBH8hpIJjmNj4evWgQwRvU0FRdrIqrKPaf4Tc5s1DByfmkpcvkiwv1unQXcULnjgKkXZWf7i4M8dfnjG1_v64eE6fJ&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-12",
+      "zona_id": "UGT1",
+      "evento": "Transportistas levantan bloqueo en via Cajamarca Hualgayoc tras protesta",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "bajo",
+      "fuente_url": "https://www.facebook.com/reel/918991727341675/?__cft__[0]=AZZkD_GzXFI5ET3mLDL55HNQ_Zu4T-GHUNBc8ysKmBdkP1G6cTS8HWSIW7elaEWA_mZRmqGsEsFQzVJqqdxur7OIYII6ODam7wX8TfUy2Zb4Zv5TwEuoLpGH_uHnAEJMvR3Be2a4kj5FUH0I9qmniEN98604YKzLKIqHlvAGyIrR2jPha2t12qmGXaG2OQmnNmxQRF0wjUflu5frIEDITdTc&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-11",
+      "zona_id": "UGT1",
+      "evento": "Transportistas protestan en ingreso a minera Yanacocha por nuevas exigencias de vehiculos",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://n9.cl/thfk1"
+    },
+    {
+      "fecha": "2026-03-11",
+      "zona_id": "UGT1",
+      "evento": "Transportistas bloquean via Cajamarca Hualgayoc en protesta contra Yanacocha",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/diarioelcajamarquino/posts/pfbid0FNTZnKmKDTPb9cgoVsvy4Bk7TEiJ5KuLD2ab3ZHmdPc3Zb6svk7bMWE2kAg2tuRYl?__cft__[0]=AZaTNl_wMKwY_Ki9bGFht_FUcWQhl0PGNfwETcxhVo6yWvJK7ptkVBjRJa3dtA8ZIMChFxIcdWKiVXkc-DKqBcfXcoD1H3EyFkj8jBN7KoFg4IRScSdYRdvTT-6b3-Ulu0e6XdkWpdCEW0vAr2701Jw4PIUAoD3qDXcMcaWQQ-O4Ws4Lxs2UNrGzgPk2ed1NXI0IgDomdaZ60V4nhdk7DSmH&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-10",
+      "zona_id": "UGT2",
+      "evento": "Transportistas bloquean carretera a Bambamarca para exigir trabajo a Yanacocha",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0Xs2gLFrAxsJ7JcdPuB68MRxjjKJ6xNZh5nb498qCuXTQqRFT7rccCQayfcobLDq9l&id=61584753147950&__cft__[0]=AZaPtUaPOGNsPDRLZHArBWm-VLbEiCkfMmT_GhqFYgKWDf8EtVNWbkm7nGwQTT3NytziIIT5y58UrTgs7Jy3w8wEEATFJcnVI4dFxiq6hBfPLv2mcSVN7C1aG7n94CSA70HDWRDO7qDwBo0RkSV1Uyv4UFx9kv1YilNQP2FHPC4hHrdCLfLQkIxLt-M6L0XqzfOxzbOSCrg12lOuM_E5mygD&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-07",
+      "zona_id": "UGT1",
+      "evento": "Ronderos anuncian paro por mal estado de carreteras en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/1150073507112268/?__cft__[0]=AZZegymnKKFet6bOWAH7mKZj0XBmFcrQiP-E9qDG7Yo_jbIMFDgjxc8W5UwcDUPBCv_FjQK6XCrJ0ykYcsC_OpvfzVJLtE2JtUMN_Zv8XEVBpiUd6gm0Y125fz9vfRNULxxf8TMilHJvDR0lIUJ6TiufI19k8Y4Cl5pIsb7QpEYGqPHl-e0hDKJpZf0HmO4PmC9c9UazpPfFE9rHTAyuEu3Y&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-01",
+      "zona_id": "UGT2",
+      "evento": "Rondas de Bambamarca anuncian acciones contra actividad minera",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/933871289230041/?__cft__[0]=AZbOmodbrSJku0BmQk5KdUc0dLagEgnnDiVUXMm54RVbNGNQMlVdBcuJYoB57c-3sRSq1zztvyOemNCcGVfJAC3apa16K8jxaoxm8AzrEaxaDEWadf--YgrDw7v_OQgfbwyQcXLEr5vnRW3WY7bHwx1BeR-ef82enSnNoQTCBaSAE7fCvc-rhQ3zj2-Ioe8b6REJs79dFmGSyCJliQLL1vMR&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-03-01",
+      "zona_id": "UGT1",
+      "evento": "Rondas Campesinas convocan paro regional indefinido desde el 16 de marzo",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02cAnc7iMNe2cNq91zJEETxognr3vJSDCor3VdVHxtASQuzJVNjTFNhNRZFdQXZYprl&id=100060708922095&__cft__[0]=AZZXEsMCO_InobUQxR5A2Ib0nPa-pPbxT8BI3FLuzdR-JpQaDNa-4Ei6xlkfy_7APAZMW3WPnuHLkz2IRtCdGLODbNeAGhoJWaKD8SBlEKGqCqU58sLZj1dyn8x0daRrqwjMzxvtR7UjcTZZQZaDBAHCQP191wsLLqevrcgA6nj5joizQQ9LJDwx4j9rPf4h8yE&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-02-24",
+      "zona_id": "UGT1",
+      "evento": "Empresarios de transporte protestan contra normas europeas R66 y control de estabilidad",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/PortafolioPeriodistico/videos/791552163964558/"
+    },
+    {
+      "fecha": "2026-02-23",
+      "zona_id": "UGT2",
+      "evento": "Hualgayoc protesta contra minera Gold Fields por afectacion ambiental",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/am3dci"
+    },
+    {
+      "fecha": "2026-02-21",
+      "zona_id": "UGT2",
+      "evento": "Advierten paro provincial por retraso en carretera Bambamarca Marañon",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/gzk8cy"
+    },
+    {
+      "fecha": "2026-02-18",
+      "zona_id": "UGT1",
+      "evento": "Publicacion cuestiona riqueza minera y pobreza en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/26203984642566555/?__cft__[0]=AZaTnl0jRY5bqQgU9Xp2aHE0QiotO6UCL_xvqYAFam7nRKfQ7Xf6BpekH4qCC06V--ji8eJ4FcI5S3NuM8TinMEgaCBCKuYR1alEM6MwgCiveyij5OT7wNtZFkWyyswBw-fBH7g-WGu7kZa5eg0F8g6J4T0_1nRFu0CxWYC0lNwOACiDrjFNuwBfjULxjuF2JkW4w7QPNS5wEmsJh_ggLcYi&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-02-18",
+      "zona_id": "UGT1",
+      "evento": "Abogado enfrenta a representante de Yanacocha por promesas incumplidas",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/1803491661038374/?__cft__[0]=AZaGKCwdi2L54_Aj0NIm6PKpRxw0PhTE_pid-J6Z4-NHUkFuIlRYRcI7vG0fgWSLbtn7OoMI1ts_YwGod4AbmP1ajnEUOdXo5isdnhYhY9or984igHZdS8-_lavAn6R0Y54WkfbWcn8RdtTlLtmt4pZ1i05k7jZ1LIyxaesjVdUWx0PTpJDNPsvm-b7j8qWnu2Q_xzSl3vmLadqO2_Pi3Ue-&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-02-18",
+      "zona_id": "UGT1",
+      "evento": "Abogado increpa a representante de Newmont Yanacocha por presuntas promesas incumplidas",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/1803491661038374"
+    },
+    {
+      "fecha": "2026-02-14",
+      "zona_id": "UGT1",
+      "evento": "Congresista cuestiona a Yanacocha por presunta contaminacion en La Encanada",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/reel/767109116448134"
+    },
+    {
+      "fecha": "2026-02-13",
+      "zona_id": "UGT1",
+      "evento": "Denuncian exclusion de proveedores locales por Yanacocha",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/reel/877295801733262/?__tn__=%2CO"
+    },
+    {
+      "fecha": "2026-02-13",
+      "zona_id": "UGT2",
+      "evento": "Rondas convocan acto por carretera Bambamarca Maranon",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/gs4zvr"
+    },
+    {
+      "fecha": "2026-02-13",
+      "zona_id": "UGT2",
+      "evento": "Inician acciones legales contra mineria ilegal en Llaucano",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/FamaEstudiosSecocha/posts/pfbid06w5DCwQgojcgqivVQK7PDEty4rcgqYYixXTe9ynnfF68nAw1pvnLXDQQzxUccYXNl?__cft__[0]=AZaDChMuR_VyuP4NfL9HkPfvjS27TZF5X_MHvm4Y_LwaTJP4wfwwBzeJSZHJlR0QghwOdXe_c-4M3N87fHouJTpT__arjTHP8N6qP7em6bApFAX-MKpD6ZniztUOCS7_TybQfNkuKOMvS9z2BCabPSldUwzM6Re04cZ9KT40ufAM5Pfni5Ux5e7rt0hpeKxx2Z9Wy7TC5u5thXoy8jpZjq65&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-02-12",
+      "zona_id": "UGT1",
+      "evento": "Denuncian que Yanacocha excluye a proveedores locales",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/reel/771601622176456/?__tn__=%2CO"
+    },
+    {
+      "fecha": "2026-02-12",
+      "zona_id": "UGT2",
+      "evento": "Inician procesos legales contra mineria informal en Corralpampa",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/tjqh0"
+    },
+    {
+      "fecha": "2026-02-10",
+      "zona_id": "UGT2",
+      "evento": "Organizaciones citan a gobernador por carretera Bambamarca Maranon",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02QuhZ4t3azwYNJAQD5wn2hQ2x1HdnLbPR6h9YZcun6iEUXwg5BBLkrpuKP4xFuW5ul&id=100083450016420&__cft__[0]=AZYKXJ3R-SaudKLRTyAKXrmbRz6PeiO87--tRNzLmT9k2fKTtIlnSHqMnW7Pizebynjo11-kUpdXaCZ5YRmhva8gNiw4sYpwFMoW-Oba-u3AKwNdw7sKKZUMot5keLAiaJe70OkRM_6Im6On5g1C4E7j8ZLj1wmwz41c4UAcut-SMWh8Eh0iQ7ForlAIkDzj890&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-01-28",
+      "zona_id": "UGT2",
+      "evento": "Organizaciones de Hualgayoc rechazan perforaciones de Gold Fields por riesgo a fuentes hídricas",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/e9e8i"
+    },
+    {
+      "fecha": "2026-01-28",
+      "zona_id": "UGT2",
+      "evento": "Pobladores de Bambamarca exigen muro de contención y liberación de vía para minería",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/6ecoi"
+    },
+    {
+      "fecha": "2026-01-26",
+      "zona_id": "UGT1",
+      "evento": "Transportistas cajamarquinos dialogan en garita de minera Yanacocha",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://n9.cl/nvk1f"
+    },
+    {
+      "fecha": "2026-01-26",
+      "zona_id": "UGT1",
+      "evento": "Paro de transportistas exige puestos laborales a minera en Km 37",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/reel/1791276648234966/?__cft__[0]=AZZPzklmuzEgWU1i4gNaLZYGs34WTvgXEwKnt6tN-r3G9ImTxLMW2sU-EJc56jcC45nXewYrR6xUX7bi5Mz89e7m4O-zDBnhQtTqFsQSQxfcDgbsQ8_b7ieFZh2jF2MYfXEvDewtHeNU8tu38d5djc0USzndQrYBLKpD_CVeLkmcrcVlop7T9j2ugpdEOfQklMM&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-01-25",
+      "zona_id": "UGT2",
+      "evento": "Protesta en Bambamarca contra minería ilegal y en defensa del territorio",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/v3r62"
+    },
+    {
+      "fecha": "2026-01-24",
+      "zona_id": "UGT1",
+      "evento": "Alertan presencia de mineros ilegales en Conga y rechazan actividad minera en cabeceras de cuenca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://n9.cl/r2w6x"
+    },
+    {
+      "fecha": "2026-01-24",
+      "zona_id": "UGT2",
+      "evento": "Ronderos de Chala protestan en Bambamarca contra ingreso de minería en defensa del territorio",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/9v2vqi"
+    },
+    {
+      "fecha": "2026-01-23",
+      "zona_id": "UGT2",
+      "evento": null,
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/25015116828167714/?__cft__[0]=AZZN-7u3xJuDbYPzuwxeJWkVF00We38SH4_jR30LtqVP1QfdOmkfaU-oILMdhH7yfqG7Q50C7RmLY_W5CkTJrBnD0tnC6fRKDeWOYreNsWsQr-Gp6ftlAUt8EcmQLpSmpz9-cI_YzSFPcPu_cE6evq5iMCWYTmzW12NJ7qks-8tTDK9Z6MpwawyKDrAxG7agLfjbanYD9V26Jgo2N5xB0cQI&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2026-01-12",
+      "zona_id": "UGT1",
+      "evento": "Transportistas protestan en Huandoy contra Yanacocha por falta de oportunidades laborales",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/yws9nuw6"
+    },
+    {
+      "fecha": "2025-12-20",
+      "zona_id": "UGT1",
+      "evento": "FUL-RC convoca a paro regional indefinido desde el 9 de febrero",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/m3u1w"
+    },
+    {
+      "fecha": "2025-12-11",
+      "zona_id": "UGT2",
+      "evento": "Carretera Bambamarca a Morán Lirio bloqueada por derrumbes en El Cumbe",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/vpoi55"
+    },
+    {
+      "fecha": "2025-12-06",
+      "zona_id": "UGT1",
+      "evento": "Proveedores rechazan paralización y piden diálogo en Yanacocha",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/6momnu"
+    },
+    {
+      "fecha": "2025-12-03",
+      "zona_id": "UGT1",
+      "evento": "Protestas contra Yanacocha y Bechtel por abusos y daños ambientales",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://n9.cl/2ha19"
+    },
+    {
+      "fecha": "2025-12-03",
+      "zona_id": "UGT1",
+      "evento": "Posible Bloqueo en garita Huandoy impediría el ingreso a operación Yanacocha",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://n9.cl/yaavs4"
+    },
+    {
+      "fecha": "2025-11-30",
+      "zona_id": "UGT1",
+      "evento": "Más de 2 mil trabajadores foráneos dejan proyecto por abusos laborales",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/reel/4276290856023272/?__cft__[0]=AZWvHvo43MXXwg4G8uOhZ2vZHTecZTNRcHM1m6iXGRd3gAV7AKTJKXC3UcjmpFyfC-G03TlrT5B2klcMZ5WK3DNDKtBdC4qNiOJm_YjBG2U3dokeFEOsBTA9dtPYZMqIcVK3NJQJCrQb5k7zH9VK_B-Fi-PzdRryi1x3Vv7Or1EgdnEnlNOljZt9BU-h2bCgCg_sF99vA9i8uT5taqF4v7tZ&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-11-29",
+      "zona_id": "UGT1",
+      "evento": "Continúa paro indefinido en Yanacocha por denuncias laborales contra Bechtel",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://n9.cl/1vws7"
+    },
+    {
+      "fecha": "2025-11-28",
+      "zona_id": "UGT1",
+      "evento": "Inicia paro indefinido contra Bechtel en Yanacocha",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/reel/25327138110278069/?__cft__[0]=AZW3yJ80buyql9NpikaXomL__tjSZYTEFKauoXzqxVWDKpdqtvVe6XKSSjo3611ggG2atCiC8E78PZFdr9uSR5GPVNsXlwiFssOYDB2MHxI8If3u-0PMwQXCW7e2tmd9HpXE1km3bZ1xcA1hrhsIBm13V59EhSUHEi3SoVE7Dxls9egHRqvFssZtyNLRyeKaHzzfWnOL3vFVweAzXWvE9vyx&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-11-27",
+      "zona_id": "UGT1",
+      "evento": null,
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/5whg5"
+    },
+    {
+      "fecha": "2025-11-27",
+      "zona_id": "UGT1",
+      "evento": "Trabajadores de Bechtel en Yanacocha anuncian reinicio de paro laboral por malas condiciones",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/DiscoplusCajamarcaPeru/posts/pfbid02S6gJvgiBcTJfUNETCt1S6wU8Z6585KJbxVDJJngioP9GG6bbhmHxbvCuJETnGuHMl?__cft__[0]=AZVnon6yQhbZgOm9Xjm3ZeOfU6jU7LFpCcRw5IkZpJBsdlCCwYhNaZ0WYVoig4otgiC2N_68monRA_nEXGnZF2K_QNvbxswMpffvfWr6lyYgRRPSrlv6Y3CplkZz7iXipXVGuPwo95TBpSUJlYmH6vGq2x-_omFAJUp_24jidrtwyUt0GYLpbyXQ8_jZ6cgMDZlxXiDD-MVyahCmC_lwRigFvnV4HipUQOSlFV3dOd67xw&__tn__=%2CO%2CP-y-R"
+    },
+    {
+      "fecha": "2025-11-21",
+      "zona_id": "UGT2",
+      "evento": "Paro nacional de docentes es respaldado por dirigente del BARETRAEC en Celendín",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/718130861360860/?__cft__[0]=AZVDC2EFJJsybMX1d5zHRqTXVfnoCiHSD4nDMfyVPl26Lx-fGaPgCR6v1wBzwdIwa62g4T2pXtvxzDYSdNdEupGHPC14MfjmDQaeqb09IrcxGanBYRI0JA_DGqQBIFv_L4EXO1aqBGGMkK2m0Y2FkGkvs8woPl82B4Drx5x03akkrkBJMT6ioCjeB6f5F-OZStQiFXhScO3VafRUqGyYIusB&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-11-21",
+      "zona_id": "UGT1",
+      "evento": "Trabajadores de Bechtel en Yanacocha inician paro por maltrato laboral",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/7c78k628"
+    },
+    {
+      "fecha": "2025-11-21",
+      "zona_id": "UGT1",
+      "evento": "Trabajadores de Bechtel en Yanacocha inician paro por maltrato laboral",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/59fxzvyj"
+    },
+    {
+      "fecha": "2025-11-21",
+      "zona_id": "UGT1",
+      "evento": "Continúa protesta contra Bechtel por abandono de trabajadores en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/437vzppn"
+    },
+    {
+      "fecha": "2025-11-20",
+      "zona_id": "UGT1",
+      "evento": "Trabajadores de Bechtel siguen en paro por denuncias de maltrato",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://n9.cl/4il9u"
+    },
+    {
+      "fecha": "2025-11-20",
+      "zona_id": "UGT1",
+      "evento": "Trabajadores de Bechtel siguen en paro",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/46nvjj8k"
+    },
+    {
+      "fecha": "2025-11-20",
+      "zona_id": "UGT1",
+      "evento": "Trabajadores inician paro por irregularidades en proyecto WTP",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/5h8vb9wy"
+    },
+    {
+      "fecha": "2025-11-16",
+      "zona_id": "UGT1",
+      "evento": "Continúa la toma de la UNC tras huelga indefinida",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/1167871125327059"
+    },
+    {
+      "fecha": "2025-11-01",
+      "zona_id": "UGT1",
+      "evento": "Rondas campesinas se pronuncian contra empresa minera por abusos laborales",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/yxnva4wj"
+    },
+    {
+      "fecha": "2025-10-28",
+      "zona_id": "UGT1",
+      "evento": "Dirigentes anuncian paro regional indefinido en Cajamarca por retraso de obras viales",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/diarioahorajaen/posts/1236617151817282?__cft__[0]=AZXP22xC4-HYWR9xJQfQQGmMD_VXsZqfj8Q--fgJwaMReg82H8IJsL4_-iL1g2gdEE6oY6AZGeaJ_XUPcKuZDDVAmvAnyf681-IL90Bdbh3_jM3y1uH-paKiTgst0oS2O5XNeV7lSrnRaks-a9LbJyIK1JvIEM8JriMbZDO5m1-QGg&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-10-27",
+      "zona_id": "UGT1",
+      "evento": "Grufides rechaza evento minero y defiende comunidades ante minería ilegal",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/2j9d83av"
+    },
+    {
+      "fecha": "2025-10-21",
+      "zona_id": "UGT1",
+      "evento": "Alumnos de Ingeniería Civil toman instalaciones de la UNC",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/mth3vv3f"
+    },
+    {
+      "fecha": "2025-10-15",
+      "zona_id": "UGT1",
+      "evento": "Protesta en Cajamarca exige nueva mesa directiva y salida de Jerí",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/mfbfj7sz"
+    },
+    {
+      "fecha": "2025-10-10",
+      "zona_id": "UGT1",
+      "evento": "Suspenden paro regional en Cajamarca tras vacancia de Dina Boluarte",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/NoticiasImpactantesdeCajamarca/posts/1472687168198564?__cft__[0]=AZUHYJCJWqSV8IzQ6hHIoAdG5AOF1i5hyZanU2Mh8gLhRD4UCbpyZFXZWZ8njv89WoZ7lVt9hna1HwN2xVowI5aYHkHypSm2W73E8LzsdqjlIsCHqUFlZi-nW2C2Uon1qxI8Hj0MTsBbGSwJhcDTVv7hwZAjXY71T3kzrueg908aAM3u60hy1RlPeUuxESIwBgc&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-10-10",
+      "zona_id": "UGT2",
+      "evento": "Transportistas aprovechan paro cobrando el doble de pasaje en Bambamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/1xa02"
+    },
+    {
+      "fecha": "2025-10-07",
+      "zona_id": "UGT1",
+      "evento": "Gobierno Regional se pronuncia por paro indefinido en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/55ebyamj"
+    },
+    {
+      "fecha": "2025-10-06",
+      "zona_id": "UGT2",
+      "evento": "Acusan a Napoleón Gutiérrez de traicionar el paro",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/2tnrkysz"
+    },
+    {
+      "fecha": "2025-10-06",
+      "zona_id": "UGT2",
+      "evento": "Pobladores de Hualgayoc y Bambamarca acatan paro indefinido por abandono de obras",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/ybbfft7d"
+    },
+    {
+      "fecha": "2025-10-06",
+      "zona_id": "UGT1",
+      "evento": "Paro regional en Cajamarca contra delincuencia y minería ilegal",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/3a5rpr9w"
+    },
+    {
+      "fecha": "2025-10-06",
+      "zona_id": "UGT1",
+      "evento": "Paro de transportistas se concentra en la plaza de Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/5b48ue2c"
+    },
+    {
+      "fecha": "2025-10-06",
+      "zona_id": "UGT1",
+      "evento": "Paro indefinido bloquea carretera FBT entre Jaén y Chiclayo",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/StereotvOficial/posts/1385180893617773?__cft__[0]=AZXNCO-7HP-o-7axxJrVMV83onz4GBxA7kqijO_FFybaF1PyBhycQfuYO2KKmrV5fJ8Gy4n4Xd60kvUFtkSA2lNK62M2juUF0IVVrNXJrEHAANxgS4yQi-Z5lwEYGfRruwr6Mzvj-KR3r2wSkQhezDVr0-ghegzCM-IB5hAp3I1F9SF_FU1EuqXCPjBO1EM5FCfvIGCwvsTYUl9Hg04aKvxt&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-10-05",
+      "zona_id": "UGT1",
+      "evento": "Rondas de Cajamarca ratifican paro y denuncian imposición del Ejecutivo",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/cajamarcanoticosaluiszevallos/posts/846289407737910?__cft__[0]=AZXnfL8pWkhtWnrJXUsdv-M8tc40LW9_lt1P9LpdWPH4tTCvNHgIkEtsq_tR44wJC5KQDy81E69kAVMHUI7A-Cn2ioOnXsPAvxYlUc3PfbW9CPNQEzSRN0Ju-qLBPVA3HH8jT1gkWQjWiuOnrLuC9H60lemgqgmI1oyvMOU3lVa9tQ&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-10-05",
+      "zona_id": "UGT1",
+      "evento": "Paro regional en Cajamarca incluirá bloqueo de seis puntos estratégicos",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/perucajamrca/posts/812895724821529?__cft__[0]=AZX8ei1s8R08wSLQVMuu54hHqLkA4_w99Dkg87VuJcJe30nKObha-vKpPSPd865pwNAkgPw9d4uvBP30VUGaUsFWYCg9W6oIQk8d1NFdHQ7tcKLV1wd5bQI-2LTk2yCLFZYy9CuZgsmvbowgqvStFifYwlvezJVnMEZBrUDwTJIbUtwzz3hYyGnLYKMtwRmlh2U&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-10-03",
+      "zona_id": "UGT1",
+      "evento": "Convocan paro regional indefinido en Cajamarca desde el 6 de octubre",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/4cpd4enr"
+    },
+    {
+      "fecha": "2025-10-02",
+      "zona_id": "UGT1",
+      "evento": "Cajamarca anuncia paro regional con bloqueos en seis puntos estratégicos",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/cajamarcahoy/posts/1269165615223168?__cft__[0]=AZUFsu9JznoFkyKBe4uOfQ8tfV5U4OvTqbXoLytGk47lTzpkodk9qfcflivGK5xLiMmkZCmYUZJ0MkLpx3328G_t5WpxSHhhXjw9NfbZeUtO4a_NZUD0-lc5OWMR1PXwAj-uisQKNnwMsGQAP-7DDfy-P-qfJFSvQ-FbXjiVoTbdbq4AuZLTmNg7mQxCktk79zc&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-10-02",
+      "zona_id": "UGT1",
+      "evento": "Cajamarca se alista para paro regional indefinido en reclamo por abandono histórico",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/4vptbmen"
+    },
+    {
+      "fecha": "2025-09-29",
+      "zona_id": "UGT1",
+      "evento": "Convocan movilización contra la inseguridad ciudadana en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/Caxamarcaaldia/videos/1249369846997103/?__cft__[0]=AZXSYSxfo-bNvYfFI1tiGmR4JLFQgHbPrdZPRmmC7LYxcjTDG4HoIpTVznOmb_DWkWUqw9ok2RJxo_rkn6IfLn4XTeezrY3SP7sT4wfqKmBawt7kQtdloUq9bNWKHcabjjsOrWmT6jucJWgq3Q42SxtsPZR77HoekT6zeb2Og8kYbAKvRnDB8vMnE8olibkQJNzbGHU9s9g89FiMRB-aO_02&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-09-29",
+      "zona_id": "UGT1",
+      "evento": "Convocan paro indefinido en Cajamarca desde el 6 de octubre por obras y lucha contra minería ilegal",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/4zjvh9xj"
+    },
+    {
+      "fecha": "2025-09-28",
+      "zona_id": "UGT1",
+      "evento": "CGTP se suma a marcha contra extorsión y sicariato en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/informandoprimero/videos/1864117854173564/?__cft__[0]=AZWIjX7UccQRua4AbqZaxX2me7GfQu0glSS8xGpMl08VQYdJns4JuJVKNKrQBSX2o-tpVsVgYGfXZErqsleyBAKyD8KYXq5jjdkzA0xVbDcZp9MKVIc-tZsxcmak-j2apl55xyVIc4v6Ie5iWruccEWJYX8gyTyTGacnoBAY7rdnWRGJlfFXdi2D71ztO5rYFnAlosxFelFegoRrpoCevo3a&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-09-25",
+      "zona_id": "UGT2",
+      "evento": "Rondas urbanas de Bambamarca convocan reunión para definir adhesión al paro del 6 de octubre",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/5n83ybmn"
+    },
+    {
+      "fecha": "2025-09-25",
+      "zona_id": "UGT1",
+      "evento": "Anuncian paro regional indefinido en Cajamarca desde el 6 de octubre",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/2s4zn64x"
+    },
+    {
+      "fecha": "2025-09-24",
+      "zona_id": "UGT1",
+      "evento": null,
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/j4wrv"
+    },
+    {
+      "fecha": "2025-09-22",
+      "zona_id": "UGT1",
+      "evento": "Trabajadores protestan tras despidos en aeropuerto de Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/ypzbzkst"
+    },
+    {
+      "fecha": "2025-09-22",
+      "zona_id": "UGT1",
+      "evento": "Comuneros protestan por irregularidades de proveedores de Yanacocha",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/588pc6xs"
+    },
+    {
+      "fecha": "2025-09-12",
+      "zona_id": "UGT1",
+      "evento": "Comunidad San Andrés de Negritos enfrenta a Yanacocha por despojo de tierras",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/4yka8aa4"
+    },
+    {
+      "fecha": "2025-09-10",
+      "zona_id": "UGT1",
+      "evento": "Rondas convocan movilización en Cajamarca contra la inseguridad para el 30 de setiembre",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/59uxt648"
+    },
+    {
+      "fecha": "2025-09-09",
+      "zona_id": "UGT2",
+      "evento": "Movilización contra Yanacocha en Huandoy por incumplimiento de compromisos laborales",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/33pb7pbh"
+    },
+    {
+      "fecha": "2025-09-09",
+      "zona_id": "UGT2",
+      "evento": "Comunidades mantienen bloqueo en acceso a Yanacocha en Huandoy",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/4uxe3cm7"
+    },
+    {
+      "fecha": "2025-09-09",
+      "zona_id": "UGT2",
+      "evento": "Pobladores de Negritos y La Ramada anuncian medidas más drásticas contra Yanacocha",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/4xvuy8ep"
+    },
+    {
+      "fecha": "2025-09-09",
+      "zona_id": "UGT1",
+      "evento": "Protesta contra Yanacocha por incumplimiento de compromisos laborales",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/mrx8z9r3"
+    },
+    {
+      "fecha": "2025-09-08",
+      "zona_id": "UGT1",
+      "evento": "Subprefectura otorga garantías para protesta contra minera Yanacocha",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/3kh8vfdm"
+    },
+    {
+      "fecha": "2025-09-05",
+      "zona_id": "UGT1",
+      "evento": "Defensa del Quilish sigue vigente tras 21 años",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/nr6cp7fs"
+    },
+    {
+      "fecha": "2025-09-05",
+      "zona_id": "UGT1",
+      "evento": "Rondas anuncian paro preventivo de 24 horas contra inseguridad en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/2zav7ayc"
+    },
+    {
+      "fecha": "2025-09-04",
+      "zona_id": "UGT1",
+      "evento": "Jubilados del sector educación protestan por pensión digna en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/nhjeeae2"
+    },
+    {
+      "fecha": "2025-08-31",
+      "zona_id": "UGT1",
+      "evento": "Corte ordena frenar amenaza ambiental por proyecto Conga",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/35nrtxmv"
+    },
+    {
+      "fecha": "2025-08-31",
+      "zona_id": "UGT2",
+      "evento": "Niño canta en defensa de lagunas de Conga en Bambamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/3cnzxnht"
+    },
+    {
+      "fecha": "2025-08-29",
+      "zona_id": "UGT1",
+      "evento": "Corte falla contra Yanacocha por el proyecto Conga tras 12 años de lucha",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/752jpzx2"
+    },
+    {
+      "fecha": "2025-08-27",
+      "zona_id": "UGT1",
+      "evento": "Comunidad de Negritos enfrentará a Yanacocha en audiencias judiciales por tierras y agua",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/yc2sex3y"
+    },
+    {
+      "fecha": "2025-08-26",
+      "zona_id": "UGT2",
+      "evento": "Comunidad de Negritos enfrentará a Yanacocha en audiencias judiciales por tierras y agua",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/ydzft6pr"
+    },
+    {
+      "fecha": "2025-08-26",
+      "zona_id": "UGT1",
+      "evento": "Ronderos realizan plantón en Cajamarca exigiendo pena máxima para banda criminal",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/1775590463343007"
+    },
+    {
+      "fecha": "2025-08-25",
+      "zona_id": "UGT1",
+      "evento": "Autoridades de Combayo dan plazo a Yanacocha para cumplir acuerdos",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/yr5jpnt7"
+    },
+    {
+      "fecha": "2025-08-25",
+      "zona_id": "UGT1",
+      "evento": "Ronderos convocan plantón en Cajamarca contra liberación de extorsionadores",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/perucajamrca/videos/2001864950559280/?__tn__=%2CO"
+    },
+    {
+      "fecha": "2025-08-24",
+      "zona_id": "UGT1",
+      "evento": "Rondas campesinas convocan plantón contra la delincuencia en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/mr82k4d7"
+    },
+    {
+      "fecha": "2025-08-22",
+      "zona_id": "UGT1",
+      "evento": "Docentes de nivel superior inician huelga indefinida en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/groups/351548489032593/?multi_permalinks=2011875362999889&hoisted_section_header_type=recently_seen&__cft__[0]=AZXv11kVsGomeojuEN2IF55xl5u0Wz7xpWpHRCUq0uEYsQ2JZ9T_MtJtf2vpvpMULuoZd1ln6grfcqHuZp6LBz8sOz99M0DaP_RjWnzkUc3qWLvTcBPNJYYaudrtu3tDcuBt0LdnbdANOVv8BjkN6Yn5r1ab2PcPM-12fmYERn5FOex1WhO47amXfDVhGfRNj8EoFLsT0xSJXXNuU49ug7wd&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-08-13",
+      "zona_id": "UGT1",
+      "evento": "Comunidades protestan por contaminación del canal de riego en Tual",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/Grufides/videos/2004075969997090/?__tn__=%2CO"
+    },
+    {
+      "fecha": "2025-08-12",
+      "zona_id": "UGT1",
+      "evento": "Ciudadanos protestan en Cajamarca por creciente inseguridad",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/diarioelcajamarquino/videos/1889304831849148/?__tn__=%2CO"
+    },
+    {
+      "fecha": "2025-08-12",
+      "zona_id": "UGT1",
+      "evento": "Ciudadanos protestan en Cajamarca por creciente inseguridad",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/lideradio/videos/657560403372566/?__tn__=%2CO"
+    },
+    {
+      "fecha": "2025-08-12",
+      "zona_id": "UGT1",
+      "evento": "Ciudadanos protestan en Cajamarca contra la delincuencia",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://n9.cl/mfp1d"
+    },
+    {
+      "fecha": "2025-08-11",
+      "zona_id": "UGT1",
+      "evento": "Ciudadanos de Cajamarca convocan marcha contra la inseguridad y extorsiones",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "bajo",
+      "fuente_url": "https://www.facebook.com/permalink.php?story_fbid=1449784296607689&id=100047283982753&__cft__[0]=AZWpKCoyvsYWAzQrhZlmZqI4fziBNEP87r68wPh-RM2UF3sNK_GBnDjlJ2lBBsiL65pN8JAxjrCu8tTLyEu9mJbC7uw6bm6REmHVVK4M5z964lx_eiJSnzhMxfnP45P2XF16MKNWU8WNuQEhiuW-ITlkspy0mlgge936Mw-xR7nzOz0cNazYVw7aptwvC812Ujo&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-08-06",
+      "zona_id": "UGT1",
+      "evento": "Paro de comunidad de Tual bloquea ingreso a Yanacocha por CONTAMINACION y abusos laborales",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://tinyurl.com/34ufzy5z"
+    },
+    {
+      "fecha": "2025-08-06",
+      "zona_id": "UGT1",
+      "evento": "Sutec anuncia paro de docentes en Cajamarca para el 25 de agosto",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/2w3v5y7v"
+    },
+    {
+      "fecha": "2025-08-06",
+      "zona_id": "UGT1",
+      "evento": "Centros poblados de Cajamarca anuncian posible paro nacional por falta de desembolso presupuestal",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/4fdxj9wc"
+    },
+    {
+      "fecha": "2025-08-06",
+      "zona_id": "UGT1",
+      "evento": "Trabajadores de Yanacocha son trasladados sin protocolos de seguridad tras protestas en Bambamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/33ab4rje"
+    },
+    {
+      "fecha": "2025-08-06",
+      "zona_id": "UGT1",
+      "evento": "Trabajadores de Yanacocha son trasladados sin protocolos de seguridad tras protestas en Bambamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/2mn6d7aa"
+    },
+    {
+      "fecha": "2025-08-06",
+      "zona_id": "UGT1",
+      "evento": "Ordenan retiro inmediato de personal en campamento 52 de Yanacocha por presencia de comuneros",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/5n7thbex"
+    },
+    {
+      "fecha": "2025-08-04",
+      "zona_id": "UGT1",
+      "evento": "Paro regional indefinido de centros poblados en Cajamarca por falta de presupuesto",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/stories/1039876103133797/UzpfSVNDOjE4MTM2NDQzNzkxODcwMzU=/?view_single=1"
+    },
+    {
+      "fecha": "2025-08-04",
+      "zona_id": "UGT1",
+      "evento": "Protesta de alcaldes de centros poblados liderada por AMUCEJ",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/perucajamrca/videos/1742362703082927/?__cft__[0]=AZU_0EGdKYCTVdyBzK2ieuY_GVoevKFoJKf6vaZ1SVcJu944gQs0UhvNjkn0VAMtWBwtoSENjo6Wu8AqGtmbTWfViJwQLh0DjlmzFnbHtf8SuaXWjs8HKI9fhW0kA7PGeq6mJ4ulDtaWnPhm0pnaTe4mvfnZ9F-sgIl-4SPB5hvHY5y0xqFIG4gty7HM2umlTg6ZrcIwkvfmwlUvr0RsN6QN&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-08-04",
+      "zona_id": "UGT1",
+      "evento": "Reunión con MEF suspende temporalmente paro de municipalidades",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/nuevotexas/posts/1077449274527497?__cft__[0]=AZU9Rv-JweR6tdT-FHQCIRjbDpLBq7Rgg9wavzm-zP9G5hdfDTwOI6P0KfQ2_jRSMxJ_-UPXw9Sawj_-lHc1gbDy01o5JGjt2gKSQengyh1c4WleBkp8G0oyHtZSKrdvlNDMy6YTx62wOmwNUve-uATCkZTzQQm3TZH5DQdSJO2gF92pWZ7fnqtJRPHevvYr24nIum8S5zXxM6a56cj39I61&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-08-03",
+      "zona_id": "UGT1",
+      "evento": "Alcaldes de centros poblados inician paro indefinido en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/perucajamrca/videos/1793797371206210/?__cft__[0]=AZVtX_3ECettZksBffne8B8M9pCZFE8RNgGvsIyhie5zasMhXkun7ji6ueogsen6v4H7UL5Huxh1dML72R2wX_52_uz3-mG_Y6yBAL4xEe3U1VNYCBfXzJrp-MNoQc6QdpL7AAoFNtiqxMWVmGZxtmp9H3F3m99DU2p7y3GhtqzX1-yEnq2wxXcNbITNdDI3lxiHWOY4f_EpkfcayMp5LzLh&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-07-20",
+      "zona_id": "UGT2",
+      "evento": "Ronderos se organizan contra proyecto minero El Reducto en Bambamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/perucajamrca/posts/pfbid09QTaRieJHE73SDDBMZUZtiBWV9y631RXEQTYav6TYbxzLgkhmzZokDUiZ3QqDHFDl?__cft__[0]=AZXfUz2tXWibtP4Go9L9v0__yQJ4-fAAHETl1ckC7OCuHpseDQSoF-sxbKZ0G6-kEx5zotcQdoNrzb41K4v8XJDCLhLnDeguJ73kcf5kCChGbeHgR9zUX4IPEw00EXyFa3bwnP7jvarXZcTEFjWlaUip7Iwtdby_piYlgN7iYbpTsxnjptInX26WHQQ8GQCsGbg&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-07-20",
+      "zona_id": "UGT2",
+      "evento": "Ronderos acuerdan movilización contra proyecto El Reducto",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/Informativocajamarca/posts/pfbid0mqEkAXkEWzLSrDBdrsYEp4WmKyxLXr54oXCvQPf2Fma4yuZVinW1hdBxdUGW9hHAl?rdid=MzrMLI0LMRyYVBmK#"
+    },
+    {
+      "fecha": "2025-07-17",
+      "zona_id": "UGT1",
+      "evento": "Pobladores protestan en Cajamarca exigiendo más obras",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/2hzfpk5v"
+    },
+    {
+      "fecha": "2025-07-05",
+      "zona_id": "UGT1",
+      "evento": "Fracasó marcha contra el bypass en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "bajo",
+      "fuente_url": "https://www.facebook.com/DbateCajamarca/posts/1044607124489159?__cft__[0]=AZUdcUnbTG3vNkHLItMVG5ju38Cfm_Bpby_a3INlcrLHXpgI45LMOe4H3lPKXa53HVDgPD8xScslx5d28kdjiT7NNQTnAaYg34gxxmBOYTO1NHwUpBKnxtDRIJ4I8YYAf3a94e73CpoO1jNDkexpIciNkgCn62o9mD23pOlR_SO6eoauFs2iEmYGmxKxB2aSBW8-RZMuvrkUhCKqSISFu--P&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-07-04",
+      "zona_id": "UGT1",
+      "evento": "Celendín recuerda a los mártires del agua caídos durante protestas contra proyecto Conga",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/Grufides/posts/pfbid0Jgxvu8osSWg2PCJ36XsJ7kWUPK3Dm5XP3rBuXcLrudU6ELvsxUAfumJzGX7AswmQl?rdid=h4UWZY7oPduAlXS5#"
+    },
+    {
+      "fecha": "2025-07-03",
+      "zona_id": "UGT2",
+      "evento": "Vigilia y concierto en memoria de los mártires del agua en Celendín",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/aliagapereira/posts/pfbid02Gs2nR2jd1MDeqfDa5R6gZZEcnZLMMMYfvxavooJdCK7MrfhT6dfTvcEKkUG5jULrl?rdid=haNrcTtYCwpcoHBF#"
+    },
+    {
+      "fecha": "2025-07-03",
+      "zona_id": "UGT2",
+      "evento": "Bambamarca y Celendín recuerdan a los mártires del agua",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/watch/?v=741509074917662&rdid=eRNgrd7DQaTdAfNW"
+    },
+    {
+      "fecha": "2025-07-03",
+      "zona_id": "UGT1",
+      "evento": "A 13 años de la masacre de Conga siguen sin justicia los mártires del agua",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "bajo",
+      "fuente_url": "https://www.facebook.com/Grufides/posts/pfbid0PUFUiBMrFWfDdw7AdyrbKKvzavCzGLSjbrWoodAvmCCuG6S31jt5ZADxogqwcwKMl?rdid=wAaWze5Ygy6jH0cZ#"
+    },
+    {
+      "fecha": "2025-07-03",
+      "zona_id": "UGT1",
+      "evento": "Bambamarca y Celendín recuerdan a los mártires del agua caídos durante protestas contra Conga",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/watch/?v=741509074917662&rdid=oxwvVAQ5fLJcIYOI"
+    },
+    {
+      "fecha": "2025-07-03",
+      "zona_id": "UGT1",
+      "evento": "Se conmemoran muertes por represión en protestas contra Conga en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/perucajamrca/posts/pfbid02Xaci7NpodGNQxFft9Lp9oQWvgbFnvpQdrpcxyu6nHfWLk4HPYMjdirtdxfFVhvyDl?rdid=qEQjGBb6bmyWTR5g#"
+    },
+    {
+      "fecha": "2025-07-03",
+      "zona_id": "UGT1",
+      "evento": "Protesta de cesantes y jubilados del sector educación en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://tinyurl.com/cxkz6pae"
+    },
+    {
+      "fecha": "2025-07-02",
+      "zona_id": "UGT1",
+      "evento": "Pobladores de Combayo advierten restricciones a funcionarios de Newmont si no hay diálogo",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "alto",
+      "fuente_url": "https://www.facebook.com/perucajamrca/posts/pfbid02A1itbYp2QJaEfQwB5NRBvwzZe8h5cMvxUKPSSWDUYRePPgdmU7LSoNVqpf6MwnbXl?__cft__[0]=AZV57pH1CNJJ_KjhRnf7cdv-u5-HNj8pjDuGS--sIkrWYIA5WS77KMOdIevCemEUZL-pQ8ndHGhr5RQs2IKhLzqwjRO0LG9MicE5UrMqQyVH33rzQnzDDQcn2GFVRMDqMQZJMvTtEOhOYI7irnrHh5XsbFjiP1J16LOTm0F7192y5n2fLhdJNCwcxK1MRTLFGwQ&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-06-26",
+      "zona_id": "UGT1",
+      "evento": "Sindicatos en Cajamarca acatan paro nacional contra el gobierno de Dina Boluarte",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/DbateCajamarca/videos/3260671784081275/"
+    },
+    {
+      "fecha": "2025-06-26",
+      "zona_id": "UGT1",
+      "evento": "SUTEP Cajamarca denuncia trabas del GORE para su reconocimiento sindical",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "bajo",
+      "fuente_url": "https://tinyurl.com/mpfr6ans"
+    },
+    {
+      "fecha": "2025-06-20",
+      "zona_id": "UGT1",
+      "evento": "Maestros marchan en Cajamarca por pago de deuda social",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/HablaCajamarcaNoticias/videos/1025394613136462/"
+    },
+    {
+      "fecha": "2025-06-19",
+      "zona_id": "UGT1",
+      "evento": null,
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "bajo",
+      "fuente_url": "https://www.facebook.com/cajamarcanoticosaluiszevallos/posts/pfbid0QzhdDAd5kx2ux6wwQsXGThWsPMZ7bChmrbtbKqovAyxXHXtE5BMQPoYzqWNRNoSGl?rdid=AL8xj9dJqnYyNRPA#"
+    },
+    {
+      "fecha": "2025-05-29",
+      "zona_id": "UGT2",
+      "evento": "Mujeres protestan contra Gold Fields por incumplimiento en Hualgayoc",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/StereoHualgayoc94.5FM/videos/997105168891800/?__tn__=%2CO-R"
+    },
+    {
+      "fecha": "2025-05-21",
+      "zona_id": "UGT1",
+      "evento": "Fente de Defensa de Cajamarca anuncia oposición frontal a minería ilegal",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/CajamarcaNoticiasOficial/posts/pfbid02EiiyF3pxK1K1VKnNrfmQx4ChkkCwcSTF3MD3pU8DKhzmA1nTjwfnZsx6415AcVujl?__cft__[0]=AZVpana21ltbzNeoBHFtnDuAFxfZ7awjf4zqzlr83ECAawA9d8hklyMrHzG4KBC84XDW0Unyf99HlB8fekdnMlsJnic_j2nx7BpsiPdGHxSlLnRqiK_KoEZFqoBeDOtww7UzQ62rLI29Y5lmNeuaS42XoOEdFvLYeOVK1-D2X6GUp3EzoA1xgHfo7fh8cSb9PXanKv3N9VTvOfSsW5502QDP&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-05-20",
+      "zona_id": "UGT1",
+      "evento": "Gomer Vargas plantea movilización ante falta de acciones contra minería ilegal",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "bajo",
+      "fuente_url": "https://www.facebook.com/Continente820/videos/9590801457684083/?__cft__[0]=AZWVgNkNKj2h6am826E33zayFokoRWQpodW9FtCXWtTu0I01PvU3rknPCYTg3N41f2v2YemDqgFBqXWcoaeQqWXWdtFX4_HGRbDzCcJDEl4QRA2i3m-QAsAjEN44sfWattNDrlA-wsidfNIpchbP7jWVjI8cRh-Hk_n7Lof_fRy4LuPyJsqqpbecZzVz_ek73n6WBJ6tbh7w0by8diYufW1d&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-05-20",
+      "zona_id": "UGT1",
+      "evento": "Víctimas de Conga denuncian intento de archivamiento de caso tras 14 años sin justicia",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "bajo",
+      "fuente_url": "https://www.facebook.com/Grufides/posts/pfbid02dJbBAcUjLU6hqVw5DY4km6bagXXRKMxz8qhDpM1si9ZbgbaogZx2sP297NQiAHZnl?rdid=uDrxcxFQCKAyTVVZ#"
+    },
+    {
+      "fecha": "2025-05-16",
+      "zona_id": "UGT1",
+      "evento": "Exigen reactivación del Corredor Vial N°15 abandonado desde 2023",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/abel.rodriguez.7547/posts/10236302310847668?__cft__[0]=AZXEcuqyXLFHidrI7WWP4JHxrwwn1-_jdxubezIawlQF6HnBZAc-dI_xpS-RXQI4kfTvtFsGw3RM0j3tjP5ndt9yz-uyA1Riv0mwsTxA0deIHS4UXZkjZPFChp0P5jKbuWK30hnur2zOQe6vKqWmQRO9qjTEdtd8JRurzT222gY2bg&__tn__=%2CO%2CP-R"
+    },
+    {
+      "fecha": "2025-05-16",
+      "zona_id": "UGT1",
+      "evento": "Protestan contra la minería ilegal en Cajamarca",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/watch/?v=1401139604535328&rdid=raesuXYzpQAIBJtW"
+    },
+    {
+      "fecha": "2025-05-15",
+      "zona_id": "UGT1",
+      "evento": "Bloquean carretera Belaúnde Terry por exigencias a gobierno",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/reel/715340964503181"
+    },
+    {
+      "fecha": "2024-07-03",
+      "zona_id": "UGT1",
+      "evento": "Protesta de docentes y alumnos del Instituto Pedagógico continúa",
+      "tipo": "Protestas, Paros y Bloqueos",
+      "severidad": "medio",
+      "fuente_url": "https://www.facebook.com/DbateCajamarca/videos/1777796559801383/?__tn__=%2CO"
+    }
+  ],
+  "actores_criticos": [
+    {
+      "nombre": "Jesús Díaz",
+      "cargo_o_rol": "Alcalde del distrito de La Encañada",
+      "distrito_o_zona": "La Encañada / Combayo",
+      "n_apariciones": 2,
+      "ultima_mencion_aprox": "2026-06-22",
+      "contexto_resumen": "Respalda la medida de protesta de pobladores de Combayo frente al Gobierno Regional; luego es interpelado por pobladores de Combayo para que informe sobre el avance de la carretera Otuzco-Combayo. (En el reporte 26, un 'Alcalde de La Encañada' -probablemente él- es cuestionado por presuntos vínculos con la minería ilegal, sin nombrarlo.)"
+    },
+    {
+      "nombre": "Rocío Portal",
+      "cargo_o_rol": "Funcionaria del Gobierno Regional de Cajamarca",
+      "distrito_o_zona": "Cajamarca / Combayo",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2026-06-10",
+      "contexto_resumen": "Anuncia acciones legales contra manifestantes de Combayo tras la protesta frente al Gobierno Regional por el proyecto hídrico pendiente vinculado a Yanacocha."
+    },
+    {
+      "nombre": "José Luis Medina",
+      "cargo_o_rol": "Decano del Colegio de Economistas de Cajamarca",
+      "distrito_o_zona": "Cajamarca",
+      "n_apariciones": 2,
+      "ultima_mencion_aprox": "2026-06-09",
+      "contexto_resumen": "Sostiene que la gran minería es pilar del desarrollo regional pero condiciona su aceptación social al uso de tecnología de punta; luego exhorta al Estado a combatir la minería ilegal distinguiéndola de la informal."
+    },
+    {
+      "nombre": "Enrique Chávez",
+      "cargo_o_rol": "Representante de 'Real Pabellón La Cima'",
+      "distrito_o_zona": "La Encañada / zona de influencia Yanacocha",
+      "n_apariciones": 2,
+      "ultima_mencion_aprox": "2026-05-11",
+      "contexto_resumen": "Señala que más de 60 familias siguen consumiendo agua de río en zona de influencia de Yanacocha; cuestiona la falta de atención del Gobierno Regional y la Municipalidad de La Encañada (contenido duplicado en dos archivos de reporte)."
+    },
+    {
+      "nombre": "Sergio Sánchez (Ibáñez)",
+      "cargo_o_rol": "Gerente de RENAMA Cajamarca; vocero técnico en temas de agua y minería ilegal",
+      "distrito_o_zona": "Cajamarca (regional)",
+      "n_apariciones": 3,
+      "ultima_mencion_aprox": "2026-05-07",
+      "contexto_resumen": "Como gerente de RENAMA anuncia viajes a Lima para coordinar acciones contra la minería ilegal; participa en mesas técnicas de monitoreo hídrico vinculadas a Yanacocha; pide priorizar la Presa Chonta y un paquete regional de infraestructura hídrica."
+    },
+    {
+      "nombre": "Roberto Sánchez",
+      "cargo_o_rol": "Dirigente político",
+      "distrito_o_zona": "Cajamarca",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2026-04-24",
+      "contexto_resumen": "Llama a la movilización en Cajamarca en contra de las elecciones complementarias (no vinculado directamente a Yanacocha, pero convoca protesta en el periodo monitoreado)."
+    },
+    {
+      "nombre": "Gomer Vargas",
+      "cargo_o_rol": "Ambientalista; dirigente / vocero comunal en Chetilla",
+      "distrito_o_zona": "Chetilla",
+      "n_apariciones": 3,
+      "ultima_mencion_aprox": "2026-04-23",
+      "contexto_resumen": "Denuncia reiteradamente la falta de intervención policial y el avance de la minería ilegal en Chetilla; encabeza a dirigentes que se reúnen con OEFA para expresar rechazo a la actividad minera. (En el reporte 21 aparece además una mención a 'Gomer Vasquez [Monitor Electoral]', posible variante/error del mismo nombre.)"
+    },
+    {
+      "nombre": "Róger Guevara",
+      "cargo_o_rol": "Dirigente / vocero ambiental",
+      "distrito_o_zona": "Sorochuco / Huasmín / Hualgayoc",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2026-04-08",
+      "contexto_resumen": "Exhorta a los pueblos de Sorochuco, Huasmín y Hualgayoc a defender el medio ambiente ante el avance de la minería ilegal."
+    },
+    {
+      "nombre": "Joaquín Ramírez",
+      "cargo_o_rol": "Alcalde de Cajamarca (ciudad)",
+      "distrito_o_zona": "Cajamarca ciudad",
+      "n_apariciones": 3,
+      "ultima_mencion_aprox": "2026-04-02",
+      "contexto_resumen": "Protagonista recurrente de la controversia por la obra del bypass del Óvalo Musical; intercambia acusaciones con el gobernador regional Guevara sobre la gestión de la obra; finalmente deja la alcaldía tras presentar balance de gestión."
+    },
+    {
+      "nombre": "José Tapia",
+      "cargo_o_rol": "Alcalde de San Ignacio",
+      "distrito_o_zona": "San Ignacio",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2026-03-31",
+      "contexto_resumen": "Alerta sobre el crecimiento de la actividad minera ilegal y la falta de acciones estatales en su distrito."
+    },
+    {
+      "nombre": "Mirtha Vásquez",
+      "cargo_o_rol": "Ex-congresista; abogada ambientalista; vocera de oposición a proyectos mineros",
+      "distrito_o_zona": "Cajamarca (regional) / Conga / Celendín",
+      "n_apariciones": 7,
+      "ultima_mencion_aprox": "2026-02-16",
+      "contexto_resumen": "Rechaza la 'Ley Soto' y el proyecto minero Conga; brinda asesoría legal a ocho comunidades contra la minería ilegal; cuestiona al Congreso (NORMIN); es también blanco de críticas de terceros por su rol en el debate de minería ilegal. Es la persona con más reapariciones en todo el corpus."
+    },
+    {
+      "nombre": "Máxima Chaupe Acuña (familia Chaupe)",
+      "cargo_o_rol": "Comunera; defensora histórica de tierras frente a Yanacocha/Conga (caso emblemático); su hija Isidora Chaupe la representa como vocera",
+      "distrito_o_zona": "Conga / Sorochuco",
+      "n_apariciones": 4,
+      "ultima_mencion_aprox": "2026-01-14",
+      "contexto_resumen": "La 'familia Chaupe Acuña' vuelve a denunciar hostigamiento de Yanacocha en Conga; el caso se reactiva mediáticamente varias veces; en enero 2026 su hija Isidora Chaupe informa sobre una nueva denuncia de Yanacocha contra la familia por la defensa del predio."
+    },
+    {
+      "nombre": "Edmundo Becerra",
+      "cargo_o_rol": "Dirigente histórico opositor al proyecto Yanacocha (asesinado)",
+      "distrito_o_zona": "Cajamarca",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-12-22",
+      "contexto_resumen": "Es recordado en un encuentro macroregional ambiental como dirigente asesinado por oponerse al proyecto Yanacocha; caso histórico reactivado mediáticamente."
+    },
+    {
+      "nombre": "Eleuterio Vera",
+      "cargo_o_rol": "Secretario de la CGTP en Cajamarca; dirigente sindical/laboral",
+      "distrito_o_zona": "Cajamarca",
+      "n_apariciones": 2,
+      "ultima_mencion_aprox": "2025-11-20",
+      "contexto_resumen": "Informa que los gremios sindicales participan en marchas contra el gobierno; meses después, como dirigente, detalla las causas del paro de los trabajadores de Bechtel en Yanacocha (reclamos laborales, despidos, hacinamiento)."
+    },
+    {
+      "nombre": "Lozano",
+      "cargo_o_rol": "Vocero / autoridad crítica del REINFO",
+      "distrito_o_zona": "Cajamarca",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-11-18",
+      "contexto_resumen": "Advierte que el REINFO facilita la minería ilegal en Cajamarca y exige eliminarlo para fortalecer la pequeña minería formal."
+    },
+    {
+      "nombre": "Mesías Guevara",
+      "cargo_o_rol": "Gobernador Regional de Cajamarca",
+      "distrito_o_zona": "Cajamarca (regional)",
+      "n_apariciones": 2,
+      "ultima_mencion_aprox": "2025-11-05",
+      "contexto_resumen": "Intercambia acusaciones con el alcalde de Cajamarca sobre la gestión del bypass; advierte que la inseguridad ligada a la minería ilegal y la falta de servicios básicos agrava la crisis social en la región."
+    },
+    {
+      "nombre": "Isaul Tanta",
+      "cargo_o_rol": "Alcalde del Centro Poblado de Porcón Bajo",
+      "distrito_o_zona": "Porcón Bajo",
+      "n_apariciones": 2,
+      "ultima_mencion_aprox": "2025-11-04",
+      "contexto_resumen": "Citado como fuente/autoridad en gestiones ante Yanacocha para rehabilitación vial tras lluvias. Un 'Alcalde de Porcón Bajo' (probablemente el mismo) vuelve a alertar sobre minería ilegal en el cerro Quilish en el reporte 28 (26.05.26), sin nombrarlo explícitamente."
+    },
+    {
+      "nombre": "Óscar Mendoza",
+      "cargo_o_rol": "Vocero / autoridad que alerta sobre minería ilegal",
+      "distrito_o_zona": "Hualgayoc",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-10-22",
+      "contexto_resumen": "Alerta que la minería ilegal en Hualgayoc y zonas vecinas genera daños ambientales valorizados en mil millones de soles."
+    },
+    {
+      "nombre": "Manuel Chávez Valera",
+      "cargo_o_rol": "Presidente (comité/comunidad) en Michiquillay",
+      "distrito_o_zona": "Michiquillay",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-10-22",
+      "contexto_resumen": "Denuncia que algunas rondas permiten el paso de mineros ilegales a cambio de dinero, generando riesgos en Michiquillay."
+    },
+    {
+      "nombre": "Karina Garay",
+      "cargo_o_rol": "Vocera / observadora de minería ilegal",
+      "distrito_o_zona": "Yanacocha Sulfuros",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-10-14",
+      "contexto_resumen": "Alerta que la minería ilegal amenaza el proyecto Yanacocha Sulfuros."
+    },
+    {
+      "nombre": "Gilles Wendling",
+      "cargo_o_rol": "Hidrogeólogo (perito internacional contratado por Grufides)",
+      "distrito_o_zona": "Conga",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-10-07",
+      "contexto_resumen": "Perito independiente que sustenta con peritajes técnicos los riesgos ambientales del proyecto Conga; advierte que destruir lagunas causaría daño irreversible al ciclo hídrico."
+    },
+    {
+      "nombre": "Jorge Ayala",
+      "cargo_o_rol": "Presidente comunal de La Encañada",
+      "distrito_o_zona": "La Encañada / Michiquillay",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-09-06",
+      "contexto_resumen": "Denuncia irregularidades y falta de transparencia en el Fondo Social Michiquillay: incumplimiento de objetivos, ausencia de auditorías claras y desconocimiento de montos exactos."
+    },
+    {
+      "nombre": "Alamiro Mendoza Coronado",
+      "cargo_o_rol": "Alcalde del Centro Poblado de Combayo (2023-2026); Gerente General de Peña de Oro",
+      "distrito_o_zona": "Combayo",
+      "n_apariciones": 2,
+      "ultima_mencion_aprox": "2025-08-25",
+      "contexto_resumen": "Llama 'mentirosos' a Yanacocha por incumplimientos de cierre de mina prometidos hace 20 años; identificado como actor en el conflicto por el proyecto Quecher Main; Yanacocha lo acusa de presiones/chantajes; ficha como 'Actor Clave' principal vocero del descontento social en la carretera Otuzco-Combayo."
+    },
+    {
+      "nombre": "Jaime Villanueva Castrejón",
+      "cargo_o_rol": "Alcalde del Centro Poblado de Tual; Gerente General de Grupo de Negocios Verde Green E.I.R.L.; secretario de AMUCEP-Cajamarca",
+      "distrito_o_zona": "Tual",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-07-14",
+      "contexto_resumen": "Confirma niveles alarmantes de contaminación (12 elementos químicos) en el río Colorado y cuestiona el silencio de Yanacocha y el abandono de las autoridades; ficha detallada como 'Persona de Interés'."
+    },
+    {
+      "nombre": "Wily Ispilco",
+      "cargo_o_rol": "Líder / vocero de alcaldes de centros poblados (gestión de fondo común municipal)",
+      "distrito_o_zona": "Cajamarca (centros poblados) / Lima",
+      "n_apariciones": 3,
+      "ultima_mencion_aprox": "2025-06-30",
+      "contexto_resumen": "Se pronuncia desde Lima exigiendo el incremento del fondo común municipal tras un paro nacional; espera la transferencia de presupuesto a las municipalidades de centros poblados; reportado como 'líder político' que reaparece en la escena nacional."
+    },
+    {
+      "nombre": "Franco Rojas",
+      "cargo_o_rol": "Rondero (Crucero); dirigente de rondas de la provincia de Santa Cruz",
+      "distrito_o_zona": "Chancay Baños / Santa Cruz",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-06-20",
+      "contexto_resumen": "Anuncia jornada de protesta/paro por la presunta contaminación del río Chancay Baños, señalando como responsables a Gold Fields y Tantahuatay."
+    },
+    {
+      "nombre": "Orlandini Davila",
+      "cargo_o_rol": "Alcalde de Chancay Baños, Santa Cruz",
+      "distrito_o_zona": "Chancay Baños / Santa Cruz",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-06-20",
+      "contexto_resumen": "Denuncia contaminación y muerte de peces en el río Chancay Baños; respalda la denuncia con pruebas visuales y biológicas contra Gold Fields y Coimolache; anuncia movilización ciudadana para el 11 de julio."
+    },
+    {
+      "nombre": "Wilson Davila",
+      "cargo_o_rol": "Sub Prefecto de Cajamarca",
+      "distrito_o_zona": "Cajamarca",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-06-13",
+      "contexto_resumen": "Emite comentario público como autoridad de gobierno interior en el contexto de conflictividad social monitoreada."
+    },
+    {
+      "nombre": "José Saldaña",
+      "cargo_o_rol": "Director de la I.E. N.º 82154 (Michiquillay)",
+      "distrito_o_zona": "Michiquillay",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-06-10",
+      "contexto_resumen": "Advierte sobre los riesgos que enfrentan los estudiantes por la infraestructura educativa deficiente, en un contexto de reclamo de fondos al Fondo Social Michiquillay."
+    },
+    {
+      "nombre": "Yon Cruzado",
+      "cargo_o_rol": "Abogado",
+      "distrito_o_zona": "Cajamarca",
+      "n_apariciones": 1,
+      "ultima_mencion_aprox": "2025-05-31",
+      "contexto_resumen": "Dicta una conferencia magistral sobre los riesgos de contaminación en las 284 lagunas de Cajamarca por actividades de Yanacocha."
     }
   ]
 }
