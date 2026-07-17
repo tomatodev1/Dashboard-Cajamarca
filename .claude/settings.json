@@ -22,7 +22,9 @@
       "Bash(pkill -f \"http.server 8023\")",
       "Bash(pkill -f \"http.server 8024\")",
       "Bash(pkill -f \"http.server 8025\")",
-      "Bash(pkill -f \"http.server 8026\")"
+      "Bash(pkill -f \"http.server 8026\")",
+      "Bash(pkill -f \"http.server 8027\")",
+      "Bash(pkill -f \"http.server 8029\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\OPERAD_01\\AppData\\Local\\Temp\\claude\\c--proyectos-dashboard-dashboard-cajamarca\\b30b8747-4cd6-42b1-9987-0f6bba09d7b5\\scratchpad"

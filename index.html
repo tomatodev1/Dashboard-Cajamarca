@@ -60,6 +60,25 @@ button{outline:none}
   /* ---------- helpers ---------- */
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function smoothPath(coords){
+    // Curva Catmull-Rom -> Bezier cubica (tension 1/6). Cada punto real sigue
+    // siendo un ancla exacta del path (mismo valor, misma posicion) -- esto
+    // solo cambia como se conectan visualmente los puntos (curvo en vez de
+    // segmentos rectos), no suaviza ni altera ningun dato.
+    if(coords.length<2) return '';
+    if(coords.length===2) return 'M'+coords[0][0]+' '+coords[0][1]+' L'+coords[1][0]+' '+coords[1][1];
+    var d='M'+coords[0][0]+' '+coords[0][1]+' ';
+    for(var i=0;i<coords.length-1;i++){
+      var p0=coords[i-1]||coords[i];
+      var p1=coords[i];
+      var p2=coords[i+1];
+      var p3=coords[i+2]||p2;
+      var c1x=p1[0]+(p2[0]-p0[0])/6, c1y=p1[1]+(p2[1]-p0[1])/6;
+      var c2x=p2[0]-(p3[0]-p1[0])/6, c2y=p2[1]-(p3[1]-p1[1])/6;
+      d+='C'+c1x+' '+c1y+','+c2x+' '+c2y+','+p2[0]+' '+p2[1]+' ';
+    }
+    return d;
+  }
   function fmtPct(v){return v==null?'—':Math.round(v*100)+'%';}
   function fmtPct1(v){return v==null?'—':(Math.round(v*1000)/10)+'%';}
   function levelColor(l){
@@ -236,7 +255,7 @@ button{outline:none}
       var pts=(byZona[z.zona_id]||[]);
       var coords=pts.map(function(p){ return [X(p.ms),Y(p.probDisplay)]; });
       if(coords.length>1){
-        svg+='<polyline points="'+coords.map(function(p){return p.join(',');}).join(' ')+'" fill="none" style="stroke:'+zonaColor(z.zona_id)+'" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></polyline>';
+        svg+='<path d="'+smoothPath(coords)+'" fill="none" style="stroke:'+zonaColor(z.zona_id)+'" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></path>';
       }
       coords.forEach(function(c){
         svg+='<circle cx="'+c[0]+'" cy="'+c[1]+'" r="3.4" fill="'+zonaColor(z.zona_id)+'" stroke="var(--panel)" stroke-width="1.4"></circle>';
@@ -249,7 +268,16 @@ button{outline:none}
           var segEndMs=Math.min(lastMs+HORIZON_DAYS*DAY_MS, maxMs);
           if(segEndMs>lastMs){
             var x1=X(lastMs), x2e=X(segEndMs), y1=Y(lastRaw.prob_suavizado!=null?lastRaw.prob_suavizado:lastRaw.prob);
-            svg+='<line x1="'+x1+'" x2="'+x2e+'" y1="'+y1+'" y2="'+y1+'" style="stroke:'+zonaColor(z.zona_id)+'" stroke-width="2.2" stroke-dasharray="2 4" stroke-linecap="round" opacity=".8"></line>';
+            // curva de transicion: continua suavemente el movimiento real hasta
+            // aplanarse en el valor del pronostico -- mismo valor final que una
+            // linea recta, solo que sin el "codo" visual al entrar en la zona
+            // de pronostico. El pronostico sigue siendo un valor plano, no una
+            // tendencia inventada.
+            var prevCoord=coords.length>1?coords[coords.length-2]:null;
+            var tangentY=prevCoord?(y1-prevCoord[1]):0;
+            var c1x=x1+(x2e-x1)*0.35, c1y=y1+tangentY*0.25;
+            var c2x=x1+(x2e-x1)*0.7, c2y=y1;
+            svg+='<path d="M'+x1+' '+y1+' C'+c1x+' '+c1y+','+c2x+' '+c2y+','+x2e+' '+y1+'" fill="none" style="stroke:'+zonaColor(z.zona_id)+'" stroke-width="2.2" stroke-dasharray="2 4" stroke-linecap="round" opacity=".8"></path>';
             svg+='<circle cx="'+x2e+'" cy="'+y1+'" r="3.6" fill="'+zonaColor(z.zona_id)+'" stroke="var(--panel)" stroke-width="1.4" opacity=".8"></circle>';
             // marca la fecha critica sobre el tramo de pronostico si cae dentro de esta ventana
             var pf=z.proxima_fecha_critica;
